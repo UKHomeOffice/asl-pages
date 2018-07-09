@@ -5,7 +5,8 @@ module.exports = {
   training: {
     title: 'Training',
     nacwo: 'NACWO training',
-    modules: 'Accredited training modules',
+    modulesTitle: 'Accredited training modules',
+    module: 'Module {{module}}',
     dateCompleted: 'Date completed: {{date}}'
   },
   projects: {

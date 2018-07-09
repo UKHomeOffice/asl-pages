@@ -165,14 +165,21 @@ const Index = ({
                   {
                     !isEmpty(trainingModules) && (
                       <dl className="inline">
-                        <dt><Snippet>training.modules</Snippet></dt>
+                        <dt><Snippet>training.modulesTitle</Snippet></dt>
                         <dd>
                           <dl>
                             {
                               map(trainingModules, (module, index) =>
                                 <Fragment key={index}>
-                                  <dt>{module.module}</dt>
-                                  <dd><Snippet date={formatDate(module.pass_date)}>training.dateCompleted</Snippet></dd>
+                                  <dt><Snippet module={module.module}>training.module</Snippet></dt>
+                                  <dd>
+                                    {
+                                      module.species && (
+                                        <Fragment>{module.species}<br /></Fragment>
+                                      )
+                                    }
+                                    <Snippet date={formatDate(module.pass_date)}>training.dateCompleted</Snippet>
+                                  </dd>
                                 </Fragment>
                               )
                             }
