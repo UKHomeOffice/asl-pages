@@ -30,7 +30,7 @@ const Index = ({
   model: {
     name,
     pil,
-    qualifications,
+    certifications,
     address,
     postcode,
     telephone,
@@ -44,9 +44,9 @@ const Index = ({
   },
   ...props
 }) => {
-  const formatDate = date => moment(date).format('Do MMMM YYYY');
+  const formatDate = date => moment(date).format('DD MMMM YYYY');
   const premises = getPremises(roles);
-  const hasNacwoQualifications = roles.length > 0 && roles.find(role => role.type === 'nacwo') && qualifications;
+  const hasNacwoCertifications = roles.length > 0 && roles.find(role => role.type === 'nacwo') && certifications;
   return (
     <Fragment>
       <article className='profile grid-row'>
@@ -152,13 +152,13 @@ const Index = ({
               )
             }
             {
-              (hasNacwoQualifications || !isEmpty(trainingModules)) && (
+              (hasNacwoCertifications || !isEmpty(trainingModules)) && (
                 <ExpandingPanel title={<Snippet>training.title</Snippet>}>
                   {
-                    hasNacwoQualifications && (
+                    hasNacwoCertifications && (
                       <dl className="inline">
                         <dt><Snippet>training.nacwo</Snippet></dt>
-                        <dd>{qualifications}</dd>
+                        <dd>{certifications}</dd>
                       </dl>
                     )
                   }
