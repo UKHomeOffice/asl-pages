@@ -137,10 +137,10 @@ const Index = ({
                           projects.map(project =>
                             <Fragment key={project.id}>
                               <dt>
-                                <Link page="project.list" label={projects.title} />
+                                <Link page="project.list" label={project.title} />
                               </dt>
                               <dd>
-                                <span><Snippet licenceNumber={projects.licenceNumber}>project.licenceNumber</Snippet></span>
+                                <span><Snippet licenceNumber={project.licenceNumber}>projects.licenceNumber</Snippet></span>
                               </dd>
                             </Fragment>
                           )
