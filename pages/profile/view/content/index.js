@@ -12,7 +12,7 @@ module.exports = {
     title: 'Projects',
     projectTitles: 'Project titles',
     licenceNumber: 'Licence number: {{licenceNumber}}'
-  }
+  },
   premises: 'Premises',
   contactDetails: {
     title: 'Contact Details',

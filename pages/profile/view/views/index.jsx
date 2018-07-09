@@ -152,7 +152,7 @@ const Index = ({
               )
             }
             {
-              hasNacwoQualifications || !isEmpty(trainingModules) && (
+              (hasNacwoQualifications || !isEmpty(trainingModules)) && (
                 <ExpandingPanel title={<Snippet>training.title</Snippet>}>
                   {
                     hasNacwoQualifications && (
