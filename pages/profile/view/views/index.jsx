@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { isEmpty, map, chain } from 'lodash';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import dictionary from '@asl/dictionary';
 import Accordion from '../../../common/views/components/accordion';
 import ExpandingPanel from '../../../common/views/components/expanding-panel';
@@ -35,13 +36,15 @@ const Index = ({
     telephone,
     email,
     roles,
-    projects
+    projects,
+    trainingModules
   },
   establishment: {
     name: establishmentName
   },
   ...props
 }) => {
+  const formatDate = date => moment(date).format('Do MMMM YYYY');
   const premises = getPremises(roles);
   const hasNacwoQualifications = roles.length > 0 && roles.find(role => role.type === 'nacwo') && qualifications;
   return (
@@ -69,7 +72,7 @@ const Index = ({
             {
               (!isEmpty(roles) || !isEmpty(premises)) && (
                 <ExpandingPanel title="Responsibilities">
-                  <dl className="inline light">
+                  <dl className="inline">
                     {
                       !isEmpty(roles) && (
                         <Fragment>
@@ -125,19 +128,19 @@ const Index = ({
             }
             {
               projects && projects.length > 0 && (
-                <ExpandingPanel title={<Snippet>pages.project.list</Snippet>}>
-                  <dl className="inline light">
-                    <dt><Snippet>projectTitles</Snippet></dt>
+                <ExpandingPanel title={<Snippet>projects.title</Snippet>}>
+                  <dl className="inline">
+                    <dt><Snippet>projects.projectTitles</Snippet></dt>
                     <dd>
-                      <dl className="light">
+                      <dl>
                         {
                           projects.map(project =>
                             <Fragment key={project.id}>
                               <dt>
-                                <Link page="project.list" label={project.title} />
+                                <Link page="project.list" label={projects.title} />
                               </dt>
                               <dd>
-                                <span>{`Licence number: ${project.licenceNumber}`}</span>
+                                <span><Snippet licenceNumber={projects.licenceNumber}>project.licenceNumber</Snippet></span>
                               </dd>
                             </Fragment>
                           )
@@ -149,19 +152,42 @@ const Index = ({
               )
             }
             {
-              hasNacwoQualifications && (
-                <ExpandingPanel title={<Snippet>training</Snippet>}>
-                  <dl className="inline light">
-                    <dt>NACWO training</dt>
-                    <dd>{qualifications}</dd>
-                  </dl>
+              hasNacwoQualifications || !isEmpty(trainingModules) && (
+                <ExpandingPanel title={<Snippet>training.title</Snippet>}>
+                  {
+                    hasNacwoQualifications && (
+                      <dl className="inline">
+                        <dt><Snippet>training.nacwo</Snippet></dt>
+                        <dd>{qualifications}</dd>
+                      </dl>
+                    )
+                  }
+                  {
+                    !isEmpty(trainingModules) && (
+                      <dl className="inline">
+                        <dt><Snippet>training.modules</Snippet></dt>
+                        <dd>
+                          <dl>
+                            {
+                              map(trainingModules, (module, index) =>
+                                <Fragment key={index}>
+                                  <dt>{module.module}</dt>
+                                  <dd><Snippet date={formatDate(module.pass_date)}>training.dateCompleted</Snippet></dd>
+                                </Fragment>
+                              )
+                            }
+                          </dl>
+                        </dd>
+                      </dl>
+                    )
+                  }
                 </ExpandingPanel>
               )
             }
             {
               (address || telephone || email) && (
                 <ExpandingPanel title={<Snippet>contactDetails.title</Snippet>}>
-                  <dl className="inline light">
+                  <dl className="inline">
                     {
                       address && (
                         <Fragment>
