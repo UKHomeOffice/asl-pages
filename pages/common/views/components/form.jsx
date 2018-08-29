@@ -10,6 +10,7 @@ const fields = {
   inputText: props => <Input { ...props } />,
   inputEmail: props => <Input type="email" { ...props } />,
   inputPassword: props => <Input type="password" { ...props } />,
+  inputDate: props => <DateInput { ...props } />,
   textarea: props => <TextArea { ...props } />,
   radioGroup: props => <RadioGroup { ...props } />,
   checkboxGroup: props => <CheckboxGroup { ...props } />,
@@ -31,10 +32,12 @@ const Form = ({
 }) => (
   <form method="POST" noValidate>
     {
-      map(schema, ({ inputType, conditionalReveal, showIf, accessor, ...props }, key) => {
+      map(schema, ({ inputType, conditionalReveal, showIf, accessor, format, ...props }, key) => {
+        const value = accessor ? get(model[key], accessor) : (model[key] || '');
+        console.log('VALUE', value);
         const field = fields[inputType]({
           key,
-          value: accessor ? get(model[key], accessor) : (model[key] || ''),
+          value: format ? format(value) : value,
           label: <Snippet>{`fields.${key}.label`}</Snippet>,
           hint: <Snippet optional>{`fields.${key}.hint`}</Snippet>,
           name: key,

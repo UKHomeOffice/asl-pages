@@ -25,6 +25,7 @@ module.exports = () => {
       .catch(next);
   });
 
+  app.use('/:profile/edit', require('./update')());
   app.use('/:profile', permissions('profile.read.basic'), require('./read')());
   app.use('/invite', permissions('profile.invite'), require('./invite')());
 
