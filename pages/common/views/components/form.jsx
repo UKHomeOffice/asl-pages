@@ -29,12 +29,11 @@ const Form = ({
   csrfToken,
   errors = {},
   onFieldChange
-}) => (
-  <form method="POST" noValidate>
+}) => {
+  return <form method="POST" noValidate>
     {
       map(schema, ({ inputType, conditionalReveal, showIf, accessor, format, ...props }, key) => {
         const value = accessor ? get(model[key], accessor) : (model[key] || '');
-        console.log('VALUE', value);
         const field = fields[inputType]({
           key,
           value: format ? format(value) : value,
@@ -68,7 +67,7 @@ const Form = ({
     }
     <input type="hidden" name="_csrf" value={csrfToken} />
     <button type="submit" className="govuk-button"><Snippet>buttons.submit</Snippet></button>
-  </form>
-);
+  </form>;
+};
 
 export default Form;

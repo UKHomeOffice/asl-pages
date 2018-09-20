@@ -17,6 +17,7 @@ module.exports = {
     inputType: 'inputDate',
     validate: [
       'required',
+      'validDate',
       { dateIsBefore: moment() }
     ]
   },

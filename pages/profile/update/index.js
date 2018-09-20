@@ -1,3 +1,4 @@
+const moment = require('moment');
 const { set } = require('lodash');
 const page = require('../../../lib/page');
 const form = require('../../common/routers/form');
@@ -18,9 +19,8 @@ module.exports = settings => {
       const year = req.body[`${DATE_KEY}-year`];
 
       Object.assign(req.form.values, {
-        dob: `${year}-${month}-${day}`
+        dob: moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').format('YYYY-MM-DD')
       });
-
       next();
     }
   }));
