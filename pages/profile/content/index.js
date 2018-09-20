@@ -17,6 +17,9 @@ module.exports = {
     },
     role: {
       required: 'You need to set a permission level for this new user.'
+    },
+    dob: {
+      validDate: 'You need to enter a valid date'
     }
   },
   notifications: {

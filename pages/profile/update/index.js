@@ -19,8 +19,12 @@ module.exports = settings => {
       const year = req.body[`${DATE_KEY}-year`];
 
       Object.assign(req.form.values, {
-        dob: moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').format('YYYY-MM-DD')
+        dob: `${year}-${month}-${day}`
       });
+      next();
+    },
+    saveValues: (req, res, next) => {
+      req.session.form[req.model.id].values.dob = moment(req.form.values.dob, 'YYYY-MM-DD').format('YYYY-MM-DD');
       next();
     }
   }));
@@ -46,7 +50,8 @@ module.exports = settings => {
       }
     }]);
     delete req.session.form[id];
-    return res.redirect(req.originalUrl.replace(/\/edit/, ''));
+    delete req.session.profile;
+    return res.redirect(req.originalUrl);
   });
 
   // app.use((req, res, next) => {
