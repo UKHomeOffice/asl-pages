@@ -17,8 +17,7 @@ const Index = () => {
         </ul>
       </div>
     </div>
-  </Fragment>
+  </Fragment>;
 };
 
 export default Index;
-

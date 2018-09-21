@@ -4,7 +4,6 @@ const page = require('../../../lib/page');
 const form = require('../../common/routers/form');
 const schema = require('./schema');
 
-
 module.exports = settings => {
   const app = page({
     root: __dirname
