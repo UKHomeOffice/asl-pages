@@ -52,11 +52,5 @@ module.exports = settings => {
     return res.redirect(req.originalUrl);
   });
 
-  // app.use((req, res, next) => {
-  //   console.log(req.model.id)
-  //   console.log(req.user.id)
-  //   next();
-  // })
-
   return app;
 };
