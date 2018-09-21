@@ -44,7 +44,7 @@ const Layout = ({
       propositionHeader={siteTitle}
       stylesheets={['/public/css/app.css']}
       scripts={scripts}
-      headerContent={<StatusBar user={wrap ? user : {}} />}
+      headerContent={<StatusBar user={user} />}
       nonce={nonce}
       phaseBanner={{
         phase: 'beta',
@@ -56,7 +56,7 @@ const Layout = ({
         <main className="main govuk-main-wrapper" id="content">
           <div className="govuk-grid-row">
             <div className="govuk-grid-column-full">
-              <Notifications />
+              { wrap && <Notifications /> }
               <div id="page-component">
                 { children }
               </div>

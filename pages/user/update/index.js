@@ -4,7 +4,6 @@ const page = require('../../../lib/page');
 const form = require('../../common/routers/form');
 const schema = require('./schema');
 
-const DATE_KEY = 'dob';
 
 module.exports = settings => {
   const app = page({
@@ -14,9 +13,9 @@ module.exports = settings => {
   app.use('/', form({
     schema,
     process: (req, res, next) => {
-      const day = req.body[`${DATE_KEY}-day`];
-      const month = req.body[`${DATE_KEY}-month`];
-      const year = req.body[`${DATE_KEY}-year`];
+      const day = req.body['dob-day'];
+      const month = req.body['dob-month'];
+      const year = req.body['dob-year'];
 
       Object.assign(req.form.values, {
         dob: `${year}-${month}-${day}`
@@ -36,7 +35,7 @@ module.exports = settings => {
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify(values)
     };
-    return req.api(`/establishment/${req.establishment}/profile/${req.model.id}`, opts)
+    return req.api(`/me`, opts)
       .then(() => next())
       .catch(next);
   });

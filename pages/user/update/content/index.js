@@ -1,5 +1,5 @@
 const { merge } = require('lodash');
-const baseContent = require('../../content');
+const baseContent = require('../../../profile/content');
 
 module.exports = merge({}, baseContent, {
   fields: {
