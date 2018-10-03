@@ -1,18 +1,8 @@
-const { reduce, isUndefined } = require('lodash');
 const { Router } = require('express');
+const { buildModel } = require('../../lib/utils');
 const certificateSchema = require('./certificate/schema');
 const moduleSchema = require('./modules/schema');
 const proceduresSchema = require('./procedures/schema');
-
-const buildModel = (...args) => {
-  return Object.assign(
-    ...args.map(schema => {
-      return reduce(schema, (fields, { nullValue }, key) => {
-        return { ...fields, [key]: isUndefined(nullValue) ? null : nullValue };
-      }, {})
-    })
-  )
-};
 
 module.exports = () => {
   const app = Router();
