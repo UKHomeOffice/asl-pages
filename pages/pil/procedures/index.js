@@ -11,21 +11,22 @@ module.exports = settings => {
   app.use('/', form({ schema }));
 
   app.post('/', (req, res, next) => {
-    const values = req.session.form[req.model.id].values;
-    values.profile_id = req.profile;
+    // const values = req.session.form[req.model.id].values.procedures;
 
-    const opts = {
-      method: 'POST',
-      headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify(values)
-    };
+    return next();
 
-    return req.api(`/pil/procedures`, opts)
-      .then(() => {
-        delete req.session.form[req.model.id];
-        return next();
-      })
-      .catch(next);
+    // const opts = {
+    //   method: 'POST',
+    //   headers: { 'Content-type': 'application/json' },
+    //   body: JSON.stringify(values)
+    // };
+
+    // return req.api(`/pil/procedures`, opts)
+    //   .then(() => {
+    //     delete req.session.form[req.model.id];
+    //     return next();
+    //   })
+    //   .catch(next);
   });
 
   app.post('/', (req, res, next) => {
