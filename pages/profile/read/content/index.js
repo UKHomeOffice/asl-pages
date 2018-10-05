@@ -12,8 +12,8 @@ module.exports = {
   projects: {
     title: 'Projects',
     projectTitles: 'Project titles',
-    licenceNumber: 'Licence number: {{licenceNumber}}',
-    expiryDate: 'Expiry date: {{expiryDate}}'
+    licence_number: 'Licence number: {{licence_number}}',
+    expiry_date: 'Expiry date: {{expiry_date}}'
   },
   premises: 'Premises',
   contactDetails: {

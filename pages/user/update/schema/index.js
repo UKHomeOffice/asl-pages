@@ -1,13 +1,13 @@
 const moment = require('moment');
 
 module.exports = {
-  firstName: {
+  first_name: {
     inputType: 'inputText',
     validate: [
       'required'
     ]
   },
-  lastName: {
+  last_name: {
     inputType: 'inputText',
     validate: [
       'required'

@@ -18,7 +18,7 @@ const Confirm = ({
   csrfToken,
   establishment: {
     name,
-    licenceNumber,
+    licence_number,
     pelh: {
       name: pelhName
     }
@@ -37,10 +37,10 @@ const Confirm = ({
           <dt><Snippet>establishment</Snippet></dt>
           <dd>{ name }</dd>
 
-          <dt><Snippet>licenceNumber</Snippet></dt>
-          <dd>{ licenceNumber }</dd>
+          <dt><Snippet>licence_number</Snippet></dt>
+          <dd>{ licence_number }</dd>
 
-          <dt><Snippet>licenceHolder</Snippet></dt>
+          <dt><Snippet>pelh</Snippet></dt>
           <dd>{ pelhName }</dd>
         </dl>
         <h2><Snippet optional site={model.site}>subtitle</Snippet></h2>

@@ -2,10 +2,10 @@ module.exports = {
   title: {
     label: 'Title'
   },
-  firstName: {
+  first_name: {
     label: 'First name'
   },
-  lastName: {
+  last_name: {
     label: 'Last name'
   },
   dob: {

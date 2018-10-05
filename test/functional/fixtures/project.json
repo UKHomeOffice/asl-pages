@@ -3,15 +3,15 @@
   "migrated_id": "22",
   "status": "active",
   "title": "Development of new biological anti-cancer agents",
-  "issueDate": "2017-10-01T00:00:00.000Z",
-  "expiryDate": "2019-06-01T00:00:00.000Z",
-  "revocationDate": null,
-  "licenceNumber": "XY-0000022",
-  "createdAt": "2018-06-27T17:01:17.469Z",
-  "updatedAt": "2018-06-27T17:01:17.469Z",
-  "establishmentId": "8201",
-  "licenceHolderId": "b4d63640-7a2b-11e8-9752-b1a92e8d964b",
-  "licenceHolder": {
+  "issue_date": "2017-10-01T00:00:00.000Z",
+  "expiry_date": "2019-06-01T00:00:00.000Z",
+  "revocation_date": null,
+  "licence_number": "XY-0000022",
+  "created_at": "2018-06-27T17:01:17.469Z",
+  "updated_at": "2018-06-27T17:01:17.469Z",
+  "establishment_id": "8201",
+  "licence_holder_id": "b4d63640-7a2b-11e8-9752-b1a92e8d964b",
+  "licence_holder": {
     "id": "b4d63640-7a2b-11e8-9752-b1a92e8d964b"
   }
 }

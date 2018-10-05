@@ -2,7 +2,7 @@ module.exports = {
   name: {
     show: true
   },
-  licenceNumber: {
+  licence_number: {
     show: true
   }
 };

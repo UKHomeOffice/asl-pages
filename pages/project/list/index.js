@@ -1,5 +1,4 @@
 const page = require('../../../lib/page');
-const format = require('date-fns/format');
 const datatable = require('../../common/routers/datatable');
 const schema = require('./schema');
 
@@ -11,17 +10,11 @@ module.exports = settings => {
 
   app.use(datatable({
     configure: (req, res, next) => {
-      req.datatable.sort = { column: 'expiryDate', ascending: true };
+      req.datatable.sort = { column: 'expiry_date', ascending: true };
       next();
     },
     getApiPath: (req, res, next) => {
-      const today = format(new Date(), 'YYYY-MM-DD');
-      const query = {
-        expiryDate: {
-          $gte: today
-        }
-      };
-      req.datatable.apiPath = [`/establishment/${req.establishment}/projects`, { query }];
+      req.datatable.apiPath = `/establishment/${req.establishment}/projects`;
       next();
     }
   })({ schema }));

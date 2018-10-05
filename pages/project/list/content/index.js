@@ -4,13 +4,13 @@ module.exports = {
     title: {
       label: 'Project title'
     },
-    licenceHolder: {
+    licence_holder: {
       label: 'Licence holder'
     },
-    licenceNumber: {
+    licence_number: {
       label: 'Licence number'
     },
-    expiryDate: {
+    expiry_date: {
       label: 'Expiry date'
     }
   }

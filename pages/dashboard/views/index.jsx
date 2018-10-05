@@ -5,14 +5,14 @@ import Snippet from '../../common/views/containers/snippet';
 
 const Index = ({
   profile: {
-    firstName,
+    first_name,
     establishments
   }
 }) => (
   <Fragment>
     <header>
       <h2>&nbsp;</h2>
-      <h1><Snippet>pages.dashboard.greeting</Snippet> {firstName}</h1>
+      <h1><Snippet>pages.dashboard.greeting</Snippet> {first_name}</h1>
     </header>
     <div className="govuk-grid-row">
       <div className="govuk-grid-column-two-thirds">
