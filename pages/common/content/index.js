@@ -32,8 +32,8 @@ module.exports = {
       categoryE: 'Category E'
     }
   },
-  licenceNumber: 'Licence number',
-  licenceHolder: 'Licence holder',
+  licence_number: 'Licence number',
+  pelh: 'Licence holder',
   establishment: 'Establishment',
   buttons: {
     submit: 'Submit',

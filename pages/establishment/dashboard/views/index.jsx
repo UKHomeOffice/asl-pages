@@ -14,7 +14,7 @@ const links = [
 const Index = ({
   establishment: {
     name,
-    licenceNumber,
+    licence_number,
     pelh
   },
   allowedActions
@@ -39,10 +39,10 @@ const Index = ({
       </div>
       <Sidebar>
         <dl>
-          <dt><Snippet>licenceNumber</Snippet></dt>
-          <dd>{ licenceNumber }</dd>
+          <dt><Snippet>fields.licence_number</Snippet></dt>
+          <dd>{ licence_number }</dd>
 
-          <dt><Snippet>licenceHolder</Snippet></dt>
+          <dt><Snippet>fields.pelh</Snippet></dt>
           <dd><Link page="profile.view" profile={ pelh.id } label={pelh.name} /></dd>
         </dl>
       </Sidebar>

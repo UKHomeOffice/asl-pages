@@ -39,7 +39,7 @@ const Index = ({
     email,
     roles,
     projects,
-    trainingModules,
+    training_modules,
     id
   },
   establishment: {
@@ -64,10 +64,10 @@ const Index = ({
             <dt><Snippet>establishment</Snippet></dt>
             <dd>{establishmentName}</dd>
             {
-              pil && pil.licenceNumber && (
+              pil && pil.licence_number && (
                 <Fragment>
-                  <dt><Snippet>licenceNumber</Snippet></dt>
-                  <dd>{pil.licenceNumber}</dd>
+                  <dt><Snippet>licence_number</Snippet></dt>
+                  <dd>{pil.licence_number}</dd>
                 </Fragment>
               )
             }
@@ -151,10 +151,10 @@ const Index = ({
                                 <Link page="project.list" label={project.title} />
                               </dt>
                               <dd>
-                                <span><Snippet licenceNumber={project.licenceNumber}>projects.licenceNumber</Snippet></span>
+                                <span><Snippet licence_number={project.licence_number}>projects.licence_number</Snippet></span>
                               </dd>
                               <dd>
-                                <span><Snippet expiryDate={format(project.expiryDate, readableDateFormat)}>projects.expiryDate</Snippet></span>
+                                <span><Snippet expiry_date={format(project.expiry_date, readableDateFormat)}>projects.expiry_date</Snippet></span>
                               </dd>
                             </Fragment>
                           )
@@ -166,7 +166,7 @@ const Index = ({
               )
             }
             {
-              (hasNacwoCertifications || !isEmpty(trainingModules)) && (
+              (hasNacwoCertifications || !isEmpty(training_modules)) && (
                 <ExpandingPanel title={<Snippet>training.title</Snippet>}>
                   {
                     hasNacwoCertifications && (
@@ -177,13 +177,13 @@ const Index = ({
                     )
                   }
                   {
-                    !isEmpty(trainingModules) && (
+                    !isEmpty(training_modules) && (
                       <dl className="inline">
                         <dt><Snippet>training.modulesTitle</Snippet></dt>
                         <dd>
                           <dl>
                             {
-                              map(trainingModules, (module, index) =>
+                              map(training_modules, (module, index) =>
                                 <Fragment key={index}>
                                   <dt><Snippet module={module.module}>training.module</Snippet></dt>
                                   <dd>

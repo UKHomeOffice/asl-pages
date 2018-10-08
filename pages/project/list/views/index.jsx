@@ -8,10 +8,10 @@ import Link from '../../../common/views/containers/link';
 import ExpiryDate from '../../../common/views/components/expiry-date';
 
 export const formatters = {
-  licenceHolder: {
-    format: (name, project) => <Link page="profile.view" profile={project.licenceHolder.id} label={ name } />
+  licence_holder: {
+    format: (name, project) => <Link page="profile.view" profile={project.licence_holder.id} label={ name } />
   },
-  expiryDate: {
+  expiry_date: {
     format: date => <ExpiryDate date={date}/>
   }
 };

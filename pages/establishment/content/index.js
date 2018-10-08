@@ -3,8 +3,11 @@ module.exports = {
     name: {
       label: 'Name'
     },
-    licenceNumber: {
+    licence_number: {
       label: 'Licence number'
+    },
+    pelh: {
+      label: 'Licence holder'
     }
   }
 };

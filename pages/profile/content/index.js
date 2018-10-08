@@ -5,10 +5,10 @@ module.exports = {
     submit: 'Send invitation'
   },
   errors: {
-    firstName: {
+    first_name: {
       required: 'You need to enter a first name.'
     },
-    lastName: {
+    last_name: {
       required: 'You need to enter a last name.'
     },
     email: {

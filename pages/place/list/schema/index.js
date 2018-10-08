@@ -25,5 +25,5 @@ module.exports = {
   nacwo: {
     show: true
   },
-  updatedAt: {}
+  updated_at: {}
 };

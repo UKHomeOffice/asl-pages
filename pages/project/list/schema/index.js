@@ -3,16 +3,16 @@ module.exports = {
   title: {
     show: true
   },
-  licenceHolder: {
+  licence_holder: {
     show: true,
-    accessor: 'licenceHolder.name',
+    accessor: 'licence_holder.name',
     title: 'Licence holder'
   },
-  licenceNumber: {
+  licence_number: {
     show: true,
     title: 'Licence number'
   },
-  expiryDate: {
+  expiry_date: {
     show: true,
     title: 'Expiry date'
   }

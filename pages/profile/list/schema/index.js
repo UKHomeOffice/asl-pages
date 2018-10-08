@@ -5,10 +5,10 @@ module.exports = {
   name: {
     show: true,
     filter: false,
-    sort: 'lastName'
+    sort: 'last_name'
   },
-  firstName: {},
-  lastName: {},
+  first_name: {},
+  last_name: {},
   roles: {
     show: true,
     exact: true,
@@ -17,6 +17,6 @@ module.exports = {
   },
   pil: {
     show: true,
-    accessor: 'pil.licenceNumber'
+    accessor: 'pil.licence_number'
   }
 };

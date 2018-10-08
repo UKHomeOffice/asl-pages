@@ -8,7 +8,7 @@ import Link from '../../../common/views/containers/link';
 const Index = ({
   establishment: {
     name,
-    licenceNumber,
+    licence_number,
     address,
     authorisations,
     conditions,
@@ -27,8 +27,8 @@ const Index = ({
       <div className="govuk-grid-row">
         <div className="govuk-grid-column-two-thirds">
           <dl>
-            <dt><Snippet>licenceNumber</Snippet></dt>
-            <dd>{ licenceNumber }</dd>
+            <dt><Snippet>fields.licence_number</Snippet></dt>
+            <dd>{ licence_number }</dd>
 
             <dt><Snippet>address</Snippet></dt>
             <dd>{ address }</dd>
