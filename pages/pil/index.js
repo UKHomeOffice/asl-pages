@@ -1,18 +1,28 @@
 const { Router } = require('express');
-const { buildModel } = require('../../lib/utils');
-const certificateSchema = require('./certificate/schema');
-const moduleSchema = require('./modules/schema');
-const proceduresSchema = require('./procedures/schema');
+
+const createNewPilApplication = (req, res, next) => {
+  const opts = {
+    method: 'POST',
+    headers: { 'Content-type': 'application/json' }
+    // no body (we just want a blank pil returned with a new id)
+  };
+
+  req.api(`/establishment/${req.establishment}/profiles/${req.profile}/pil`, opts)
+    .then(response => {
+      res.locals.static.pil = response.json.data;
+    })
+    .then(() => {
+      const pilId = res.locals.static.pil.id;
+      return res.redirect(req.originalUrl.replace('create', pilId).concat('/application'));
+    })
+    .catch(next);
+};
 
 module.exports = () => {
   const app = Router();
 
-  app.param('pil', (req, res, next, pil) => {
-    if (pil === 'create') {
-      req.model = buildModel(certificateSchema, moduleSchema, proceduresSchema);
-      req.model.id = 'new-training';
-      return next();
-    }
+  app.param('pil', (req, res, next, id) => {
+    return (id === 'create') ? createNewPilApplication(req, res, next) : next();
   });
 
   app.use('/:pil', require('./application')());
