@@ -13,5 +13,10 @@ module.exports = {
         definedValues: moduleCodes
       }
     ]
+  },
+  reason: {
+    inputType: 'textarea',
+    toggleReveal: true,
+    validate: ['required']
   }
 };

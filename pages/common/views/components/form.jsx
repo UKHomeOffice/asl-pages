@@ -1,3 +1,5 @@
+/* eslint no-console: 0*/
+
 import React from 'react';
 import classnames from 'classnames';
 import { map, get } from 'lodash';
@@ -5,6 +7,7 @@ import ReactMarkdown from 'react-markdown';
 import { TextArea, Input, CheckboxGroup, RadioGroup, Select, DateInput } from '@ukhomeoffice/react-components';
 import Snippet from '../containers/snippet';
 import ConditionalReveal from './conditional-reveal';
+import ToggleReveal from './toggle-reveal';
 
 const fields = {
   inputText: props => <Input { ...props } />,
@@ -32,7 +35,7 @@ const Form = ({
 }) => {
   return <form method="POST" noValidate>
     {
-      map(schema, ({ inputType, conditionalReveal, showIf, accessor, format, ...props }, key) => {
+      map(schema, ({ inputType, conditionalReveal, toggleReveal, showIf, accessor, format, ...props }, key) => {
         const value = accessor ? get(model[key], accessor) : (model[key] || '');
         const field = fields[inputType]({
           key,
@@ -58,6 +61,16 @@ const Form = ({
               yesLabel={<Snippet>{`fields.${key}.conditionalReveal.yesLabel`}</Snippet>}
               noLabel={<Snippet>{`fields.${key}.conditionalReveal.noLabel`}</Snippet>}
             >{ field }</ConditionalReveal>
+          );
+        }
+
+        if (toggleReveal) {
+          return (
+            <ToggleReveal
+              fieldName={key}
+              value={model[`toggle-reveal-${key}`]}
+              label={<Snippet>{`fields.${key}.toggleReveal.label`}</Snippet>}
+            >{ field }</ToggleReveal>
           );
         }
 
