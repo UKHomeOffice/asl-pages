@@ -15,6 +15,8 @@ const createNewPilApplication = (req, res, next) => {
     .catch(next);
 };
 
+const profileHasPil = profile => !!profile.pil;
+
 module.exports = () => {
   const app = Router();
 
@@ -26,14 +28,9 @@ module.exports = () => {
 
   app.param('pil', (req, res, next, pilId) => {
     if (pilId === 'create') {
-      console.log('attempting to create pil');
-      // only create a pil if we haven't already got one for this profile
-      if (!res.locals.static.profile.pil) {
-        console.log('no existing pil found, creating pil');
+      if (!profileHasPil(res.locals.static.profile)) {
         return createNewPilApplication(req, res, next);
       }
-
-      console.log('existing pil found, redirecting');
 
       pilId = res.locals.static.profile.pil.id;
     }
