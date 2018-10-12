@@ -28,11 +28,9 @@ module.exports = () => {
 
   app.param('pil', (req, res, next, pilId) => {
     if (pilId === 'create') {
-      if (!profileHasPil(res.locals.static.profile)) {
-        return createNewPilApplication(req, res, next);
-      }
-
-      pilId = res.locals.static.profile.pil.id;
+      return profileHasPil(req.profileData)
+        ? res.redirect(req.originalUrl.replace('create', req.profileData.pil.id))
+        : createNewPilApplication(req, res, next);
     }
 
     return req.api(`/establishment/${req.establishment}/profiles/${req.profile}/pil/${pilId}`)
