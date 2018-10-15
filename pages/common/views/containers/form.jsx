@@ -1,7 +1,6 @@
 import { mapValues } from 'lodash';
 import { connect } from 'react-redux';
 import Form from '../components/form';
-// import { setField } from '../../../../lib/actions';
 
 const extendSchema = (field, formatter) => {
   if (!formatter) {
@@ -22,9 +21,5 @@ const mapStateToProps = ({ static: { schema, errors, csrfToken }, model }, { for
     schema: mapValues(schema, (field, key) => extendSchema(field, formatters[key]))
   };
 };
-
-// const mapDispatchToProps = dispatch => ({
-//   onFieldChange: (key, value) => dispatch(setField(key, value))
-// });
 
 export default connect(mapStateToProps)(Form);
