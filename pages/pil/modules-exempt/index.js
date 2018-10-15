@@ -9,7 +9,28 @@ module.exports = settings => {
     ...settings
   });
 
-  app.use('/', form({ schema }));
+  app.use('/', (req, res, next) => {
+    console.log(req.profileData)
+    // req.model = {
+    //   id: 'new-exemption',
+    //   modules: ['L'],
+    //   'module-L-reason': 'something'
+    // };
+
+    next();
+  });
+
+  app.use('/', form({
+    schema,
+    getValues: (req, res, next) => {
+      console.log(req.form.values);
+      next()
+    },
+    locals: (req, res, next) => {
+      console.log(res.locals.model);
+      return next()
+    }
+  }));
 
   app.post('/', (req, res, next) => {
     const values = omit(req.session.form[req.model.id].values, 'exempt');
@@ -17,13 +38,15 @@ module.exports = settings => {
     values.modules = values.modules.map(module => ({ module, species: [] }));
     values.exemption = true;
 
+    console.log(values)
+
     const opts = {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify(values)
     };
 
-    return req.api(`/me/training`, opts)
+    return req.api(`/establishment/${req.establishment}/profile/${req.profile}/training`, opts)
       .then(() => {
         delete req.session.form[req.model.id];
         return next();
