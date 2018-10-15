@@ -35,9 +35,7 @@ module.exports = settings => {
       ...schema.modules.options.reduce((obj, val) => {
         return {
           ...obj,
-          [`module-${module}-id`]: {
-            inputType: 'input-hidden'
-          },
+          [`module-${module}-id`]: {},
           [`module-${val.value}-reason`]: val.reveal.reason
         };
       }, {})

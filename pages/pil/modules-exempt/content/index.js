@@ -4,10 +4,7 @@ module.exports = {
       label: ''
     },
     reason: {
-      label: 'Reasons for exemption',
-      toggleReveal: {
-        label: ''
-      }
+      label: 'Reasons for exemption'
     }
   },
   buttons: {
