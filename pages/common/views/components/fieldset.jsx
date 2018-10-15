@@ -54,50 +54,48 @@ class Fieldset extends Component {
   render() {
     const {
       schema,
-      prefix,
       errors = {}
     } = this.props;
     const values = (this.state && this.state.model) || this.props.model;
     return (
       <fieldset>
-      {
-        map(schema, ({ inputType, label, conditionalReveal, showIf, accessor, format, ...props }, key) => {
-          const value = accessor ? get(values[key], accessor) : (values[key] || '');
-          const field = fields[inputType]({
-            key,
-            value: format ? format(value) : value,
-            label: label || <Snippet>{`fields.${key}.label`}</Snippet>,
-            hint: <Snippet optional>{`fields.${key}.hint`}</Snippet>,
-            name: key,
-            error: errors[key] && <Snippet>{`errors.${key}.${errors[key]}`}</Snippet>,
-            onChange: e => this.onFieldChange(key, e.target.value),
-            ...props
-          });
+        {
+          map(schema, ({ inputType, label, conditionalReveal, showIf, accessor, format, ...props }, key) => {
+            const value = accessor ? get(values[key], accessor) : (values[key] || '');
+            const field = fields[inputType]({
+              key,
+              value: format ? format(value) : value,
+              label: label || <Snippet>{`fields.${key}.label`}</Snippet>,
+              hint: <Snippet optional>{`fields.${key}.hint`}</Snippet>,
+              name: key,
+              error: errors[key] && <Snippet field={key}>{`errors.${key}.${errors[key]}`}</Snippet>,
+              onChange: e => this.onFieldChange(key, e.target.value),
+              ...props
+            });
 
-          if (showIf && !showIf(values)) {
-            return null;
-          }
+            if (showIf && !showIf(values)) {
+              return null;
+            }
 
-          // TODO: replace previous instances of conditionalReveal with reveal property of checkboxGroup
-          if (conditionalReveal) {
-            return (
-              <ConditionalReveal
-                fieldName={key}
-                value={values[`conditional-reveal-${key}`]}
-                label={<Snippet>{`fields.${key}.conditionalReveal.label`}</Snippet>}
-                yesLabel={<Snippet>{`fields.${key}.conditionalReveal.yesLabel`}</Snippet>}
-                noLabel={<Snippet>{`fields.${key}.conditionalReveal.noLabel`}</Snippet>}
-              >{ field }</ConditionalReveal>
-            );
-          }
+            // TODO: replace previous instances of conditionalReveal with reveal property of checkboxGroup
+            if (conditionalReveal) {
+              return (
+                <ConditionalReveal
+                  fieldName={key}
+                  value={values[`conditional-reveal-${key}`]}
+                  label={<Snippet>{`fields.${key}.conditionalReveal.label`}</Snippet>}
+                  yesLabel={<Snippet>{`fields.${key}.conditionalReveal.yesLabel`}</Snippet>}
+                  noLabel={<Snippet>{`fields.${key}.conditionalReveal.noLabel`}</Snippet>}
+                >{ field }</ConditionalReveal>
+              );
+            }
 
-          return field;
-        })
-      }
+            return field;
+          })
+        }
       </fieldset>
-    )
+    );
   }
 }
 
-
-export default Fieldset
+export default Fieldset;

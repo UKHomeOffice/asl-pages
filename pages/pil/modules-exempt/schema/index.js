@@ -9,12 +9,19 @@ const options = moduleCodes.map(m => {
     reveal: {
       reason: {
         inputType: 'textarea',
-        validate: ['required'],
+        validate: [{
+          customValidate: (field, model) => {
+            if (model.modules.includes(m)) {
+              return !!field;
+            }
+            return true;
+          }
+        }],
         label: content.fields.reason.label
       }
     }
-  }
-})
+  };
+});
 
 module.exports = {
   modules: {

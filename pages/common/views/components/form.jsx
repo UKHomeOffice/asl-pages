@@ -1,5 +1,4 @@
 import React from 'react';
-import classnames from 'classnames';
 import Snippet from '../containers/snippet';
 import Fieldset from './fieldset';
 
