@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Snippet from '../../../common/views/containers/snippet';
 import Link from '../../../common/views/containers/link';
-import ApplicationConfirm from './application-confirm';
+import ApplicationConfirm from '../../../common/views/components/application-confirm';
 import TrainingData from './training-data';
 import ExemptionData from './exemption-data';
 import ProcedureData from './procedure-data';

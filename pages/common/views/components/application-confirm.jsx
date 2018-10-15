@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Snippet from '../../../common/views/containers/snippet';
+import Snippet from '../containers/snippet';
 
 class ApplicationConfirm extends Component {
   constructor(props) {
