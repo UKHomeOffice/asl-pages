@@ -2,16 +2,16 @@ const { moduleCodes } = require('@asl/constants');
 const { toArray } = require('../../../../lib/utils');
 const content = require('../content');
 
-const options = moduleCodes.map(m => {
+const options = moduleCodes.map(module => {
   return {
-    label: m,
-    value: m,
+    label: module,
+    value: module,
     reveal: {
       reason: {
         inputType: 'textarea',
         validate: [{
           customValidate: (field, model) => {
-            if (model.modules.includes(m)) {
+            if (model.modules && model.modules.includes(module)) {
               return !!field;
             }
             return true;

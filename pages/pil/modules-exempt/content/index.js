@@ -15,7 +15,7 @@ module.exports = {
       required: 'You need to select at least one module.'
     },
     reason: {
-      customValidate: 'Please give a reason you are exempt from module'
+      customValidate: 'Please give a reason you are exempt from module {{meta}}'
     }
   },
   pil: {

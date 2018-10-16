@@ -7,10 +7,11 @@ import Inset from '../../../common/views/components/inset';
 import Fieldset from '../../../common/views/components/fieldset';
 
 const connectComponent = key => {
-  const mapStateToProps = state => {
-    const schema = state.static.schema.modules.options.find(m => m.value === key).reveal;
+  const mapStateToProps = ({ model, static: { schema, errors } }) => {
+    schema = schema.modules.options.find(m => m.value === key).reveal;
     return {
-      model: state.model,
+      model,
+      errors,
       schema: mapKeys(schema, (v, k) => `module-${key}-${k}`)
     };
   };

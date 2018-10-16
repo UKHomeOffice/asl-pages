@@ -21,7 +21,6 @@ module.exports = settings => {
       return {
         ...obj,
         modules: [ ...obj.modules, module ],
-        [`module-${module}-id`]: value.id,
         [`module-${module}-reason`]: value.exemptionDescription
       };
     }, req.model);
@@ -35,7 +34,6 @@ module.exports = settings => {
       ...schema.modules.options.reduce((obj, val) => {
         return {
           ...obj,
-          [`module-${module}-id`]: {},
           [`module-${val.value}-reason`]: val.reveal.reason
         };
       }, {})
@@ -48,7 +46,9 @@ module.exports = settings => {
           ...moduleCodes.reduce((obj, code) => {
             return {
               ...obj,
-              [`module-${code}-reason`]: res.locals.static.content.errors.reason
+              [`module-${code}-reason`]: {
+                customValidate: `${res.locals.static.content.errors.reason.customValidate} ${code}`
+              }
             };
           }, {})
         }
@@ -58,23 +58,33 @@ module.exports = settings => {
   }));
 
   app.post('/', (req, res, next) => {
-    const values = req.form.values.modules.map(m => {
-      return {
-        id: req.model[`module-${m}-id`],
-        modules: [{ module: m, species: [] }],
-        exemption: true,
-        exemptionDescription: req.form.values[`module-${m}-reason`],
-        profileId: req.profile
-      };
-    });
+    const ids = req.profileData.exemptions.map(exemption => exemption.id);
+    return Promise.all(
+      ids.map(id => {
+        const opts = {
+          method: 'DELETE'
+        };
+        return req.api(`/establishment/${req.establishment}/profile/${req.profile}/training/${id}`, opts);
+      })
+    )
+      .then(() => {
+        const values = req.form.values.modules.map(module => {
+          return {
+            modules: [{ module, species: [] }],
+            exemption: true,
+            exemptionDescription: req.form.values[`module-${module}-reason`],
+            profileId: req.profile
+          };
+        })
 
-    const opts = {
-      method: 'POST',
-      headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify(values)
-    };
+        const opts = {
+          method: 'POST',
+          headers: { 'Content-type': 'application/json' },
+          body: JSON.stringify(values)
+        };
 
-    return req.api(`/establishment/${req.establishment}/profile/${req.profile}/training`, opts)
+        return req.api(`/establishment/${req.establishment}/profile/${req.profile}/training`, opts);
+      })
       .then(() => {
         delete req.session.form[req.model.id];
         return next();

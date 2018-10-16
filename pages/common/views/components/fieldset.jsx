@@ -68,7 +68,7 @@ class Fieldset extends Component {
               label: label || <Snippet>{`fields.${key}.label`}</Snippet>,
               hint: <Snippet optional>{`fields.${key}.hint`}</Snippet>,
               name: key,
-              error: errors[key] && <Snippet field={key}>{`errors.${key}.${errors[key]}`}</Snippet>,
+              error: errors[key] && <Snippet>{`errors.${key}.${errors[key]}`}</Snippet>,
               onChange: e => this.onFieldChange(key, e.target.value),
               ...props
             });
