@@ -3,8 +3,7 @@ const { cleanModel } = require('../../lib/utils');
 
 const createNewPilApplication = (req, res, next) => {
   const opts = {
-    method: 'POST',
-    headers: { 'Content-type': 'application/json' }
+    method: 'POST'
     // no body (we just want a blank pil returned with a new id)
   };
 

@@ -5,7 +5,7 @@ import Snippet from '../../../common/views/containers/snippet';
 class TrainingData extends Component {
 
   render() {
-    const { establishment, pil, profile } = this.props;
+    const { establishment, pil, profile, actionUrl } = this.props;
     const nbsp = '\xa0';
 
     return (
@@ -42,9 +42,9 @@ class TrainingData extends Component {
               <div className="govuk-grid-column-one-quarter">
                 <ul className="actions">
                   <li>
-                    <form method="POST" noValidate>
-                      <input type="hidden" name="trainingModuleId" value={certificate.id} />
-                      <input type="hidden" name="action" value="delete" />
+                    <form method="POST" action={actionUrl} noValidate>
+                      <input type="hidden" name="certificateId" value={certificate.id} />
+                      <input type="hidden" name="action" value="delete-certificate" />
                       <button type="submit" className="link"><span><Snippet>actions.remove</Snippet></span></button>
                     </form>
                   </li>

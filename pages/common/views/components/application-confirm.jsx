@@ -39,6 +39,7 @@ class ApplicationConfirm extends Component {
                 <button type="submit" className="govuk-button"><Snippet>actions.submit</Snippet></button>
               </div>
           }
+          <input type="hidden" name="action" value="submit-pil-application" />
         </form>
       </div>
     );
