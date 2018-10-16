@@ -30,7 +30,7 @@ module.exports = settings => {
       next();
     },
     saveValues: (req, res, next) => {
-      console.log('model', req.model.id)
+      console.log('model', req.model.id);
       req.session.form[req.model.id].values.passDate = moment(req.form.values.passDate, 'YYYY-MM-DD').format('YYYY-MM-DD');
       next();
     }
