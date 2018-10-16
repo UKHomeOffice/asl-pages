@@ -7,7 +7,7 @@ import ExemptionData from './exemption-data';
 import ProcedureData from './procedure-data';
 import { connect } from 'react-redux';
 
-const Index = ({ establishment, profile, pil }) => {
+const Index = ({ establishment, profile, pil, url }) => {
 
   const sections = [
     {
@@ -61,13 +61,18 @@ const Index = ({ establishment, profile, pil }) => {
                     </div>
                   </div>
                   { section.name === 'training' &&
-                    <TrainingData establishment={ establishment } pil={ pil } profile={profile} />
-                  }
-                  { section.name === 'procedures' &&
-                    <ProcedureData establishment={ establishment } pil={ pil } profile={profile} />
+                    <TrainingData
+                      establishment={ establishment }
+                      profile={profile}
+                      pil={ pil }
+                      actionUrl={url + '/training'}
+                    />
                   }
                   { section.name === 'exemptions' &&
                     <ExemptionData establishment={ establishment.id } pil={ pil.id } profile={profile} />
+                  }
+                  { section.name === 'procedures' &&
+                    <ProcedureData establishment={ establishment } pil={ pil } profile={profile} />
                   }
                 </li>
               ))
@@ -82,6 +87,6 @@ const Index = ({ establishment, profile, pil }) => {
   );
 };
 
-const mapStateToProps = ({ static: { establishment, profile, pil } }) => ({ establishment, profile, pil });
+const mapStateToProps = ({ static: { establishment, profile, pil, url } }) => ({ establishment, profile, pil, url });
 
 export default connect(mapStateToProps)(Index);
