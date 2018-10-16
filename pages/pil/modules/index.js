@@ -2,6 +2,7 @@ const page = require('../../../lib/page');
 const form = require('../../common/routers/form');
 const schema = require('./schema');
 const { omit, pick } = require('lodash');
+const { buildModel } = require('../../../lib/utils');
 
 module.exports = settings => {
   const app = page({
@@ -9,12 +10,17 @@ module.exports = settings => {
     ...settings
   });
 
+  app.use((req, res, next) => {
+    console.log(req.model);
+    next();
+  });
+
   app.use('/', form({ schema }));
 
   app.post('/', (req, res, next) => {
-
+    console.log(req.model.id)
     const fields = ['certificateNumber', 'accreditingBody', 'passDate', 'modules'];
-    let values = omit(req.session.form[req.model.id].values, 'exempt');
+    let values = omit(req.form.values, 'exempt');
     values = pick(req.session.form[req.model.id].values, fields);
     values.profileId = req.profile;
 
@@ -35,7 +41,7 @@ module.exports = settings => {
   });
 
   app.post('/', (req, res, next) => {
-    return res.redirect(req.originalUrl.replace(/\/modules/, ''));
+    return res.redirect(req.originalUrl.replace(/\/training\/modules/, ''));
   });
 
   return app;
