@@ -75,7 +75,7 @@ module.exports = settings => {
             exemptionDescription: req.form.values[`module-${module}-reason`],
             profileId: req.profile
           };
-        })
+        });
 
         const opts = {
           method: 'POST',
