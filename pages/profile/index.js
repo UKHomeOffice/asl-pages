@@ -19,7 +19,7 @@ module.exports = () => {
       req.model.id = 'new-profile';
       return next('route');
     }
-    return req.api(`/establishment/${req.establishment}/profile/${profile}`)
+    return req.api(`/establishment/${req.establishmentId}/profile/${profile}`)
       .then(({ json: { data, meta } }) => {
         const model = cleanModel(data);
         model.exemptions = model.trainingModules.filter(m => { return m.exemption; });

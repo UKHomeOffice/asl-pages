@@ -7,7 +7,7 @@ const createNewPilApplication = (req, res, next) => {
     // no body (we just want a blank pil returned with a new id)
   };
 
-  req.api(`/establishment/${req.establishment}/profiles/${req.profile}/pil`, opts)
+  req.api(`/establishment/${req.establishmentId}/profiles/${req.profile}/pil`, opts)
     .then(({ json: { data } }) => {
       return res.redirect(req.originalUrl.replace('create', data.id));
     })
@@ -20,7 +20,7 @@ module.exports = () => {
   const app = Router();
 
   app.use('/', (req, res, next) => {
-    res.locals.static.establishment = req.user.profile.establishments.find(e => e.id === req.establishment);
+    res.locals.static.establishment = req.user.profile.establishments.find(e => e.id === req.establishmentId);
     res.locals.static.profile = req.model;
     next();
   });
@@ -32,7 +32,7 @@ module.exports = () => {
         : createNewPilApplication(req, res, next);
     }
 
-    return req.api(`/establishment/${req.establishment}/profiles/${req.profile}/pil/${pilId}`)
+    return req.api(`/establishment/${req.establishmentId}/profiles/${req.profile}/pil/${pilId}`)
       .then(({ json: { data } }) => {
         req.model = cleanModel(data);
       })

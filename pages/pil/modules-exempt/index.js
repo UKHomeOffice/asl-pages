@@ -64,7 +64,7 @@ module.exports = settings => {
         const opts = {
           method: 'DELETE'
         };
-        return req.api(`/establishment/${req.establishment}/profile/${req.profile}/training/${id}`, opts);
+        return req.api(`/establishment/${req.establishmentId}/profile/${req.profile}/training/${id}`, opts);
       })
     )
       .then(() => {
@@ -83,7 +83,7 @@ module.exports = settings => {
           body: JSON.stringify(values)
         };
 
-        return req.api(`/establishment/${req.establishment}/profile/${req.profile}/training`, opts);
+        return req.api(`/establishment/${req.establishmentId}/profile/${req.profile}/training`, opts);
       })
       .then(() => {
         delete req.session.form[req.model.id];

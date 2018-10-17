@@ -25,7 +25,7 @@ module.exports = settings => {
       body: JSON.stringify(values)
     };
 
-    return req.api(`/establishment/${req.establishment}/profiles/${req.profile}/training`, opts)
+    return req.api(`/establishment/${req.establishmentId}/profiles/${req.profile}/training`, opts)
       .then(() => {
         delete req.session.form[req.model.id];
         return next();

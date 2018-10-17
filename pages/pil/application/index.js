@@ -30,7 +30,7 @@ module.exports = settings => {
       const pilId = req.profileData.pil.id;
       const opts = { method: 'PUT', json: { submittedAt: new Date() } };
 
-      return req.api(`/establishment/${req.establishment}/profiles/${req.profile}/pil/${pilId}`, opts)
+      return req.api(`/establishment/${req.establishmentId}/profiles/${req.profile}/pil/${pilId}`, opts)
         .then(() => res.redirect(req.originalUrl + '/success'))
         .catch(next);
     }
@@ -45,7 +45,7 @@ module.exports = settings => {
 
       const opts = { method: 'DELETE' };
 
-      return req.api(`/establishment/${req.establishment}/profiles/${req.profile}/training/${trainingModuleId}`, opts)
+      return req.api(`/establishment/${req.establishmentId}/profiles/${req.profile}/training/${trainingModuleId}`, opts)
         .then(() => res.redirect(req.originalUrl))
         .catch(next);
     }
