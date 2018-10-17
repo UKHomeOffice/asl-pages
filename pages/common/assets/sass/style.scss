@@ -379,3 +379,13 @@ dl.inline {
     color: $white;
   }
 }
+
+.application-confirm {
+  legend {
+    @extend h2;
+  }
+
+  label {
+    font-weight: bold !important;
+  }
+}
