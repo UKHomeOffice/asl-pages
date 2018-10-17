@@ -7,7 +7,7 @@ const createNewPilApplication = (req, res, next) => {
     // no body (we just want a blank pil returned with a new id)
   };
 
-  req.api(`/establishment/${req.establishmentId}/profiles/${req.profile}/pil`, opts)
+  req.api(`/establishment/${req.establishmentId}/profiles/${req.profileId}/pil`, opts)
     .then(({ json: { data } }) => {
       return res.redirect(req.originalUrl.replace('create', data.id));
     })
@@ -27,12 +27,12 @@ module.exports = () => {
 
   app.param('pil', (req, res, next, pilId) => {
     if (pilId === 'create') {
-      return profileHasPil(req.profileData)
-        ? res.redirect(req.originalUrl.replace('create', req.profileData.pil.id))
+      return profileHasPil(req.profile)
+        ? res.redirect(req.originalUrl.replace('create', req.profile.pil.id))
         : createNewPilApplication(req, res, next);
     }
 
-    return req.api(`/establishment/${req.establishmentId}/profiles/${req.profile}/pil/${pilId}`)
+    return req.api(`/establishment/${req.establishmentId}/profiles/${req.profileId}/pil/${pilId}`)
       .then(({ json: { data } }) => {
         req.model = cleanModel(data);
       })
