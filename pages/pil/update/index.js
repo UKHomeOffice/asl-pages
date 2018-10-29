@@ -31,7 +31,10 @@ module.exports = settings => {
   }));
 
   app.post('/', (req, res, next) => {
-    return req.api(`/establishment/${req.establishmentId}/profiles/${req.profileId}/pil/${req.pilId}`, { method: 'PUT' })
+    return req.api(
+      `/establishment/${req.establishmentId}/profiles/${req.profileId}/pil/${req.pilId}/grant`,
+      { method: 'PUT' }
+    )
       .then(() => res.redirect(req.originalUrl + '/success'))
       .catch(next);
   });
