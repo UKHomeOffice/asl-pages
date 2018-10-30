@@ -9,12 +9,14 @@ module.exports = () => {
   app.use('/', (req, res, next) => {
     const exemptions = req.profile.exemptions;
 
+    console.log(exemptions);
+
     req.model = {
       modules: []
     };
 
     req.model = exemptions.reduce((obj, value, key) => {
-      const module = value.modules[0].module;
+      const module = value.module;
       return {
         ...obj,
         modules: [ ...obj.modules, module ],
@@ -57,32 +59,32 @@ module.exports = () => {
   app.post('/', (req, res, next) => {
     const ids = req.profile.exemptions.map(exemption => exemption.id);
 
+    console.log(req.form.values);
+
     // TODO: refactor to allow addition of one exemption at a time.
     return Promise.all(
       ids.map(id => {
         const opts = {
           method: 'DELETE'
         };
-        return req.api(`/establishment/${req.establishmentId}/profile/${req.profileId}/training/${id}`, opts);
+        return req.api(`/establishment/${req.establishmentId}/profile/${req.profileId}/exemption/${id}`, opts);
       })
     )
       .then(() => {
-        const values = req.form.values.modules.map(module => {
-          return {
-            modules: [{ module, species: [] }],
-            exemption: true,
-            exemptionDescription: req.form.values[`module-${module}-reason`],
-            profileId: req.profileId
-          };
-        });
-
-        const opts = {
-          method: 'POST',
-          headers: { 'Content-type': 'application/json' },
-          body: JSON.stringify(values)
-        };
-
-        return req.api(`/establishment/${req.establishmentId}/profile/${req.profileId}/training`, opts);
+        return Promise.all(
+          req.form.values.modules.map(module => {
+            console.log(module);
+            const opts = {
+              method: 'POST',
+              headers: { 'Content-type': 'application/json' },
+              body: JSON.stringify({
+                module,
+                description: req.form.values[`module-${module}-reason`]
+              })
+            };
+            return req.api(`/establishment/${req.establishmentId}/profile/${req.profileId}/exemption`, opts);
+          })
+        );
       })
       .then(() => {
         delete req.session.form[req.model.id];
