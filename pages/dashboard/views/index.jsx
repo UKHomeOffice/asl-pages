@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
+import Tasklist from '../../common/views/components/tasklist';
 import Link from '../../common/views/containers/link';
 import Snippet from '../../common/views/containers/snippet';
 
@@ -7,7 +8,8 @@ const Index = ({
   profile: {
     firstName,
     establishments
-  }
+  },
+  tasks
 }) => (
   <Fragment>
     <header>
@@ -16,6 +18,9 @@ const Index = ({
     </header>
     <div className="govuk-grid-row">
       <div className="govuk-grid-column-two-thirds">
+
+        <Tasklist tasks={tasks} />
+
         <ul className="dashboard">
           {
             establishments.map(est =>
@@ -35,5 +40,5 @@ const Index = ({
   </Fragment>
 );
 
-const mapStateToProps = ({ static: { profile } }) => ({ profile });
+const mapStateToProps = ({ static: { profile, tasks } }) => ({ profile, tasks });
 export default connect(mapStateToProps)(Index);
