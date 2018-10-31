@@ -9,8 +9,6 @@ module.exports = () => {
   app.use('/', (req, res, next) => {
     const exemptions = req.profile.exemptions;
 
-    console.log(exemptions);
-
     req.model = {
       modules: []
     };
@@ -59,8 +57,6 @@ module.exports = () => {
   app.post('/', (req, res, next) => {
     const ids = req.profile.exemptions.map(exemption => exemption.id);
 
-    console.log(req.form.values);
-
     // TODO: refactor to allow addition of one exemption at a time.
     return Promise.all(
       ids.map(id => {
@@ -73,7 +69,6 @@ module.exports = () => {
       .then(() => {
         return Promise.all(
           req.form.values.modules.map(module => {
-            console.log(module);
             const opts = {
               method: 'POST',
               headers: { 'Content-type': 'application/json' },
