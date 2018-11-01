@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Snippet from '../containers/snippet';
 
 class Tasklist extends Component {
   render() {
@@ -10,7 +11,7 @@ class Tasklist extends Component {
 
     return (
       <div className="tasklist">
-        <h2>Tasks</h2>
+        <h2><Snippet>tasklist.title</Snippet></h2>
         <p>{outstandingMessage}</p>
 
         {
@@ -18,10 +19,10 @@ class Tasklist extends Component {
             <table className="govuk-table">
               <thead>
                 <tr>
-                  <th>Received</th>
-                  <th>Establishment</th>
-                  <th>Licence</th>
-                  <th>Type</th>
+                  <th><Snippet>tasklist.headings.received</Snippet></th>
+                  <th><Snippet>tasklist.headings.establishment</Snippet></th>
+                  <th><Snippet>tasklist.headings.licence</Snippet></th>
+                  <th><Snippet>tasklist.headings.type</Snippet></th>
                 </tr>
               </thead>
               <tbody>

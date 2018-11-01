@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import Tasklist from '../../common/views/components/tasklist';
+import Tasklist from '../../common/views/containers/tasklist';
 import Link from '../../common/views/containers/link';
 import Snippet from '../../common/views/containers/snippet';
 
