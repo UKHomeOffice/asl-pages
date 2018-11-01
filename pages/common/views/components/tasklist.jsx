@@ -5,14 +5,13 @@ class Tasklist extends Component {
   render() {
     const { tasks } = this.props;
     const outstandingCount = tasks.length;
-    const outstandingMessage = outstandingCount > 0
-      ? `You have ${outstandingCount} outstanding tasks`
-      : 'You have no outstanding tasks';
 
     return (
       <div className="tasklist">
         <h2><Snippet>tasklist.title</Snippet></h2>
-        <p>{outstandingMessage}</p>
+        <p>
+          <Snippet count={outstandingCount}>{`tasklist.outstanding.${outstandingCount > 0 ? 'some' : 'none'}`}</Snippet>
+        </p>
 
         {
           tasks.length > 0 && (
