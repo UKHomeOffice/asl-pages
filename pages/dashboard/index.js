@@ -1,4 +1,5 @@
 const page = require('../../lib/page');
+const moment = require('moment');
 
 module.exports = settings => {
   const app = page({
@@ -6,7 +7,7 @@ module.exports = settings => {
     root: __dirname
   });
 
-  const buildTask = (taskCase, profile) => {
+  const buildTask = (taskCase, req) => {
     const licence = taskCase.data.model;
     let action = {};
 
@@ -14,16 +15,20 @@ module.exports = settings => {
       case 'pil':
         action = {
           label: 'PIL application',
-          url: '',
-          details: 'Profile Name'
+          url: req.buildRoute('pil.update', {
+            establishmentId: taskCase.data.establishment.id,
+            profileId: taskCase.data.profile.id,
+            pilId: taskCase.data.id
+          }),
+          details: taskCase.data.profile.name
         };
         break;
     }
 
     return {
-      receivedAt: taskCase.updatedAt,
-      establishment: profile.establishments[taskCase.data.establishmentId],
-      licence,
+      receivedAt: moment(taskCase.updated_at).format('D MMM YYYY'),
+      establishment: taskCase.data.establishment,
+      licence: licence.toUpperCase(),
       action
     };
   };
@@ -34,13 +39,7 @@ module.exports = settings => {
     return req.api(`/me/tasks`)
       .then(({ json: { data } }) => {
         const cases = data.json.data || [];
-
-        console.log(req.profile);
-
-        const tasks = cases.map(taskCase => buildTask(taskCase, req.profile));
-
-        console.log(tasks);
-        res.locals.static.tasks = tasks;
+        res.locals.static.tasks = cases.map(taskCase => buildTask(taskCase, req));
       })
       .then(() => next())
       .catch(next);

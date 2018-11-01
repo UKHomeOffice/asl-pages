@@ -17,7 +17,7 @@ const Index = ({
       <h1><Snippet name={firstName}>pages.dashboard.greeting</Snippet></h1>
     </header>
     <div className="govuk-grid-row">
-      <div className="govuk-grid-column-two-thirds">
+      <div className="govuk-grid-column-full">
 
         <Tasklist tasks={tasks} />
 

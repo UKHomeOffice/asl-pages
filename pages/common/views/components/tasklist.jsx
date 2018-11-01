@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Link from './link';
 
 class Tasklist extends Component {
   render() {
@@ -33,7 +32,8 @@ class Tasklist extends Component {
                       <td>{task.establishment.name}</td>
                       <td>{task.licence}</td>
                       <td>
-                        <Link href={task.action.url} label={task.action.label} />
+                        <a href={task.action.url}>{task.action.label}</a>
+                        <br />
                         {task.action.details}
                       </td>
                     </tr>
