@@ -1,5 +1,6 @@
 const page = require('../../lib/page');
 const moment = require('moment');
+const { readableDateFormat } = require('../../constants');
 
 module.exports = settings => {
   const app = page({
@@ -26,7 +27,7 @@ module.exports = settings => {
     }
 
     return {
-      receivedAt: moment(taskCase.updated_at).format('D MMM YYYY'),
+      receivedAt: moment(taskCase.updated_at).format(readableDateFormat),
       establishment: taskCase.data.establishment,
       licence: licence.toUpperCase(),
       action
