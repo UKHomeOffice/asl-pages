@@ -76,7 +76,7 @@ class ActivityLog extends Component {
   render() {
     const task = this.props.task;
 
-    if (!task.activityLog) {
+    if (!task.activityLog || task.activityLog.length < 1) {
       return null;
     }
 
