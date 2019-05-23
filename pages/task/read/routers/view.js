@@ -116,9 +116,21 @@ module.exports = () => {
         res.locals.static.values = req.user.profile;
         return next();
       }
-    }
 
-    res.locals.static.values = req.task.data.modelData;
+      let est = '';
+      if (model !== 'profile') {
+        est = `/establishment/${req.task.data.data.establishmentId}`;
+      }
+      const id = req.task.data.id;
+      const url = `/${model}/${id}`;
+
+      return req.api(`${est}${url}`)
+        .then(({ json: { data } }) => {
+          res.locals.static.values = data;
+        })
+        .then(() => next())
+        .catch(next);
+    }
     next();
   });
 
