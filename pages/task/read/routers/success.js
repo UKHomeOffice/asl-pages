@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { merge, get } = require('lodash');
+const { merge, get, set, pick } = require('lodash');
 const successContent = require('../../../common/content/success-messages');
 
 module.exports = () => {
@@ -20,16 +20,18 @@ module.exports = () => {
   });
 
   app.use((req, res, next) => {
-    const model = req.task.data.model === 'place' || req.task.data.model === 'role' ? 'pel' : req.task.data.model;
+    const model = req.task.data.model === 'place' || req.task.data.model === 'role' || req.task.data.model === 'establishment'
+      ? 'pel'
+      : req.task.data.model;
+    console.log(model, req.status);
     const content = get(successContent, `${model}.${req.task.type}.${req.status}`, successContent.fallback);
     merge(res.locals.static.content, { success: content });
     next();
   });
 
   app.get('/', (req, res, next) => {
-    if (req.session.form && req.session.form[req.model.id]) {
-      delete req.session.form[req.model.id];
-    }
+    const values = get(req.session, `form[${req.model.id}].values`);
+    set(req.session, `form[${req.model.id}].values`, pick(values, 'status'));
     next();
   });
 
