@@ -19,7 +19,7 @@ module.exports = () => {
   });
 
   app.use((req, res, next) => {
-    const model = req.task.data.model === 'place' || req.task.data.model === 'role' || req.task.data.model === 'establishment'
+    const model = ['place', 'role', 'establishment'].includes(req.task.data.model)
       ? 'pel'
       : req.task.data.model;
     const content = get(successContent, `${model}.${req.task.type}.${req.status}`, successContent.fallback);
