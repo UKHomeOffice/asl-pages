@@ -12,10 +12,6 @@ import MakeDecision from './make-decision';
 
 const Role = ({ establishment, profile, task, values, children, schema, formFields }) => (
   <StickyNavPage>
-
-    {
-      console.log(task)
-    }
     { children }
 
     <StickyNavAnchor id="establishment">
