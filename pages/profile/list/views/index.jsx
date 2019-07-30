@@ -48,9 +48,7 @@ const Filters = () => (
       formatter={filter => <Acronym>{selectivelyUppercase(filter)}</Acronym>}
       append={['pilh', 'pplh', 'admin']}
     />
-    <div className="table-heading">
-      <FilterSummary />
-    </div>
+    <FilterSummary />
   </Fragment>
 );
 
