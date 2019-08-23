@@ -20,8 +20,7 @@ module.exports = {
     establishment: 'Establishment details',
     comments: 'Reason for amendment',
     status: 'What do you want to do?',
-    conditions: 'Additional conditions',
-    withdraw: 'Withdraw {{type}}'
+    conditions: 'Additional conditions'
   },
   activityLog: {
     open: 'Show previous activity',
