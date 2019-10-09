@@ -143,7 +143,7 @@ const getGrantedVersion = req => {
 
 const getChanges = (current, version) => {
   if (!current || !version) {
-    return Promise.resolve();
+    return null
   }
 
   const cvKeys = traverse(current.data);
@@ -162,20 +162,11 @@ const getChanges = (current, version) => {
 };
 
 const getAllChanges = () => (req, res, next) => {
-  Promise.all([
-    getPreviousVersion(req),
-    getGrantedVersion(req)
-  ])
+  Promise.all([ getPreviousVersion(req), getGrantedVersion(req) ])
     .then(([previousVersion, grantedVersion]) => {
-      return Promise.all([
-        getChanges(req.version, previousVersion),
-        getChanges(req.version, grantedVersion)
-      ]);
-    })
-    .then(([latest, granted]) => {
       res.locals.static.changes = {
-        latest,
-        granted
+        latest: getChanges(req.version, previousVersion),
+        granted: getChanges(req.version, grantedVersion)
       };
     })
     .then(() => next())
