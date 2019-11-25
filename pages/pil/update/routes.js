@@ -1,3 +1,4 @@
+const establishment = require('../establishment');
 const species = require('../species');
 const procedures = require('../procedures');
 const exemptions = require('../exemptions');
@@ -8,6 +9,10 @@ module.exports = {
   root: {
     path: '',
     router: dashboard
+  },
+  establishment: {
+    path: '/establishment',
+    router: establishment
   },
   species: {
     path: '/species',
