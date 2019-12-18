@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Snippet, OpenTaskWarning, ErrorSummary, Header, Form, Link, ControlBar } from '@asl/components';
+import { Snippet, ErrorSummary, Header, Form, Link, ControlBar } from '@asl/components';
 
 const currentEstablishment = establishment => {
   return (
@@ -24,7 +24,6 @@ const Index = ({ establishment, schema, csrfToken }) => {
   return (
     <div className="govuk-grid-row pil-transfer">
       <div className="govuk-grid-column-two-thirds">
-        <OpenTaskWarning />
         <ErrorSummary />
 
         <Header title={<Snippet>title</Snippet>} />
