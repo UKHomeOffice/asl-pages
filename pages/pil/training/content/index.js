@@ -17,6 +17,9 @@ module.exports = merge({}, baseContent, {
   errors: {
     upToDate: {
       required: 'You need to confirm if your training modules are up to date.'
+    },
+    update: {
+      required: 'You need to confirm if your training modules are up to date.'
     }
   }
 });
