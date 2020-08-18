@@ -14,6 +14,10 @@ const Page = ({ model }) => {
   if (!canUpdateModel(model)) {
     return <InProgressWarning task={model.openTasks[0]} />;
   }
+
+  // don't provide a custom restrictions formatter, it breaks the RestrictionsField component
+  delete formatters.restrictions;
+
   return <FormLayout formatters={formatters}>
     <Header title={<Snippet>pages.place.edit</Snippet>} />
     <Inset>
