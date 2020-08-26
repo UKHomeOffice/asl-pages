@@ -5,6 +5,7 @@ module.exports = {
     sort: 'profile.lastName'
   },
   licenceNumber: {
+    accessor: 'profile.pilLicenceNumber',
     show: true
   },
   issueDate: {

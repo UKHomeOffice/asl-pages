@@ -28,15 +28,29 @@ module.exports = settings => {
     };
 
     const store = createStore(stateReducer, initialState);
-    const body = renderToStaticMarkup(<Body pil={pil} nonce={res.locals.static.nonce} content={content} />);
-    const header = renderToStaticMarkup(<Header store={store} model={pil} licenceType="pil" nonce={res.locals.static.nonce} />);
+    const body = renderToStaticMarkup(
+      <Body
+        pil={pil}
+        nonce={res.locals.static.nonce}
+        content={content}
+      />
+    );
+    const header = renderToStaticMarkup(
+      <Header
+        store={store}
+        model={pil}
+        licenceType="pil"
+        nonce={res.locals.static.nonce}
+        licenceNumber={pil.profile.pilLicenceNumber}
+      />
+    );
     const footer = renderToStaticMarkup(<Footer />);
 
     const hasStatusBanner = req.pil.status !== 'active';
 
     pdf({ body, header, footer, hasStatusBanner })
       .then(response => {
-        res.attachment(`${pil.licenceNumber}.pdf`);
+        res.attachment(`${pil.profile.pilLicenceNumber}.pdf`);
         response.body.pipe(res);
       })
       .catch(next);

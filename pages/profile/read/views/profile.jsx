@@ -20,7 +20,8 @@ class Profile extends React.Component {
       projects = [],
       establishments = [],
       id,
-      dob
+      dob,
+      pilLicenceNumber
     } = this.props.profile;
 
     const allowedActions = this.props.allowedActions || [];
@@ -175,14 +176,14 @@ class Profile extends React.Component {
                 <Snippet>pil.title</Snippet>
               </h3>
               {
-                pil && pil.licenceNumber && (
+                pil && piLicenceNumber && (
                   <p>
                     <Link
                       page='pil.read'
                       establishmentId={estId}
                       profileId={id}
                       pilId={pil.id}
-                      label={pil.licenceNumber}
+                      label={pilLicenceNumber}
                     />
                     {
                       pil.status !== 'active' && <span> ({pil.status})</span>

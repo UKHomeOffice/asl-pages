@@ -1,5 +1,8 @@
 module.exports = {
-  licenceNumber: { show: true },
+  licenceNumber: {
+    show: true,
+    accessor: 'profile.pilLicenceNumber'
+  },
   establishment: { show: true },
   issueDate: { show: true },
   updatedAt: { show: true },

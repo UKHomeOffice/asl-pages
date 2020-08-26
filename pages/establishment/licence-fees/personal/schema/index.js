@@ -6,7 +6,8 @@ module.exports = req => {
       toCSVString: (_, row) => `${row.profile.firstName} ${row.profile.lastName}`
     },
     licenceNumber: {
-      show: true
+      show: true,
+      accessor: 'profile.pilLicenceNumber'
     },
     startDate: {
       show: true,

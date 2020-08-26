@@ -19,6 +19,6 @@ module.exports = {
   pil: {
     show: true,
     sortable: false,
-    accessor: 'pil.licenceNumber'
+    accessor: 'pilLicenceNumber'
   }
 };
