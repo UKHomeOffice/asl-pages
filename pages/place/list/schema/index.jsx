@@ -1,4 +1,5 @@
-const { NACWO, NVS, SQP } = require('@asl/dictionary');
+import React from 'react';
+import { Acronym } from '@asl/components';
 
 module.exports = {
   id: {},
@@ -28,13 +29,13 @@ module.exports = {
     show: true,
     sortable: false,
     filter: true,
-    label: `<abbr title="${NACWO}">NACWOs</abbr>`
+    label: <span><Acronym>NACWO</Acronym>s</span>
   },
   nvssqps: {
     show: true,
     sortable: false,
     filter: true,
-    label: `<abbr title="${NVS}">NVSs</abbr> / <abbr title="${SQP}">SQPs</abbr>`
+    label: <span><Acronym>NVSs</Acronym>s / <Acronym>SQP</Acronym>s</span>
   },
   updatedAt: {}
 };
