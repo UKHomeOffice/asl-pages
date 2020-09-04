@@ -75,10 +75,10 @@ module.exports = settings => {
     },
     editAnswers: (req, res, next) => {
       delete req.session.form[req.model.id].validationErrors;
-      return res.redirect(req.buildRoute('place.delete'));
+      return res.redirect(req.buildRoute(settings.page));
     },
     cancelEdit: (req, res, next) => {
-      return res.redirect(req.buildRoute('place.list'));
+      return res.redirect(req.buildRoute(settings.page));
     }
   }));
 
