@@ -78,7 +78,7 @@ module.exports = settings => {
       return res.redirect(req.buildRoute(settings.page));
     },
     cancelEdit: (req, res, next) => {
-      return res.redirect(req.buildRoute(settings.page));
+      return res.redirect(req.buildRoute('place.list'));
     }
   }));
 
