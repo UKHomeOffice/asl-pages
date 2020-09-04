@@ -1,3 +1,5 @@
+const { NACWO, NVS, SQP } = require('@asl/dictionary');
+
 module.exports = {
   id: {},
   name: {
@@ -25,12 +27,14 @@ module.exports = {
   nacwos: {
     show: true,
     sortable: false,
-    filter: true
+    filter: true,
+    label: `<abbr title="${NACWO}">NACWOs</abbr>`
   },
   nvssqps: {
     show: true,
     sortable: false,
-    filter: true
+    filter: true,
+    label: `<abbr title="${NVS}">NVSs</abbr> / <abbr title="${SQP}">SQPs</abbr>`
   },
   updatedAt: {}
 };

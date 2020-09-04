@@ -1,5 +1,4 @@
 const { merge } = require('lodash');
-const { NACWO, NVS, SQP } = require('@asl/dictionary');
 const commonContent = require('../../content');
 
 module.exports = merge({}, commonContent, {
@@ -11,13 +10,5 @@ module.exports = merge({}, commonContent, {
   },
   buttons: {
     edit: 'Amend'
-  },
-  fields: {
-    nacwos: {
-      label: `<abbr title="${NACWO}">NACWOs</abbr>`
-    },
-    nvssqps: {
-      label: `<abbr title="${NVS}">NVSs</abbr> / <abbr title="${SQP}">SQPs</abbr>`
-    }
   }
 });
