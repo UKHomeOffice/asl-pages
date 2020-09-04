@@ -35,7 +35,7 @@ module.exports = {
     show: true,
     sortable: false,
     filter: true,
-    label: <span><Acronym>NVSs</Acronym>s / <Acronym>SQP</Acronym>s</span>
+    label: <span><Acronym>NVS</Acronym>s / <Acronym>SQP</Acronym>s</span>
   },
   updatedAt: {}
 };
