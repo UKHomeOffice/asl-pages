@@ -1,6 +1,3 @@
-import React, { Fragment } from 'react';
-import { Acronym } from '@asl/components';
-
 module.exports = {
   id: {},
   name: {
@@ -28,14 +25,12 @@ module.exports = {
   nacwos: {
     show: true,
     sortable: false,
-    filter: true,
-    label: <Fragment><Acronym>NACWO</Acronym>s</Fragment>
+    filter: true
   },
   nvssqps: {
     show: true,
     sortable: false,
-    filter: true,
-    label: <Fragment><Acronym>NVS</Acronym>s / <Acronym>SQP</Acronym>s</Fragment>
+    filter: true
   },
   updatedAt: {}
 };
