@@ -1,4 +1,5 @@
 module.exports = {
+  contactUs: require('./contact'),
   feedback: require('./feedback'),
   establishment: require('./establishment'),
   place: require('./place'),
