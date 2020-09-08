@@ -46,8 +46,8 @@ const formatters = {
   },
   status: {
     format: (status, model) => {
-      const isExtended = get(model, 'data.deadline.isExtended', false);
       const deadline = get(model, 'data.deadline');
+      const isExtended = get(deadline, 'isExtended', false);
       const deadlineDate = get(deadline, isExtended ? 'extended' : 'standard');
       const continuation = get(model, 'data.continuation') && get(model, 'data.modelData.status') === 'inactive';
       const className = classnames({ badge: true, complete: good.includes(status), rejected: bad.includes(status) });
