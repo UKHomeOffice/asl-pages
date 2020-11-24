@@ -21,7 +21,7 @@ function Fee({ type }) {
   const fees = useSelector(state => state.static.fees);
   const num = fees[type];
   return (
-    <div>
+    <div id={`fees-summary-${type}`}>
       <h3><Snippet>{`fees.summary.${type}`}</Snippet></h3>
       <h1>
         {'£'}
