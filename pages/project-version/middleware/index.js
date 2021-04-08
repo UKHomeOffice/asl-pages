@@ -1,4 +1,4 @@
-const { get, remove, isEqual, uniq, mapValues, sortBy } = require('lodash');
+const { get, remove, isEqual, uniq, mapValues, sortBy, isEmpty, pickBy } = require('lodash');
 const isUUID = require('uuid-validate');
 const extractComments = require('../lib/extract-comments');
 const { mapSpecies, mapPermissiblePurpose, mapAnimalQuantities } = require('@asl/projects/client/helpers');
@@ -218,6 +218,10 @@ const normaliseConditions = (versionData, { isSubmitted }) => {
   });
 };
 
+const ignoreEmptyArrayProps = obj => {
+  return pickBy(obj, (value, key) => !Array.isArray(value) || !isEmpty(value));
+};
+
 const getChanges = (current, version) => {
   if (!current || !version) {
     return [];
@@ -232,20 +236,30 @@ const getChanges = (current, version) => {
   cvKeys.forEach(k => {
     const pvNode = getNode(before, k);
     const cvNode = getNode(after, k);
-    if (hasChanged(pvNode, cvNode)) {
+    if (hasChanged(pvNode, cvNode, k)) {
       changed.push(k);
     }
   });
   return added.concat(removed).concat(changed);
 };
 
-const hasChanged = (before, after) => {
+const hasChanged = (before, after, key) => {
   // backwards compatibility check for transition from string to object values for RTEs
   if (typeof before === 'string' && typeof after !== 'string') {
     try {
       before = JSON.parse(before);
     } catch (e) {}
   }
+
+  // check for empty arrays which were added to protocols by other sections (e.g. AA, POLES) and ignore them
+  if (key === 'protocols') { // protocol array
+    return before.some((protocol, idx) => {
+      return !isEqual(ignoreEmptyArrayProps(before[idx]), ignoreEmptyArrayProps(after[idx]));
+    });
+  } else if (/^protocols\.[a-z0-9-]+$/.test(key)) { // individual protocol
+    return !isEqual(ignoreEmptyArrayProps(before), ignoreEmptyArrayProps(after));
+  }
+
   const valueChanged = !isEqual(before, after);
 
   // check for whitespace normalisation in RTE values
