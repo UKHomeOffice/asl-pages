@@ -256,7 +256,7 @@ const hasChanged = (before, after, key) => {
     return before.some((protocol, idx) => {
       return !isEqual(ignoreEmptyArrayProps(before[idx]), ignoreEmptyArrayProps(after[idx]));
     });
-  } else if (/^protocols\.[a-z0-9-]+$/.test(key)) { // individual protocol
+  } else if (/^protocols\.[a-f0-9-]+$/.test(key)) { // individual protocol
     return !isEqual(ignoreEmptyArrayProps(before), ignoreEmptyArrayProps(after));
   }
 
