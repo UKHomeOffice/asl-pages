@@ -110,6 +110,9 @@ module.exports = settings => {
   });
 
   app.put('/', getAllChanges(), (req, res) => {
+    console.log('PUT /');
+    console.log('res.locals.static.changes', res.locals.static.changes);
+
     res.json({ changes: res.locals.static.changes, checksum: req.version.checksum });
   });
 

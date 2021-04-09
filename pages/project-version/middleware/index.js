@@ -223,6 +223,7 @@ const ignoreEmptyArrayProps = obj => {
 };
 
 const getChanges = (current, version) => {
+  console.log('getChanges()');
   if (!current || !version) {
     return [];
   }
@@ -271,6 +272,8 @@ const hasChanged = (before, after, key) => {
 };
 
 const getAllChanges = (type = 'project-versions') => (req, res, next) => {
+  console.log('getAllChanges()');
+
   const model = type === 'project-versions' ? 'version' : 'retrospectiveAssessment';
   Promise.all([
     getFirstVersion(req, type),
@@ -285,6 +288,7 @@ const getAllChanges = (type = 'project-versions') => (req, res, next) => {
       };
     })
     .then(changes => {
+      console.log(changes);
       res.locals.static.changes = changes;
     })
     .then(() => next())
@@ -292,6 +296,7 @@ const getAllChanges = (type = 'project-versions') => (req, res, next) => {
 };
 
 const getChangedValues = (question, req, type = 'project-versions') => {
+  console.log('getChangedValues()');
 
   const model = type === 'project-versions' ? 'version' : 'retrospectiveAssessment';
 
@@ -358,6 +363,7 @@ module.exports = {
   canComment,
   getPreviousVersion,
   getGrantedVersion,
+  getChanges,
   getAllChanges,
   getChangedValues,
   getProjectEstablishment,
