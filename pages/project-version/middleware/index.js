@@ -218,12 +218,7 @@ const normaliseConditions = (versionData, { isSubmitted }) => {
   });
 };
 
-const ignoreEmptyArrayProps = obj => {
-  return pickBy(obj, (value, key) => !Array.isArray(value) || !isEmpty(value));
-};
-
 const getChanges = (current, version) => {
-  console.log('getChanges()');
   if (!current || !version) {
     return [];
   }
@@ -237,28 +232,19 @@ const getChanges = (current, version) => {
   cvKeys.forEach(k => {
     const pvNode = getNode(before, k);
     const cvNode = getNode(after, k);
-    if (hasChanged(pvNode, cvNode, k)) {
+    if (hasChanged(pvNode, cvNode)) {
       changed.push(k);
     }
   });
   return added.concat(removed).concat(changed);
 };
 
-const hasChanged = (before, after, key) => {
+const hasChanged = (before, after) => {
   // backwards compatibility check for transition from string to object values for RTEs
   if (typeof before === 'string' && typeof after !== 'string') {
     try {
       before = JSON.parse(before);
     } catch (e) {}
-  }
-
-  // check for empty arrays which were added to protocols by other sections (e.g. AA, POLES) and ignore them
-  if (key === 'protocols') { // protocol array
-    return before.some((protocol, idx) => {
-      return !isEqual(ignoreEmptyArrayProps(before[idx]), ignoreEmptyArrayProps(after[idx]));
-    });
-  } else if (/^protocols\.[a-f0-9-]+$/.test(key)) { // individual protocol
-    return !isEqual(ignoreEmptyArrayProps(before), ignoreEmptyArrayProps(after));
   }
 
   const valueChanged = !isEqual(before, after);
@@ -272,8 +258,6 @@ const hasChanged = (before, after, key) => {
 };
 
 const getAllChanges = (type = 'project-versions') => (req, res, next) => {
-  console.log('getAllChanges()');
-
   const model = type === 'project-versions' ? 'version' : 'retrospectiveAssessment';
   Promise.all([
     getFirstVersion(req, type),
@@ -288,7 +272,6 @@ const getAllChanges = (type = 'project-versions') => (req, res, next) => {
       };
     })
     .then(changes => {
-      console.log(changes);
       res.locals.static.changes = changes;
     })
     .then(() => next())
@@ -296,8 +279,6 @@ const getAllChanges = (type = 'project-versions') => (req, res, next) => {
 };
 
 const getChangedValues = (question, req, type = 'project-versions') => {
-  console.log('getChangedValues()');
-
   const model = type === 'project-versions' ? 'version' : 'retrospectiveAssessment';
 
   const getVersion = {
