@@ -4,6 +4,7 @@ import { useSelector, shallowEqual } from 'react-redux';
 import uniqBy from 'lodash/uniqBy';
 import pick from 'lodash/pick';
 import get from 'lodash/get';
+import has from 'lodash/has';
 import { Link, StickyNavAnchor, Snippet, Diff } from '@asl/components';
 import EstablishmentLinks from '../components/establishment-links';
 
@@ -66,6 +67,10 @@ export default function Project({ task }) {
     ...project.additionalEstablishments,
     ...proposedAdditionalEstablishments
   ], est => est['establishment-id'] || est.id).filter(e => !removedAAIds.includes(e.id));
+
+  // older change licence holder tasks have experience questions in data.meta
+  const experienceFields = experience(version, project.schemaVersion).fields;
+  const experienceValues = has(task, `data.data.${experienceFields[0].name}`) ? get(task, 'data.data') : get(task, 'data.meta');
 
   const isComplete = !task.isOpen;
   const isDiscarded = task.status === 'discarded-by-applicant';
@@ -268,8 +273,8 @@ export default function Project({ task }) {
           <h2><Snippet>sticky-nav.experience</Snippet></h2>
           <StaticRouter>
             <ReviewFields
-              fields={experience(version, project.schemaVersion).fields}
-              values={task.data.data}
+              fields={experienceFields}
+              values={experienceValues}
               project={version.data}
               readonly={true}
               noComments
