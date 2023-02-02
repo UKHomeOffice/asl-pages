@@ -10,6 +10,15 @@ module.exports = (req, res, next) => {
   let id = get(req.task, 'data.id');
   let action = get(req.task, 'data.action');
 
+  if (model === 'place') {
+    delete params.data.conditions
+    delete params.data.reminder
+    delete params.conditions
+    delete params.reminder
+    delete req.task.data.data.conditions;
+    delete req.task.data.data.reminder;
+  }
+
   if (model === 'profile') {
     model = 'account';
   }

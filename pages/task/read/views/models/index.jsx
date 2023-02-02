@@ -20,6 +20,7 @@ import Project from './project';
 import Role from './role';
 import Rop from './rop';
 import TrainingPil from './training-pil';
+import ManageConditions from './manage-conditions';
 
 import TaskDetails from '../components/task-details';
 import TaskStatus from '../components/task-status';
@@ -67,6 +68,12 @@ export default function Model({ task, formFields, allowSubmit }) {
   const hasNextSteps = task.nextSteps.length > 0;
   const hasTaskOptions = schema.status.options.length > 0;
   const canBeDiscardedByAsru = task.nextSteps.find(step => step.id === 'discarded-by-asru');
+
+  if (task.data.action === 'manage-conditions') {
+    return (
+      <ManageConditions task={task} formFields={formFields}/>
+    )
+  }
 
   return (
     <StickyNavPage>

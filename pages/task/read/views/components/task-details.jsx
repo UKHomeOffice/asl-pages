@@ -193,7 +193,7 @@ export default function TaskDetails({ task }) {
       }
 
       {
-        ['project', 'retrospective-assessment', 'rop'].includes(model) &&
+        ['project', 'retrospective-assessment', 'rop', 'manage-conditions'].includes(model) &&
           <ProjectDetails task={task} />
       }
 

@@ -130,6 +130,8 @@ module.exports = settings => {
       .catch(next);
   });
 
+  // THIS CREATES A NEW DRAFT
+
   app.post('/', (req, res, next) => {
     req.api(`/establishment/${req.establishmentId}/project/${req.projectId}/fork`, { method: 'POST' })
       .then(response => {
@@ -137,6 +139,17 @@ module.exports = settings => {
         const modelId = get(response, 'json.data.data.id');
         req.versionId = get(response, 'json.data.data.data.version', modelId);
         res.redirect(req.buildRoute('projectVersion.update'));
+      })
+      .catch(next);
+  });
+
+  app.post('/manage-conditions', (req, res, next) => {
+    return req.api(`/establishments/${req.establishmentId}/projects/${req.projectId}/manage-conditions`, { method: 'POST' })
+      .then(response => {
+        const taskId = get(response, 'json.data.id');
+        req.session.success = { taskId: taskId };
+        delete req.session.form[req.model.id];
+        return res.redirect(req.buildRoute('task.read', {taskId}));
       })
       .catch(next);
   });

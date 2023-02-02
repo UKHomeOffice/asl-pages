@@ -7,7 +7,8 @@ module.exports = {
     deadline: 'Statutory target deadline',
     continuation: 'Project continuation',
     ra: 'Retrospective assessment',
-    reopen: 'Reopen task'
+    reopen: 'Reopen task',
+    'manage-conditions': 'Manage conditions'
   },
   title: {
     ra: 'Review retrospective assessment'
@@ -104,5 +105,8 @@ module.exports = {
       singular: '{{days}} day over deadline for decision',
       plural: '{{days}} days over deadline for decision'
     }
-  }
+  },
+  'manage-conditions': {
+    title: 'Manage project conditions'
+}
 };

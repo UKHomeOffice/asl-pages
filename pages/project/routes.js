@@ -8,6 +8,7 @@ const suspend = require('../suspend');
 const addUser = require('./add-user');
 const removeUser = require('./remove-user');
 const transferDraft = require('./transfer-draft');
+const manageConditions = require('./manage-conditions');
 
 module.exports = {
   list: {
@@ -63,5 +64,10 @@ module.exports = {
     path: '/:projectId/transfer-draft',
     permissions: 'project.transfer',
     router: transferDraft
+  },
+  'manage-conditions': {
+    path: '/:projectId/manage-conditions',
+    permissions: 'project.update',
+    router: manageConditions
   }
 };

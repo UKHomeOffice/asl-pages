@@ -79,7 +79,8 @@ module.exports = {
       reinstate: 'Reinstate project licence',
       import: 'Import project',
       addUser: 'Give access to this PPL',
-      transferDraft: 'Transfer draft project'
+      transferDraft: 'Transfer draft project',
+      'manage-conditions': 'Manage conditions'
     },
     projectVersion: {
       read: 'View',

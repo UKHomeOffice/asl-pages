@@ -11,6 +11,7 @@ import SuspendReinstateLicence from '../components/suspend-licence';
 import RevokeLicence from '../components/revoke-licence';
 import DiscardDraft from '../components/discard-draft';
 import DiscardStub from '../components/discard-stub';
+import ManageConditions from '../components/manage-conditions';
 
 export default function Manage() {
   const { canUpdate, canRevoke, canManageAccess, canSuspend } = useSelector(state => state.static);
@@ -26,6 +27,7 @@ export default function Manage() {
       <StartAmendment />
       <AmendStub />
       <ChangeLicenceHolder />
+      <ManageConditions  />
       <ManageAccess />
       <SuspendReinstateLicence />
       <RevokeLicence />

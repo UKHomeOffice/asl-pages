@@ -138,7 +138,8 @@ module.exports = merge({}, baseContent, {
       stub: 'Cancel licence conversion'
     },
     amendStub: 'Edit record',
-    cantChangeHolder: 'An amendment is in progress so the PPL holder cannot be changed'
+    cantChangeHolder: 'An amendment is in progress so the PPL holder cannot be changed',
+    manageConditions: 'Manage conditions',
   },
   confirm: {
     application: 'Are you sure you want to discard this draft project?',
@@ -224,5 +225,9 @@ You can view and resubmit this return, for example if there are errors`,
 
     'not-due': 'No further returns of procedures required',
     previous: 'Previous returns of procedures'
+  },
+  conditions: {
+    title: 'Manage conditions',
+    content: 'Check, edit, remove or add conditions to this project licence.'
   }
 });

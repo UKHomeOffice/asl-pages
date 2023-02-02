@@ -26,6 +26,10 @@ const Task = ({ task, project }) => {
     action = 'update';
   }
 
+  if (action === 'manage-conditions') {
+    task.data.model = 'manage-conditions';
+  }
+
   function onFormSubmit(e) {
     form = e.target;
     e.preventDefault();

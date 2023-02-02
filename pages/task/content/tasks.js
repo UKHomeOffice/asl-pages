@@ -37,7 +37,8 @@ module.exports = {
     revoke: 'Project licence revocation',
     'grant-ra': 'Retrospective assessment',
     suspend: 'Project licence suspension',
-    reinstate: 'Project licence reinstatement'
+    reinstate: 'Project licence reinstatement',
+    'manage-conditions': 'Manage project conditions'
   },
   establishment: {
     grant: 'Establishment application',
@@ -46,5 +47,8 @@ module.exports = {
     'update-conditions': 'Update conditions',
     suspend: 'Establishment licence suspension',
     reinstate: 'Establishment licence reinstatement'
+  },
+  'manage-conditions': {
+    'manage-conditions': 'Manage project conditions'
   }
 };
