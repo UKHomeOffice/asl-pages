@@ -55,8 +55,10 @@ export default function Project({ task }) {
   const proposedAdditionalEstablishments = get(version, 'data.establishments', []).filter(e => e['establishment-id']);
   const removedAAIds = get(version, 'data.establishments', []).filter(e => e.deleted).map(e => e['establishment-id']);
 
+  const establishmentsOnProject = project.additionalEstablishments.filter(est => est.status !== 'removed');
+
   const additionalEstablishments = uniqBy([
-    ...project.additionalEstablishments,
+    ...establishmentsOnProject,
     ...proposedAdditionalEstablishments
   ], est => est['establishment-id'] || est.id).filter(e => !removedAAIds.includes(e.id));
 

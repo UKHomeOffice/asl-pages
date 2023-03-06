@@ -24,11 +24,10 @@ module.exports = (settings = {}) => {
   const app = Router({ mergeParams: true });
 
   app.use((req, res, next) => {
-    req.awerbEstablishments = [req.project.establishment].concat(req.project.additionalEstablishments);
     if (transferWithReceivingEstablishment(req.task)) {
-      req.awerbEstablishments = [get(req.task, 'data.establishment')].concat(req.project.additionalEstablishments);
+      req.awerbEstablishments = [get(req.task, 'data.establishment')].concat(req.project.additionalEstablishments.filter(est => est.status !== 'removed'));
     } else {
-      req.awerbEstablishments = [req.project.establishment].concat(req.project.additionalEstablishments);
+      req.awerbEstablishments = [req.project.establishment].concat(req.project.additionalEstablishments.filter(est => est.status !== 'removed'));
     }
 
     req.licenceHolder = settings.getLicenceHolder
