@@ -145,6 +145,7 @@ export default function Profile({ profile, establishment = {}, allowedActions = 
                     profileId={profile.id}
                     label={pilLicenceNumber}
                   />
+                  {' '}
                   (held at{' '}
                   <Link
                     page='establishment'
