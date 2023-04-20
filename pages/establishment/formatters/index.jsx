@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import capitalize from 'lodash/capitalize';
 import {Snippet} from '@asl/components';
 
@@ -43,7 +43,7 @@ export default (profiles) => {
     legalPerson: {
       format: (value) => {
         return value ? (
-          <>{value.legalName}<br/>{value.legalEmail}<br/>{value.legalPhone}</>
+          <Fragment>{value.legalName}<br/>{value.legalEmail}<br/>{value.legalPhone}</Fragment>
         ) : 'N/A';
       }
     },

@@ -1,2 +1,8 @@
-extends:
-  - lennym
+{
+  "extends": [
+    "lennym"
+  ],
+  "globals": {
+    "fetch": false
+  }
+}

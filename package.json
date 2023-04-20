@@ -36,6 +36,7 @@
     "@ukhomeoffice/react-components": "^0.10.7",
     "body-parser": "^1.18.3",
     "classnames": "^2.2.5",
+    "core-js": "^2.6.12",
     "csrf": "^3.0.6",
     "csv-stringify": "^5.3.6",
     "date-fns": "^1.29.0",
@@ -55,8 +56,8 @@
     "node-fetch": "^2.6.7",
     "qs": "^6.5.2",
     "r2": "^2.0.1",
-    "react": "^16.9.0",
-    "react-dom": "^16.8.6",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-markdown": "^6.0.2",
     "react-redux": "^7.1.0",
     "react-router": "^5.0.1",
@@ -77,11 +78,11 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "eslint": "^8.24.0",
     "eslint-config-lennym": "^2.2.1",
-    "jest": "^24.9.0",
+    "jest": "24.9",
     "npm-sass": "^3.1.0",
     "reqres": "^2.1.0",
     "sass": "^1.50.1",
-    "sinon": "^6.3.5"
+    "sinon": "15.0.4"
   },
   "publishConfig": {
     "registry": "https://artifactory.digital.homeoffice.gov.uk/artifactory/api/npm/npm-virtual/"
