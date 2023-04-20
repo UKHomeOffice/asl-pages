@@ -145,6 +145,13 @@ export default function Profile({ profile, establishment = {}, allowedActions = 
                     profileId={profile.id}
                     label={pilLicenceNumber}
                   />
+                  (held at{' '}
+                  <Link
+                    page='establishment'
+                    establishmentId={pil.establishment.id}
+                    label={pil.establishment.name}
+                  />
+                  )
                   {
                     pil && pil.status !== 'active' && <span> ({pil.status})</span>
                   }
