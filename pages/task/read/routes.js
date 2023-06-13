@@ -1,4 +1,4 @@
-const { extend, confirm, read, discard, deadlinePassed, endorse, removeDeadline, reinstateDeadline, review } = require('./routers');
+const { extend, confirm, read, discard, deadlinePassed, endorse, removeDeadline, reinstateDeadline, review, uploadHba } = require('./routers');
 const raAwerb = require('./ra-awerb');
 const success = require('../../success');
 
@@ -44,6 +44,10 @@ module.exports = {
   review: {
     path: '/review',
     router: review
+  },
+  uploadHba: {
+    path: '/upload-hba',
+    router: uploadHba
   },
   success: {
     path: '/success',

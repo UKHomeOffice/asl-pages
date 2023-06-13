@@ -416,6 +416,12 @@ module.exports = () => {
       return res.redirect(req.buildRoute('task.read.endorse'));
     }
 
+    // TODO:
+    // * check for uploaded HBA
+    if (model === 'project' && action === 'grant') {
+      return res.redirect(req.buildRoute('task.read.uploadHba'));
+    }
+
     return res.redirect(req.buildRoute('task.read', { suffix: 'confirm' }));
   });
 

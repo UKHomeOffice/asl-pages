@@ -110,7 +110,8 @@ module.exports = {
         confirmRefuse: 'Confirm',
         review: 'Review',
         success: 'Success',
-        deadlinePassed: 'Deadline passed reason'
+        deadlinePassed: 'Deadline passed reason',
+        uploadHba: 'Upload harm benefit analysis file'
       }
     },
     training: {
