@@ -1,26 +1,33 @@
-const { merge, pick } = require('lodash');
-const baseContent = require('./base');
-const tasks = require('../../content/tasks');
-const versionContent = require('../../../project-version/update/endorse/content');
-const refusalNotice = require('./refusal-notice');
+const { merge, pick } = require("lodash");
+const baseContent = require("./base");
+const tasks = require("../../content/tasks");
+const versionContent = require("../../../project-version/update/endorse/content");
+const refusalNotice = require("./refusal-notice");
 
 module.exports = merge({}, baseContent, {
   tasks,
-  title: 'Confirm decision',
+  title: "Confirm decision",
   fields: {
     status: {
-      label: 'Your decision'
+      label: "Your decision",
     },
     endorsement: {
-      label: 'Endorsement'
+      label: "Endorsement",
     },
     restrictions: {
-      label: 'Restrictions'
+      label: "Restrictions",
     },
-    ...pick(versionContent.fields, ['awerb', 'awerb-review-date', 'awerb-exempt', 'awerb-dates', 'awerb-no-review-reason'])
+    ...pick(versionContent.fields, [
+      "awerb",
+      "awerb-review-date",
+      "awerb-exempt",
+      "awerb-dates",
+      "awerb-no-review-reason",
+    ]),
   },
+  hba: "Selected harm benefit analysis file: ",
   declaration: {
-    title: 'Declaration',
+    title: "Declaration",
     endorsed: {
       pil: `By endorsing this {{type}}, I agree that:
          * I have the authority of the establishment licence holder, and they are aware that this establishment will
@@ -30,14 +37,20 @@ module.exports = merge({}, baseContent, {
         * The non-technical summary uses everyday language and contains no information that could identify people, places or intellectual property.`,
       trainingPil: `By endorsing this {{type}}, I agree that:
         * {{name}} will receive all relevant training before carrying out regulated procedures on protected animals as part of this course.
-        * I have the authority of the establishment licence holder and they are aware they will be liable for the licence's cost.`
-    }
+        * I have the authority of the establishment licence holder and they are aware they will be liable for the licence's cost.`,
+    },
   },
   errors: {
-    ...pick(versionContent.errors, ['awerb', 'awerb-review-date', 'awerb-exempt', 'awerb-dates', 'awerb-no-review-reason'])
+    ...pick(versionContent.errors, [
+      "awerb",
+      "awerb-review-date",
+      "awerb-exempt",
+      "awerb-dates",
+      "awerb-no-review-reason",
+    ]),
   },
   refusalNotice: {
     ...refusalNotice,
-    summaryLabel: 'Show where the reason appears in the refusal notice'
-  }
+    summaryLabel: "Show where the reason appears in the refusal notice",
+  },
 });
