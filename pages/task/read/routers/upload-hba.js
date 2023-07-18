@@ -36,6 +36,7 @@ module.exports = (config) => {
       schema,
       locals(req, res, next) {
         res.locals.static.establishment = req.establishment;
+        res.locals.static.task = req.task;
         next();
       },
       process: async (req, res, next) => {

@@ -9,14 +9,14 @@ import {
 } from '@ukhomeoffice/asl-components';
 import { Warning } from '../../../common/components/warning';
 
-const ConfirmHba = ({ establishment, licenceHolder, hba }) => {
+const ConfirmHba = ({ establishment, licenceHolder, hba, task }) => {
   return (
     <WidthContainer>
       <ErrorSummary />
       <Form>
         <Header
           title={<Snippet>title</Snippet>}
-          subtitle={<Snippet>subtitle</Snippet>}
+          subtitle={<Snippet>{`tasks.project.${task.type}`}</Snippet>}
         />
         <p>
           <strong>

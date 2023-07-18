@@ -41,6 +41,7 @@ module.exports = (config) => {
       locals(req, res, next) {
         res.locals.static.establishment = req.task.data.establishment;
         res.locals.static.licenceHolder = req.task.data.licenceHolder;
+        res.locals.static.task = req.task;
         next();
       }
     })

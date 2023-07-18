@@ -5,7 +5,6 @@ const tasks = require('../../content/tasks');
 module.exports = merge({}, baseContent, {
   tasks,
   title: 'Upload harm benefit analysis file',
-  subtitle: 'Project licence application',
   intro: `To grant this licence you must upload the PPL assessment form containing the harm benefit analysis for this application.
     
   The harm benefit anlaysis will be visible to ASRU only.`,

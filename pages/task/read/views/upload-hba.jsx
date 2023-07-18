@@ -8,14 +8,14 @@ import {
   ErrorSummary
 } from '@ukhomeoffice/asl-components';
 
-const UploadHba = ({ hba }) => {
+const UploadHba = ({ hba, task }) => {
   return (
     <WidthContainer>
       <ErrorSummary />
       <Form>
         <Header
           title={<Snippet>title</Snippet>}
-          subtitle={<Snippet>subtitle</Snippet>}
+          subtitle={<Snippet>{`tasks.project.${task.type}`}</Snippet>}
         />
         <p>
           <Snippet>intro</Snippet>

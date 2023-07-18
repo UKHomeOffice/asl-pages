@@ -1,9 +1,11 @@
 const { merge } = require('lodash');
 const baseContent = require('./base');
+const tasks = require('../../content/tasks');
 
 module.exports = merge({}, baseContent, {
+  tasks,
   title: 'Confirm harm benefit analysis file',
-  subtitle: 'Project licence application TODO',
+
   fields: {
     establishment: {
       label: 'Establishment:'
