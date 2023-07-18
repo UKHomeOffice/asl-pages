@@ -110,7 +110,6 @@ module.exports = (settings) => {
       return next();
     }
 
-    console.log(req.project.granted);
     next();
   });
 
