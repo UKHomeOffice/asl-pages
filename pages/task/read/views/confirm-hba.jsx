@@ -10,13 +10,17 @@ import {
 import { Warning } from '../../../common/components/warning';
 
 const ConfirmHba = ({ establishment, licenceHolder, hba, task }) => {
+  let action = task.data.action;
+  if (action === 'grant' && task.type === 'amendment') {
+    action = 'update';
+  }
   return (
     <WidthContainer>
       <ErrorSummary />
       <Form>
         <Header
           title={<Snippet>title</Snippet>}
-          subtitle={<Snippet>{`tasks.project.${task.type}`}</Snippet>}
+          subtitle={<Snippet>{`tasks.${task.data.model}.${action}`}</Snippet>}
         />
         <p>
           <strong>
