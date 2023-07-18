@@ -72,13 +72,11 @@ module.exports = merge({}, baseContent, {
     },
     'update-licence-holder': {
       title: 'Amendment in progress',
-      // TODO: Devs do content
       description:
         'A request to change the licence holder is currently in progress, you can view the task to see a list of available steps.'
     },
     'returned-draft': {
       title: 'Application in progress',
-      // TODO: Devs do content
       description:
         'There is an application in progress, you can continue authoring the application above or view the task to see a list of available steps.'
     },

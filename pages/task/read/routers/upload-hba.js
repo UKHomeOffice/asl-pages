@@ -48,7 +48,6 @@ module.exports = (config) => {
         // File parsed by multer from incoming request
         formData.append('file', file.buffer, file.originalname);
 
-        // * once uploaded, attach to project/project version or task
         try {
           const { data } = await axios.post(config.attachments, formData, {
             headers: { ...formData.getHeaders() }
