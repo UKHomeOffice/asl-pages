@@ -4,14 +4,14 @@ const schema = require('../../schema/confirm-hba');
 const { default: axios } = require('axios');
 const { get } = require('lodash');
 
-module.exports = () => {
+module.exports = (config) => {
   const app = Router({ mergeParams: true });
 
   app.get('/', async (req, res, next) => {
     const hbaTokenFromTask = req.task.data.meta.hbaToken;
     if (hbaTokenFromTask) {
       const { headers } = await axios.get(
-        `http://localhost:8092/${hbaTokenFromTask}`
+        `${config.attachments}/${hbaTokenFromTask}`
       );
       const filename = headers["'x-original-filename"];
 

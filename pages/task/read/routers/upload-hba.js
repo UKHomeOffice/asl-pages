@@ -1,13 +1,12 @@
 const { Router } = require('express');
 const bodyParser = require('body-parser');
 const { UnauthorisedError } = require('@asl/service/errors');
-const { get, set } = require('lodash');
 const { form } = require('../../../common/routers');
 const schema = require('../../schema/upload-hba');
 const FormData = require('form-data');
-const { default: axios, AxiosError } = require('axios');
+const { default: axios } = require('axios');
 
-module.exports = () => {
+module.exports = (config) => {
   const app = Router({ mergeParams: true });
 
   app.use(bodyParser.urlencoded({ extended: false }));
@@ -54,7 +53,7 @@ module.exports = () => {
         // * once uploaded, attach to project/project version or task
         // * replay attachment on inspection
         try {
-          const { data } = await axios.post('http://localhost:8092', formData, {
+          const { data } = await axios.post(config.attachments, formData, {
             headers: { ...formData.getHeaders() }
           });
           req.form.values.hbaToken = data.token;

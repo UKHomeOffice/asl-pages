@@ -1,13 +1,13 @@
 module.exports = {
   upload: {
-    inputType: "inputFile",
+    inputType: 'inputFile',
     validate: [
-      "fileRequired",
+      'fileRequired',
       // 15MB
       { maxSize: 1.5e7 },
       {
-        ext: ["doc", "docx", "pdf"],
-      },
-    ],
-  },
+        ext: ['doc', 'docx', 'pdf']
+      }
+    ]
+  }
 };

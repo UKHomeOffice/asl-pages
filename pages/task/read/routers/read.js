@@ -1,29 +1,29 @@
-const { Router } = require("express");
-const { merge, set, get, concat } = require("lodash");
+const { Router } = require('express');
+const { merge, set, get, concat } = require('lodash');
 
-const UnauthorisedError = require("@asl/service/errors/unauthorised");
+const UnauthorisedError = require('@asl/service/errors/unauthorised');
 const {
   populateNamedPeople,
-  populateEstablishmentProfiles,
-} = require("../../../common/middleware");
-const form = require("../../../common/routers/form");
-const getSchema = require("../../schema/view");
-const getAssignSchema = require("../../schema/assign");
-const { cleanModel } = require("../../../../lib/utils");
-const getContent = require("../content");
-const { getEstablishment } = require("../../../common/helpers");
-const updateData = require("../middleware/update-data");
-const ropStatus = require("../../middleware/rop-status");
+  populateEstablishmentProfiles
+} = require('../../../common/middleware');
+const form = require('../../../common/routers/form');
+const getSchema = require('../../schema/view');
+const getAssignSchema = require('../../schema/assign');
+const { cleanModel } = require('../../../../lib/utils');
+const getContent = require('../content');
+const { getEstablishment } = require('../../../common/helpers');
+const updateData = require('../middleware/update-data');
+const ropStatus = require('../../middleware/rop-status');
 
 const endorsingOwnPil = (task, profile) => {
   const isNtco = !!profile.roles.find(
-    (r) => r.type === "ntco" && r.establishmentId === task.data.establishmentId
+    (r) => r.type === 'ntco' && r.establishmentId === task.data.establishmentId
   );
   return (
     isNtco &&
-    task.data.model === "pil" &&
-    task.status === "awaiting-endorsement" &&
-    profile.id === get(task, "data.subject.id")
+    task.data.model === 'pil' &&
+    task.status === 'awaiting-endorsement' &&
+    profile.id === get(task, 'data.subject.id')
   );
 };
 
@@ -34,25 +34,25 @@ module.exports = () => {
 
   // get relevant versionId if task is for a project.
   app.use((req, res, next) => {
-    const model = get(req.task, "data.model");
-    const action = get(req.task, "data.action");
+    const model = get(req.task, 'data.model');
+    const action = get(req.task, 'data.action');
 
-    if (model === "project") {
+    if (model === 'project') {
       let url;
-      let versionId = get(req.task, "data.data.version");
-      const project = get(req.task, "data.modelData");
+      let versionId = get(req.task, 'data.data.version');
+      const project = get(req.task, 'data.modelData');
 
-      req.projectId = get(req.task, "data.id");
+      req.projectId = get(req.task, 'data.id');
       req.establishmentId = project.establishmentId;
 
       url = `/establishment/${req.establishmentId}/project/${req.projectId}`;
 
-      if (action === "transfer") {
+      if (action === 'transfer') {
         // transfers need to fetch only the specific version because the top-level project
         // may not be visible to the receiving establishment and so may 404
         return req
           .api(`${url}/project-version/${versionId}`, {
-            query: { withDeleted: true },
+            query: { withDeleted: true }
           })
           .then(({ json: { data } }) => {
             req.version = data;
@@ -66,9 +66,9 @@ module.exports = () => {
               const params = {
                 id: req.project.transferProjectId,
                 establishmentId: req.project.transferEstablishmentId,
-                licenceHolderId: req.project.licenceHolderId,
+                licenceHolderId: req.project.licenceHolderId
               };
-              return req.user.can("project.read.single", params).then((can) => {
+              return req.user.can('project.read.single', params).then((can) => {
                 if (can) {
                   return req
                     .api(
@@ -85,11 +85,11 @@ module.exports = () => {
           .catch(next);
       }
 
-      if (action === "grant-ra") {
-        const raId = get(req.task, "data.data.raVersion");
+      if (action === 'grant-ra') {
+        const raId = get(req.task, 'data.data.raVersion');
         return req
           .api(`${url}/retrospective-assessment/${raId}`, {
-            query: { withDeleted: true },
+            query: { withDeleted: true }
           })
           .then(({ json: { data } }) => {
             req.ra = data;
@@ -106,13 +106,13 @@ module.exports = () => {
         })
         .then(() => {
           // if task is a change of PPL holder then load granted version
-          if (action === "update" && req.project.granted) {
+          if (action === 'update' && req.project.granted) {
             versionId = req.project.granted.id;
           }
           if (versionId) {
             return req
               .api(`${url}/project-version/${versionId}`, {
-                query: { withDeleted: true },
+                query: { withDeleted: true }
               })
               .then(({ json: { data } }) => {
                 req.version = data;
@@ -132,18 +132,18 @@ module.exports = () => {
   });
 
   app.use((req, res, next) => {
-    const action = get(req.task, "data.action");
-    const model = get(req.task, "data.model");
-    if (action === "transfer" && model === "project") {
+    const action = get(req.task, 'data.action');
+    const model = get(req.task, 'data.model');
+    if (action === 'transfer' && model === 'project') {
       return next();
     }
-    if (model === "trainingPil") {
+    if (model === 'trainingPil') {
       return next();
     }
     const establishmentId =
-      get(req.task, "data.model") === "establishment"
-        ? get(req.task, "data.id")
-        : get(req.task, "data.establishmentId");
+      get(req.task, 'data.model') === 'establishment'
+        ? get(req.task, 'data.id')
+        : get(req.task, 'data.establishmentId');
     if (establishmentId) {
       return getEstablishment(req, establishmentId)
         .then((establishment) => {
@@ -161,8 +161,8 @@ module.exports = () => {
   app.use((req, res, next) => {
     // Populate the establishmentProfiles for establishment update
     if (
-      req.task.data.model === "establishment" &&
-      req.task.data.action === "update"
+      req.task.data.model === 'establishment' &&
+      req.task.data.action === 'update'
     ) {
       return populateEstablishmentProfiles(req, res, next);
     }
@@ -170,8 +170,8 @@ module.exports = () => {
   });
 
   app.use((req, res, next) => {
-    const profileId = get(req.task, "data.data.profileId");
-    const establishmentId = get(req.task, "data.data.establishmentId");
+    const profileId = get(req.task, 'data.data.profileId');
+    const establishmentId = get(req.task, 'data.data.establishmentId');
 
     if (profileId && establishmentId) {
       return req
@@ -183,8 +183,8 @@ module.exports = () => {
         .catch((error) => {
           return Promise.resolve()
             .then(() =>
-              req.user.can("profile.read.all", {
-                establishment: establishmentId,
+              req.user.can('profile.read.all', {
+                establishment: establishmentId
               })
             )
             .then((canReadAllProfiles) => {
@@ -217,49 +217,49 @@ module.exports = () => {
     const action = req.task.data.action;
     const model = req.task.data.model;
     if (
-      action === "update" ||
-      action === "delete" ||
-      action === "update-conditions" ||
-      model === "rop"
+      action === 'update' ||
+      action === 'delete' ||
+      action === 'update-conditions' ||
+      model === 'rop'
     ) {
       // if task is closed, get previous values from task
-      if (!req.task.isOpen && model !== "rop") {
+      if (!req.task.isOpen && model !== 'rop') {
         res.locals.static.values = get(
           req.task,
-          "activityLog[0].event.data.modelData"
+          'activityLog[0].event.data.modelData'
         );
 
-        if (model === "establishment") {
+        if (model === 'establishment') {
           if (!res.locals.static.values.authorisations) {
             res.locals.static.values.authorisations = [];
           }
 
-          if (action === "update") {
-            res.locals.static.values.pelh = get(req.task, "data.meta.pelh");
-            res.locals.static.values.nprc = get(req.task, "data.meta.nprc");
+          if (action === 'update') {
+            res.locals.static.values.pelh = get(req.task, 'data.meta.pelh');
+            res.locals.static.values.nprc = get(req.task, 'data.meta.nprc');
           }
         }
 
-        if (model === "role" && action === "delete") {
+        if (model === 'role' && action === 'delete') {
           // if the task doesn't have the remainingRoles data, flag it so we can hide the list
           res.locals.static.remainingRoles = get(
             req.task,
-            "data.meta.remainingRoles",
-            "BC_NO_DATA"
+            'data.meta.remainingRoles',
+            'BC_NO_DATA'
           );
         }
 
         return next();
       }
 
-      if (model === "profile" && req.user.profile.id === req.task.data.id) {
+      if (model === 'profile' && req.user.profile.id === req.task.data.id) {
         res.locals.static.values = req.user.profile;
         return next();
       }
 
-      if (model === "role" && action === "delete") {
-        const removedRoleId = get(req.task, "data.id");
-        const roleType = get(req.task, "data.modelData.type");
+      if (model === 'role' && action === 'delete') {
+        const removedRoleId = get(req.task, 'data.id');
+        const roleType = get(req.task, 'data.modelData.type');
         const remainingRoles = req.establishment.roles
           .filter((role) => role.type === roleType && role.id !== removedRoleId)
           .sort((a, b) => (a.profile.lastName <= b.profile.lastName ? -1 : 1));
@@ -267,18 +267,18 @@ module.exports = () => {
       }
 
       const getUrl = () => {
-        const modelId = get(req.task.data, "id");
-        const estId = get(req.task.data, "data.establishmentId");
-        const profileId = get(req.task.data, "data.profileId");
-        const projectId = get(req.task.data, "data.projectId");
+        const modelId = get(req.task.data, 'id');
+        const estId = get(req.task.data, 'data.establishmentId');
+        const profileId = get(req.task.data, 'data.profileId');
+        const projectId = get(req.task.data, 'data.projectId');
         switch (model) {
-          case "establishment":
+          case 'establishment':
             return `/establishment/${modelId}`;
-          case "profile":
+          case 'profile':
             return `/profile/${modelId}`;
-          case "pil":
+          case 'pil':
             return `/establishment/${estId}/profile/${profileId}/pil/${modelId}`;
-          case "rop":
+          case 'rop':
             return `/establishment/${estId}/project/${projectId}/rop/${modelId}`;
           default:
             return `/establishment/${estId}/${model}/${modelId}`;
@@ -300,8 +300,8 @@ module.exports = () => {
   app.use((req, res, next) => {
     if (
       req.task.isOpen &&
-      req.task.data.model === "establishment" &&
-      req.task.data.action === "update"
+      req.task.data.model === 'establishment' &&
+      req.task.data.action === 'update'
     ) {
       Promise.resolve()
         .then(() => {
@@ -315,8 +315,8 @@ module.exports = () => {
         })
         .then(() => {
           req.establishment.roles = req.establishment.roles || [];
-          const pelh = req.establishment.roles.find((r) => r.type === "pelh");
-          const nprc = req.establishment.roles.find((r) => r.type === "nprc");
+          const pelh = req.establishment.roles.find((r) => r.type === 'pelh');
+          const nprc = req.establishment.roles.find((r) => r.type === 'nprc');
           res.locals.static.values.pelh = pelh && pelh.profile;
           res.locals.static.values.nprc = nprc && nprc.profile;
 
@@ -328,9 +328,9 @@ module.exports = () => {
   });
 
   app.use((req, res, next) => {
-    if (req.task.data.model === "place") {
+    if (req.task.data.model === 'place') {
       const roleIds = req.task.data.data.roles || [];
-      const nacwoProfileId = get(req.task, "data.data.nacwo"); // handle legacy tasks before multiple nacwos
+      const nacwoProfileId = get(req.task, 'data.data.nacwo'); // handle legacy tasks before multiple nacwos
 
       if (nacwoProfileId) {
         const nacwoRole = req.establishment.nacwo.find(
@@ -346,22 +346,22 @@ module.exports = () => {
 
       set(
         req.task,
-        "data.data.nacwos",
+        'data.data.nacwos',
         allNacwos.filter((r) => roleIds.includes(r.id))
       );
       set(
         req.task,
-        "data.data.nvssqps",
+        'data.data.nvssqps',
         allNvsSqps.filter((r) => roleIds.includes(r.id))
       );
 
-      if (req.task.data.action !== "create") {
+      if (req.task.data.action !== 'create') {
         res.locals.static.values.nacwos = (
           res.locals.static.values.roles || []
-        ).filter((r) => r.type === "nacwo");
+        ).filter((r) => r.type === 'nacwo');
         res.locals.static.values.nvssqps = (
           res.locals.static.values.roles || []
-        ).filter((r) => ["nvs", "sqp"].includes(r.type));
+        ).filter((r) => ['nvs', 'sqp'].includes(r.type));
       }
     }
     next();
@@ -372,7 +372,7 @@ module.exports = () => {
       return next();
     }
     req
-      .api("/asru/profiles")
+      .api('/asru/profiles')
       .then(({ json: { data } }) => {
         const profiles = data.filter(
           (profile) => profile.id !== req.user.profile.id
@@ -395,42 +395,42 @@ module.exports = () => {
           req.schema = getSchema(req.task);
           req.form.schema = req.schema;
 
-          if (req.task.data.model === "place") {
+          if (req.task.data.model === 'place') {
             req.form.schema = {
               ...req.form.schema,
               restrictions: {
-                meta: true,
+                meta: true
               },
               conditions: {
-                meta: true,
+                meta: true
               },
               reminders: {
-                meta: true,
-              },
+                meta: true
+              }
             };
           }
 
           if (
-            req.task.data.model === "establishment" ||
-            req.task.data.model === "role"
+            req.task.data.model === 'establishment' ||
+            req.task.data.model === 'role'
           ) {
             req.form.schema = {
               ...req.form.schema,
               conditions: {
-                meta: true,
+                meta: true
               },
               reminders: {
-                meta: true,
-              },
+                meta: true
+              }
             };
           }
 
           if (
             req.task.nextSteps &&
             req.task.nextSteps.length === 1 &&
-            req.task.nextSteps[0].id === "refused"
+            req.task.nextSteps[0].id === 'refused'
           ) {
-            set(res, "locals.static.content.buttons.submit", "Refuse licence");
+            set(res, 'locals.static.content.buttons.submit', 'Refuse licence');
           }
 
           next();
@@ -454,52 +454,52 @@ module.exports = () => {
         },
         process: (req, res, next) => {
           if (
-            req.task.data.model === "place" &&
+            req.task.data.model === 'place' &&
             req.body.restrictions === null
           ) {
             set(req.session, `form[${req.model.id}].values.restrictions`, null);
           }
           next();
-        },
+        }
       })
     )
   );
 
-  app.post("/reopen", (req, res, next) => {
+  app.post('/reopen', (req, res, next) => {
     const params = {
-      method: "PUT",
-      headers: { "Content-type": "application/json" },
+      method: 'PUT',
+      headers: { 'Content-type': 'application/json' },
       json: {
         data: {
-          status: "recovered",
-        },
-      },
+          status: 'recovered'
+        }
+      }
     };
     req
       .api(`/tasks/${req.taskId}/status`, params)
-      .then(() => res.redirect(req.buildRoute("task.read")))
+      .then(() => res.redirect(req.buildRoute('task.read')))
       .catch(next);
   });
 
-  app.post("/", (req, res, next) => {
-    const status = get(req.form, "values.status");
-    if (status === "updated") {
+  app.post('/', (req, res, next) => {
+    const status = get(req.form, 'values.status');
+    if (status === 'updated') {
       return updateData(req, res, next);
     }
     next();
   });
 
-  app.post("/", (req, res, next) => {
+  app.post('/', (req, res, next) => {
     // TODO:
     // * check for uploaded HBA
-    const model = get(req.task, "data.model");
-    const action = get(req.task, "data.action");
+    const model = get(req.task, 'data.model');
+    const action = get(req.task, 'data.action');
 
-    if (model === "project" && action === "grant") {
-      return res.redirect(req.buildRoute("task.read.uploadHba"));
+    if (model === 'project' && action === 'grant') {
+      return res.redirect(req.buildRoute('task.read.uploadHba'));
     }
 
-    return res.redirect(req.buildRoute("task.read", { suffix: "confirm" }));
+    return res.redirect(req.buildRoute('task.read', { suffix: 'confirm' }));
   });
 
   return app;

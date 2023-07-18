@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import {
   Snippet,
@@ -43,15 +43,6 @@ const ConfirmHba = ({ establishment, licenceHolder, hba }) => {
         <Warning>
           <Snippet>warning</Snippet>
         </Warning>
-        {/* {hba && (
-          <p>
-            <strong>
-              <Snippet>fields.hba.label</Snippet>
-            </strong>
-            <br />
-            <a href={`/attachment/${hba.hbaToken}`}>{hba.hbaFilename}</a>{" "}
-          </p>
-        )} */}
       </Form>
     </WidthContainer>
   );

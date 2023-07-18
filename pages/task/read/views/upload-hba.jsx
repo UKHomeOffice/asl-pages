@@ -1,12 +1,12 @@
-import React, { Fragment, useState } from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 import {
   Snippet,
   Header,
   Form,
   WidthContainer,
-  ErrorSummary,
-} from "@ukhomeoffice/asl-components";
+  ErrorSummary
+} from '@ukhomeoffice/asl-components';
 
 const UploadHba = ({ hba }) => {
   return (
@@ -26,7 +26,7 @@ const UploadHba = ({ hba }) => {
               <Snippet>fields.hba.label</Snippet>
             </strong>
             <br />
-            <a href={`/attachment/${hba.hbaToken}`}>{hba.hbaFilename}</a>{" "}
+            <a href={`/attachment/${hba.hbaToken}`}>{hba.hbaFilename}</a>{' '}
           </p>
         )}
       </Form>
@@ -38,7 +38,7 @@ const mapStateToProps = ({ static: { task, values, url, hba } }) => ({
   task,
   values,
   url,
-  hba,
+  hba
 });
 
 export default connect(mapStateToProps)(UploadHba);

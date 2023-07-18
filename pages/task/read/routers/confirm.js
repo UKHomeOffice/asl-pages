@@ -9,7 +9,7 @@ const {
 } = require('../helpers/declarations');
 const { default: axios } = require('axios');
 
-module.exports = () => {
+module.exports = (config) => {
   const app = Router();
 
   app.use((req, res, next) => {
@@ -32,7 +32,7 @@ module.exports = () => {
     }
 
     const { headers } = await axios.get(
-      `http://localhost:8092/${hbaTokenFromTask}`
+      `${config.attachments}/${hbaTokenFromTask}`
     );
     const filename = headers['x-original-filename'];
 

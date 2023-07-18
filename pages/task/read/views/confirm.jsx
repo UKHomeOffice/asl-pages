@@ -49,7 +49,7 @@ function CommentForm({ formFields, task, errors, values, comment }) {
             <Snippet>hba</Snippet>
           </label>
           <p>
-            <a href={`http://localhost:8092/${hbaToken}`}>{hbaFilename}</a>
+            <a href={`/attachment/${hbaToken}`}>{hbaFilename}</a>
           </p>
         </>
       )}

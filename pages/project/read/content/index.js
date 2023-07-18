@@ -203,7 +203,8 @@ module.exports = merge({}, baseContent, {
     heading: 'Other documents',
     links: {
       nts: 'Non-technical summary',
-      ra: 'Non-technical summary and retrospective assessment'
+      ra: 'Non-technical summary and retrospective assessment',
+      hba: 'Download harm benefit analysis'
     }
   },
   manage: {

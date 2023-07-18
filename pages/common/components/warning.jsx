@@ -2,11 +2,11 @@ import React from 'react';
 
 export const Warning = ({ children }) => {
   return (
-    <div class="govuk-warning-text">
-      <span class="govuk-warning-text__icon" aria-hidden="true">
+    <div className="govuk-warning-text">
+      <span className="govuk-warning-text__icon" aria-hidden="true">
         !
       </span>
-      <strong class="govuk-warning-text__text">{children}</strong>
+      <strong className="govuk-warning-text__text">{children}</strong>
     </div>
   );
 };
