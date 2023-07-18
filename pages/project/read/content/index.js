@@ -1,7 +1,6 @@
 const { merge } = require('lodash');
 const baseContent = require('../../content');
 const downloadContent = require('../../../project-version/downloads/content');
-console.log(downloadContent);
 
 module.exports = merge({}, baseContent, {
   page: {
