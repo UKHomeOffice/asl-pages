@@ -26,7 +26,6 @@ module.exports = (config) => {
 
   app.get('/', async (req, res, next) => {
     const hbaTokenFromTask = req.task.data.meta.hbaToken;
-    console.log(req.task);
     if (!hbaTokenFromTask) {
       return res.redirect(req.buildRoute('task.read'));
     }
