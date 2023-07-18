@@ -48,10 +48,7 @@ module.exports = (config) => {
         // File parsed by multer from incoming request
         formData.append('file', file.buffer, file.originalname);
 
-        // TODO:
-        // * figure out how to correctly proxy attachment => localhost:8092
         // * once uploaded, attach to project/project version or task
-        // * replay attachment on inspection
         try {
           const { data } = await axios.post(config.attachments, formData, {
             headers: { ...formData.getHeaders() }
