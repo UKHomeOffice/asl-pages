@@ -7,7 +7,7 @@ module.exports = (config) => {
   const app = Router({ mergeParams: true });
 
   app.get('/', async (req, res, next) => {
-    const { hbaToken, hbaFilename} = req.task.data.meta;
+    const { hbaToken, hbaFilename } = req.task.data.meta;
     if (hbaToken && hbaFilename) {
       res.locals.static.hba = {
         hbaToken,
