@@ -495,7 +495,9 @@ module.exports = () => {
     const model = get(req.task, 'data.model');
     const action = get(req.task, 'data.action');
 
-    if (model === 'project' && action === 'grant') {
+    const { status } = req.form.values;
+
+    if (model === 'project' && action === 'grant' && status === 'resolved') {
       return res.redirect(req.buildRoute('task.read.uploadHba'));
     }
 
