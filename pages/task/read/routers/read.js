@@ -490,8 +490,6 @@ module.exports = () => {
   });
 
   app.post('/', (req, res, next) => {
-    // TODO:
-    // * check for uploaded HBA
     const model = get(req.task, 'data.model');
     const action = get(req.task, 'data.action');
 
