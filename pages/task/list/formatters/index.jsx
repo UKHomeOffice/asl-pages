@@ -17,9 +17,9 @@ const DeadlineMessage = ({ deadline }) => {
   const formattedDeadline = format(deadline, dateFormat.medium);
 
   if (isSameDay(deadline, today)) {
-    return <span title={formattedDeadline}>Due today</span>;
+    return <span title={formattedDeadline}><Snippet>deadline.due</Snippet></span>;
   } else if (isBefore(deadline, today)) {
-    return <span title={formattedDeadline}>Overdue</span>;
+    return <span title={formattedDeadline}><Snippet>deadline.overdue</Snippet></span>;
   } else {
     return <span>{formattedDeadline}</span>;
   }
@@ -44,7 +44,7 @@ const Deadline = ({ task }) => {
       <DeadlineMessage deadline={activeDeadline} />
       {
         activeDeadline === statutoryDate &&
-          <Fragment><br/><span>(statutory)</span></Fragment>
+        <Fragment><br/><span><Snippet>deadline.statutory</Snippet></span></Fragment>
       }
     </span>
   );

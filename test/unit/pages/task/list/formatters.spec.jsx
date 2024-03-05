@@ -1,8 +1,13 @@
 import MockDate from 'mockdate';
-import { afterEach, describe, expect, test } from '@jest/globals';
+import { afterEach, describe, expect, jest, test } from '@jest/globals';
 import { render } from 'enzyme';
+import { MockSnippet } from '../../../../util/mock-snippet';
 
 import formatters from '../../../../../pages/task/list/formatters/index';
+
+jest.mock('@ukhomeoffice/asl-components', () => ({
+  Snippet: MockSnippet
+}));
 
 const RENDERED_DEADLINE = '8 Sep 2023';
 const RAW_DEADLINE = '2023-09-08 17:00:00';
@@ -42,7 +47,8 @@ describe('Due and overdue tasks display deadlines based on the calendar day', ()
         deadline: RAW_DEADLINE,
         now: '2023-08-29 08:00:01',
         expectedText: RENDERED_DEADLINE,
-        urgent: false }
+        urgent: false
+      }
     );
   });
 
@@ -62,7 +68,7 @@ describe('Due and overdue tasks display deadlines based on the calendar day', ()
         {
           deadline: RAW_DEADLINE,
           now: '2023-09-08 08:00:01',
-          expectedText: 'Due today',
+          expectedText: 'Snippet: deadline.due',
           expectedTitle: RENDERED_DEADLINE
         }
       );
@@ -73,7 +79,7 @@ describe('Due and overdue tasks display deadlines based on the calendar day', ()
         {
           deadline: '2023-09-08 08:00:00',
           now: '2023-09-08 17:00:01',
-          expectedText: 'Due today',
+          expectedText: 'Snippet: deadline.due',
           expectedTitle: RENDERED_DEADLINE
         }
       );
@@ -85,7 +91,7 @@ describe('Due and overdue tasks display deadlines based on the calendar day', ()
       {
         deadline: RAW_DEADLINE,
         now: '2023-09-09 00:00:01',
-        expectedText: 'Overdue',
+        expectedText: 'Snippet: deadline.overdue',
         expectedTitle: RENDERED_DEADLINE
       }
     );
