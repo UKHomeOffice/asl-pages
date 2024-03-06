@@ -39,7 +39,7 @@
     "classnames": "^2.2.5",
     "csrf": "^3.0.6",
     "csv-stringify": "^5.3.6",
-    "date-fns": "^1.29.0",
+    "date-fns": "^3.3.1",
     "deep-diff": "^1.0.2",
     "diff": "^5.0.0",
     "enzyme": "^3.11.0",
