@@ -1,16 +1,26 @@
+import React from 'react';
 import MockDate from 'mockdate';
-import { afterEach, describe, expect, jest, test } from '@jest/globals';
+import { afterEach, describe, expect, test } from '@jest/globals';
 import { render } from 'enzyme';
-import { MockSnippet } from '../../../../util/mock-snippet';
 
 import formatters from '../../../../../pages/task/list/formatters/index';
-
-jest.mock('@ukhomeoffice/asl-components', () => ({
-  Snippet: MockSnippet
-}));
+import { MockReduxProvider } from '../../../../util/mock-redux';
 
 const RENDERED_DEADLINE = '8 Sep 2023';
 const RAW_DEADLINE = '2023-09-08 17:00:00';
+
+const REDUX_STATE = {
+  static: {
+    content: {
+      deadline: {
+        none: 'No deadline',
+        statutory: '(statutory)',
+        due: 'Due today',
+        overdue: 'Overdue'
+      }
+    }
+  }
+};
 
 describe('Due and overdue tasks display deadlines based on the calendar day', () => {
   afterEach(() => {
@@ -26,13 +36,15 @@ describe('Due and overdue tasks display deadlines based on the calendar day', ()
     };
 
     // 1st argument is not used by the renderer
-    const component = render(formatters.activeDeadline.format(null, task));
+    const component = render(
+      <MockReduxProvider state={REDUX_STATE}>
+        {formatters.activeDeadline.format(null, task)}
+      </MockReduxProvider>
+    );
 
     const deadlineSpan = component.find(`span${urgent ? '.urgent' : ':not(.urgent)'} > span`);
     expect(deadlineSpan).toHaveLength(1);
-
-    const deadlineText = deadlineSpan[0].children[0].data;
-    expect(deadlineText).toContain(expectedText);
+    expect(deadlineSpan.text()).toContain(expectedText);
 
     if (expectedTitle) {
       const title = deadlineSpan.prop('title');
@@ -68,7 +80,7 @@ describe('Due and overdue tasks display deadlines based on the calendar day', ()
         {
           deadline: RAW_DEADLINE,
           now: '2023-09-08 08:00:01',
-          expectedText: 'Snippet: deadline.due',
+          expectedText: 'Due today',
           expectedTitle: RENDERED_DEADLINE
         }
       );
@@ -79,7 +91,7 @@ describe('Due and overdue tasks display deadlines based on the calendar day', ()
         {
           deadline: '2023-09-08 08:00:00',
           now: '2023-09-08 17:00:01',
-          expectedText: 'Snippet: deadline.due',
+          expectedText: 'Due today',
           expectedTitle: RENDERED_DEADLINE
         }
       );
@@ -91,7 +103,7 @@ describe('Due and overdue tasks display deadlines based on the calendar day', ()
       {
         deadline: RAW_DEADLINE,
         now: '2023-09-09 00:00:01',
-        expectedText: 'Snippet: deadline.overdue',
+        expectedText: 'Overdue',
         expectedTitle: RENDERED_DEADLINE
       }
     );

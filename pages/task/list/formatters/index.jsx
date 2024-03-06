@@ -1,10 +1,7 @@
 import React, { Fragment } from 'react';
 import classnames from 'classnames';
 import get from 'lodash/get';
-import format from 'date-fns/format';
-import isBefore from 'date-fns/is_before';
-import differenceInCalendarDays from 'date-fns/difference_in_calendar_days';
-import isSameDay from 'date-fns/is_same_day';
+import { format, isBefore, differenceInCalendarDays, isSameDay } from 'date-fns';
 import { dateFormat } from '../../../../constants';
 import { Snippet, Link } from '@ukhomeoffice/asl-components';
 import AssignTask from '../components/assign-task';
@@ -29,7 +26,7 @@ const Deadline = ({ task }) => {
   const activeDeadline = task.activeDeadline;
 
   if (!task.withASRU || !activeDeadline) {
-    return <p className="govuk-hint">No deadline</p>;
+    return <p className="govuk-hint"><Snippet>deadline.none</Snippet></p>;
   }
 
   const now = new Date();
