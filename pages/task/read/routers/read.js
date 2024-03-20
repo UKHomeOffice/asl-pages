@@ -495,7 +495,9 @@ module.exports = () => {
 
     const { status } = req.form.values;
 
-    if (model === 'project' && action === 'grant' && status === 'resolved') {
+    console.log({model, action, status});
+
+    if (model === 'project' && ['grant', 'transfer', 'update'].includes(action) && status === 'resolved') {
       return res.redirect(req.buildRoute('task.read.uploadHba'));
     }
 
