@@ -10,8 +10,23 @@ module.exports = merge({}, baseContent, {
     establishment: {
       label: 'Establishment:'
     },
+    currentEstablishment: {
+      label: 'Current establishment:'
+    },
+    proposedEstablishment: {
+      label: 'Proposed establishment:'
+    },
     applicant: {
       label: 'Applicant:'
+    },
+    pplHolder: {
+      label: 'PPL holder:'
+    },
+    currentPPLLicenceHolder: {
+      label: 'Current PPL licence holder:'
+    },
+    proposedPPLLicenceHolder: {
+      label: 'Proposed PPL licence holder:'
     },
     hbaFilename: {
       label: 'Selected HBA file:',

@@ -97,7 +97,7 @@ function CommentForm({ formFields, task, errors, values, comment }) {
         <Link
           page="task.read"
           taskId={task.id}
-          label={<Snippet>actions.change</Snippet>}
+          label={<Snippet>actions.cancel</Snippet>}
         />
       </p>
     </Fragment>

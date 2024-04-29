@@ -5,7 +5,7 @@ import {Snippet} from '@ukhomeoffice/asl-components/src/snippet';
 describe('HBA Upload intro', () => {
 
   const content = {
-    intro: `To {{action}} this licence you must upload the PPL assessment form containing the harm benefit analysis (HBA) for this {{type}}.
+    intro: `To {{action}} the licence you must upload the PPL assessment form containing the harm benefit analysis (HBA) for this {{type}}.
 
   The HBA will be visible to ASRU only.`
   };

@@ -249,7 +249,7 @@ module.exports = {
     },
     hint: {
       application: 'The applicant will need to create a new application to apply for this type of licence in the future.',
-      amendment: 'The applicant will need to create a new amendment to submit these changes again.',
+      amendment: 'The applicant will need to create a new amendment in the future, if required.',
       revocation: 'The applicant will need to create a new revocation request for this licence to be revoked.',
       transfer: 'The applicant will need to create a new transfer request in the future, if required.',
       ra: 'The applicant will need to create a new assessment.'
