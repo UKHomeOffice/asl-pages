@@ -205,5 +205,33 @@ The relevant people have been emailed.`
       before: 'You can ',
       linkText: 'view the history of this request.'
     }
+  },
+  'licence-amended': {
+    panel: {
+      title: 'Licence amended'
+    },
+    whatNext: {
+      body: `This request has been approved.`,
+      internal: 'The relevant people have been emailed.',
+      external: ''
+    },
+    taskLink: {
+      before: 'You can ',
+      linkText: 'view the history of this request.'
+    }
+  },
+  'pil-transfer': {
+    panel: {
+      title: 'Transfer approved'
+    },
+    whatNext: {
+      body: `This request has been approved.`,
+      internal: 'The relevant people have been emailed.',
+      external: ''
+    },
+    taskLink: {
+      before: 'You can ',
+      linkText: 'view the history of this request.'
+    }
   }
 };

@@ -41,6 +41,10 @@ const getTaskLabel = task => {
     case 'project':
       if (action === 'grant-ra') {
         return 'Retrospective assessment';
+      } else if (action === 'transfer') {
+        return 'Project licence transfer';
+      } else if (action === 'amendment') {
+        return 'Project licence amendment';
       }
       return `${upperFirst(model)} ${taskType}`;
 
@@ -95,6 +99,14 @@ const getSuccessType = task => {
 
   if (['discarded-by-applicant', 'discarded-by-asru'].includes(task.status)) {
     return 'discarded';
+  }
+  // testing HBA amendment content change on success
+  if(task?.type === 'amendment' && task?.data?.model === 'establishment') {
+    return 'licence-amended';
+  }
+  // testing HBA PPL transfer content change on success
+  if(task?.type === 'transfer' && task?.data?.model === 'project') {
+    return 'pil-transfer';
   }
 
   return task.status;
