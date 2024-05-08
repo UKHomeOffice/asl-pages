@@ -105,13 +105,13 @@ module.exports = {
       title: 'Approved'
     },
     whatNext: {
-      body: `This request has been approved.`,
+      body: ``,
       internal: 'The relevant people have been emailed.',
       external: ''
     },
     taskLink: {
-      before: 'You can ',
-      linkText: 'view the history of this request.'
+      before: '',
+      linkText: 'View history of application'
     }
   },
   'rejected': {
