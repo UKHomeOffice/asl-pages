@@ -16,6 +16,9 @@ const ConfirmHba = ({ establishment, licenceHolder, hba, task }) => {
   if (isAmendment(action, task.type)) {
     action = 'update';
   }
+  const { data: { meta: { establishment: { to: proposedEstablishmentName } } } } = task;
+
+
   return (
     <WidthContainer>
       <ErrorSummary />
@@ -39,7 +42,7 @@ const ConfirmHba = ({ establishment, licenceHolder, hba, task }) => {
                   <Snippet>fields.proposedEstablishment.label</Snippet>
                 </strong>
                 <br />
-                {establishment.name}
+                {proposedEstablishmentName.name}
               </p>
             </>
             :
