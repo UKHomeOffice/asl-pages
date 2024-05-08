@@ -24,27 +24,62 @@ const ConfirmHba = ({ establishment, licenceHolder, hba, task }) => {
           title={<Snippet>title</Snippet>}
           subtitle={<Snippet>{`tasks.${task.data.model}.${action}`}</Snippet>}
         />
-        <p>
-          <strong>
-            <Snippet>fields.establishment.label</Snippet>
-          </strong>
-          <br />
-          {establishment.name}
-        </p>
-        <p>
-          <strong>
-            <Snippet>fields.applicant.label</Snippet>
-          </strong>
-          <br />
-          {task.data.profile.name}
-        </p>
-        <p>
-          <strong>
-            <Snippet>fields.proposedApplicant.label</Snippet>
-          </strong>
-          <br />
-          {licenceHolder.name}
-        </p>
+        {
+          uploadType === 'transfer' ?
+            <>
+              <p>
+                <strong>
+                  <Snippet>fields.currentEstablishment.label</Snippet>
+                </strong>
+                <br />
+                {establishment.name}
+              </p>
+              <p>
+                <strong>
+                  <Snippet>fields.proposedEstablishment.label</Snippet>
+                </strong>
+                <br />
+                {establishment.name}
+              </p>
+            </>
+            :
+            <p>
+              <strong>
+                <Snippet>fields.establishment.label</Snippet>
+              </strong>
+              <br />
+              {establishment.name}
+            </p>
+        }
+        {
+          uploadType === 'amendment' ?
+            <>
+              <p>
+                <strong>
+                  <Snippet>fields.applicant.label</Snippet>
+                </strong>
+                <br />
+                {task.data.profile.name}
+              </p>
+              <p>
+                <strong>
+                  <Snippet>fields.proposedApplicant.label</Snippet>
+                </strong>
+                <br />
+                {licenceHolder.name}
+              </p>
+            </>
+            :
+            <p>
+              <strong>
+                <Snippet>fields.applicant.label</Snippet>
+              </strong>
+              <br />
+              {task.data.profile.name}
+            </p>
+
+        }
+
         <p>
           <strong>
             <Snippet>fields.hbaFilename.label</Snippet>
