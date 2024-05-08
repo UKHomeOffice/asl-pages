@@ -43,7 +43,7 @@ const getTaskLabel = task => {
         return 'Retrospective assessment';
       } else if (action === 'transfer') {
         return 'Project licence transfer';
-      } else if (action === 'amendment') {
+      } else if (action === 'update') {
         return 'Project licence amendment';
       }
       return `${upperFirst(model)} ${taskType}`;
@@ -100,11 +100,11 @@ const getSuccessType = task => {
   if (['discarded-by-applicant', 'discarded-by-asru'].includes(task.status)) {
     return 'discarded';
   }
-  // testing HBA amendment content change on success
-  if(task?.type === 'amendment' && task?.data?.model === 'establishment') {
+  // HBA amendment licence holder content change on success
+  if(task?.type === 'amendment' && task?.data?.model === 'project') {
     return 'licence-amended';
   }
-  // testing HBA PPL transfer content change on success
+  // HBA PPL transfer establishment content change on success
   if(task?.type === 'transfer' && task?.data?.model === 'project') {
     return 'pil-transfer';
   }
