@@ -27,8 +27,8 @@ const ConfirmHba = ({ establishment, licenceHolder, hba, task }) => {
           subtitle={<Snippet>{`tasks.${task.data.model}.${action}`}</Snippet>}
         />
         {
-          uploadType === 'transfer' ?
-            <>
+          uploadType === 'transfer'
+            ? <>
               <p>
                 <strong>
                   <Snippet>fields.currentEstablishment.label</Snippet>
@@ -44,8 +44,7 @@ const ConfirmHba = ({ establishment, licenceHolder, hba, task }) => {
                 {proposedEstablishmentName.name}
               </p>
             </>
-            :
-            <p>
+            : <p>
               <strong>
                 <Snippet>fields.establishment.label</Snippet>
               </strong>
@@ -54,8 +53,8 @@ const ConfirmHba = ({ establishment, licenceHolder, hba, task }) => {
             </p>
         }
         {
-          uploadType === 'amendment' ?
-            <>
+          uploadType === 'amendment'
+            ? <>
               <p>
                 <strong>
                   <Snippet>fields.applicant.label</Snippet>
@@ -71,8 +70,7 @@ const ConfirmHba = ({ establishment, licenceHolder, hba, task }) => {
                 {licenceHolder.name}
               </p>
             </>
-            :
-            <p>
+            : <p>
               <strong>
                 <Snippet>fields.applicant.label</Snippet>
               </strong>
@@ -98,8 +96,8 @@ const ConfirmHba = ({ establishment, licenceHolder, hba, task }) => {
 };
 
 const mapStateToProps = ({
-                           static: { task, establishment, licenceHolder, hba }
-                         }) => ({
+  static: { task, establishment, licenceHolder, hba }
+}) => ({
   task,
   establishment,
   licenceHolder,

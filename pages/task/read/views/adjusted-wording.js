@@ -7,7 +7,7 @@ const getTypeAdjustedWording = (action, type) => {
 };
 
 const isAmendment = (action, type) => {
-  return ['update', 'grant'].includes(action)  && type === 'amendment';
+  return ['update', 'grant'].includes(action) && type === 'amendment';
 };
 
 module.exports = {

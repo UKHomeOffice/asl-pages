@@ -23,11 +23,10 @@ function ProjectTitle({ project, establishment }) {
 function ProfileLink({ profile, establishment, type }) {
   const { isAsru } = useSelector(state => state.static);
   const label = `${profile.firstName} ${profile.lastName}`;
-  const licenseHolderLabel = action === 'amendment' ? 'profileLink.amendment' : `profileLink.${type}`;
 
   return (
     <Fragment>
-      <dt><Snippet>{licenseHolderLabel}</Snippet></dt>
+      <dt><Snippet>{`profileLink.${type}`}</Snippet></dt>
       <dd>
         { (type === 'global' || isAsru)
           ? <Link page="globalProfile" profileId={profile.id} label={label} />
@@ -109,7 +108,8 @@ function ProjectDetails({ task }) {
   const version = useSelector(state => state.static.version);
   const establishment = useSelector(state => state.static.establishment) || task.data.establishment;
   const isApplication = task.type === 'application';
-  const profileType = isApplication ? 'applicant' : 'licenceHolder';
+  const isAmendment = task.type === 'amendment';
+  const profileType = isApplication ? 'applicant' : isAmendment ? 'amendment' : 'licenceHolder';
 
   const profile = isApplication
     ? project.licenceHolder
@@ -118,7 +118,7 @@ function ProjectDetails({ task }) {
   return (
     <dl className="inline-wide">
       <ProjectTitle project={project} establishment={establishment} />
-      <ProfileLink profile={profile} establishment={establishment} type={profileType} action={taskAction} />
+      <ProfileLink profile={profile} establishment={establishment} type={profileType} />
       <LicenceNumber>{project.licenceNumber}</LicenceNumber>
       <EstablishmentLink establishment={establishment} />
       { task.data.model === 'rop' && <ROPYear task={task} /> }
