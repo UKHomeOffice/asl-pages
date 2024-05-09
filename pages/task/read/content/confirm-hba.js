@@ -34,8 +34,10 @@ module.exports = merge({}, baseContent, {
       }
     }
   },
-  warning:
-    'Once confirmed, this HBA file in ASPeL (not SharePoint) will be the single point of reference for this {{type}}, for future assessment and audit purposes.',
+  warning: {
+    transfer: 'Once confirmed, this HBA file in ASPeL (not SharePoint) will be the single point of reference for this transfer request, for future assessment and audit purposes.',
+    amendment: 'Once confirmed, this HBA file in ASPeL (not SharePoint) will be the single point of reference for this amendment, for future assessment and audit purposes.'
+  },
   errors: {
     confirmHba: {
       required: 'Select an option',

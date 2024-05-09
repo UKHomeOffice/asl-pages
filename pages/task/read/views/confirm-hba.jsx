@@ -16,8 +16,7 @@ const ConfirmHba = ({ establishment, licenceHolder, hba, task }) => {
   if (isAmendment(action, task.type)) {
     action = 'update';
   }
-  const { data: { meta: { establishment: { to: proposedEstablishmentName } } } } = task;
-
+  const proposedEstablishmentName = task?.data?.meta?.establishment?.to ?? '';
 
   return (
     <WidthContainer>
@@ -91,7 +90,7 @@ const ConfirmHba = ({ establishment, licenceHolder, hba, task }) => {
           <a href={`/attachment/${hba.hbaToken}`} download={`${hba.hbaFilename}`}>{hba.hbaFilename}</a>{' '}
         </p>
         <Warning>
-          <Snippet type={uploadType}>warning</Snippet>
+          <Snippet>{`warning.${uploadType}`}</Snippet>
         </Warning>
       </Form>
     </WidthContainer>
