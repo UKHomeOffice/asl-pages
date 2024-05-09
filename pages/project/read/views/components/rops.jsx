@@ -2,14 +2,9 @@ import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { Snippet, Link } from '@ukhomeoffice/asl-components';
 import { Button } from '@ukhomeoffice/react-components';
-import format from 'date-fns/format';
+import { format, getYear, isBefore, isAfter, endOfDay, addDays, subMilliseconds } from 'date-fns';
 import { dateFormat } from '../../../../../constants';
-import getYear from 'date-fns/get_year';
-import isBefore from 'date-fns/is_before';
-import isAfter from 'date-fns/is_after';
-import endOfDay from 'date-fns/end_of_day';
-import addDays from 'date-fns/add_days';
-import subMilliseconds from 'date-fns/sub_milliseconds';
+import { formatDate } from '../../../../../lib/utils';
 import partition from 'lodash/partition';
 import pick from 'lodash/pick';
 import Subsection from '../components/subsection';
@@ -78,10 +73,10 @@ export function Rop({ rop, project, active, url }) {
     <Fragment>
       <h3>Return of procedures for {rop.year}</h3>
       <Snippet
-        submitted={format(rop.submittedDate, dateFormat.long)}
+        submitted={formatDate(rop.submittedDate, dateFormat.long)}
         endDate={endDate}
         year={rop.year}
-        deadline={format(ropsDeadline, dateFormat.long)}
+        deadline={formatDate(ropsDeadline, dateFormat.long)}
       >{ rop.status === 'submitted' ? 'rops.submitted' : 'rops.incomplete' }</Snippet>
     </Fragment>
 
