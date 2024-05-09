@@ -20,7 +20,7 @@ describe('HBA Upload intro', () => {
     const paragraphs = wrapper.find('p');
     expect(paragraphs.length).toEqual(2);
     expect(paragraphs[0].children[0].data).toEqual(
-      'To amend this licence you must upload the PPL assessment form containing the harm benefit analysis (HBA) for this amendment.');
+      'To amend the licence you must upload the PPL assessment form containing the harm benefit analysis (HBA) for this amendment.');
     expect(paragraphs[1].children[0].data).toEqual(
       'The HBA will be visible to ASRU only.');
   });
@@ -35,7 +35,7 @@ describe('HBA Upload intro', () => {
     const paragraphs = wrapper.find('p');
     expect(paragraphs.length).toEqual(2);
     expect(paragraphs[0].children[0].data).toEqual(
-      'To grant this licence you must upload the PPL assessment form containing the harm benefit analysis (HBA) for this application.');
+      'To grant the licence you must upload the PPL assessment form containing the harm benefit analysis (HBA) for this application.');
     expect(paragraphs[1].children[0].data).toEqual(
       'The HBA will be visible to ASRU only.');
   });
