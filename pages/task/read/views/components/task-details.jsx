@@ -24,7 +24,7 @@ function ProfileLink({ profile, establishment, type }) {
   const { isAsru } = useSelector(state => state.static);
   const label = `${profile.firstName} ${profile.lastName}`;
   const licenseHolderLabel = action === 'amendment' ? 'profileLink.amendment' : `profileLink.${type}`;
-  
+
   return (
     <Fragment>
       <dt><Snippet>{licenseHolderLabel}</Snippet></dt>
@@ -120,7 +120,7 @@ function ProjectDetails({ task }) {
   return (
     <dl className="inline-wide">
       <ProjectTitle project={project} establishment={establishment} />
-      <ProfileLink profile={profile} establishment={establishment} type={profileType} />
+      <ProfileLink profile={profile} establishment={establishment} type={profileType} action={taskAction} />
       <LicenceNumber>{project.licenceNumber}</LicenceNumber>
       { !isTransfer ? <EstablishmentLink establishment={establishment} /> : null }
       { isRop && <ROPYear task={task} /> }
