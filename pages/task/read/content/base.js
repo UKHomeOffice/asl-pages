@@ -109,6 +109,7 @@ module.exports = {
     global: 'Name',
     applicant: 'Applicant',
     licenceHolder: 'Licence holder',
+    amendment: 'Current licence holder',
     pelh: 'Establishment licence holder',
     nprc: 'Named person responsible for compliance'
   }
