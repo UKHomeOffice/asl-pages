@@ -21,7 +21,6 @@ module.exports = (config) => {
     return actionMessage;
   }
 
-
   app.get('/', async (req, res, next) => {
     const { hbaToken, hbaFilename } = req.task.data.meta;
     if (hbaToken && hbaFilename) {
@@ -43,7 +42,7 @@ module.exports = (config) => {
       return res.redirect(req.buildRoute('task.read'));
     }
 
-    // content overiden for radio buttons. 
+    // content overiden for radio buttons.
     schema.confirmHba.options.forEach(option => {
       if (option.value === 'yes') {
         option.label = confirmHbaSchema(req.task.type);
@@ -53,7 +52,7 @@ module.exports = (config) => {
     next();
   });
 
-  // this middleware is used to create radio buttons... 
+  // this middleware is used to create radio buttons...
   app.use(
     form({
       schema,
