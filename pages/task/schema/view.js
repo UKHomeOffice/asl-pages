@@ -40,8 +40,6 @@ module.exports = task => {
       };
     });
 
-  console.log(options);
-
   return {
     status: {
       inputType: 'radioGroup',
