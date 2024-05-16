@@ -57,7 +57,7 @@ const ConfirmHba = ({ establishment, licenceHolder, hba, task }) => {
             ? <>
               <p>
                 <strong>
-                  <Snippet>fields.pplHolder.label</Snippet>
+                  <Snippet>fields.currentPPLHolder.label</Snippet>
                 </strong>
                 <br />
                 {task.data.profile.name}
