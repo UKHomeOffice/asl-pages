@@ -33,7 +33,14 @@ const UploadHba = ({ hba, task }) => {
             : <Snippet action={uploadAction} type={uploadType}>intro</Snippet>
           }
         </p>
-        {hba && (
+        {
+          uploadType === 'transfer' ?
+            <p>
+              <strong>
+                <Snippet>transferIntroBody.upload.label</Snippet>
+              </strong>
+            </p>
+            : hba && (
           <p>
             <strong>
               <Snippet>fields.hba.label</Snippet>
