@@ -74,18 +74,6 @@ const getSuccessType = task => {
     return 'rop-submitted';
   }
 
-  if (task.status === 'recalled-by-applicant') {
-    return 'recalled-by-applicant';
-  }
-
-  if (task.status === 'returned-to-applicant') {
-    return 'returned-to-applicant';
-  }
-
-  if (task.status === 'rejected') {
-    return 'rejected';
-  }
-
   if (latestActivity && latestActivity.action === 'endorsed') {
     if (latestActivity.eventName === 'status:new:endorsed') {
       return 'submitted'; // ppl auto-endorsed by admin, show as submitted
