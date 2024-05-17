@@ -16,7 +16,8 @@ const ConfirmHba = ({ establishment, licenceHolder, hba, task }) => {
   if (isAmendment(action, task.type)) {
     action = 'update';
   }
-  const proposedEstablishmentName = task?.data?.meta?.establishment?.to ?? '';
+  const proposedEstablishment = task?.data?.meta?.establishment?.to ?? '';
+  const currentEstablishment = task?.data?.meta?.establishment?.from ?? '';
 
   return (
     <WidthContainer>
@@ -34,14 +35,14 @@ const ConfirmHba = ({ establishment, licenceHolder, hba, task }) => {
                   <Snippet>fields.currentEstablishment.label</Snippet>
                 </strong>
                 <br />
-                {establishment.name}
+                {currentEstablishment.name}
               </p>
               <p>
                 <strong>
                   <Snippet>fields.proposedEstablishment.label</Snippet>
                 </strong>
                 <br />
-                {proposedEstablishmentName.name}
+                {proposedEstablishment.name}
               </p>
             </>
             : <p>
@@ -49,7 +50,7 @@ const ConfirmHba = ({ establishment, licenceHolder, hba, task }) => {
                 <Snippet>fields.establishment.label</Snippet>
               </strong>
               <br />
-              {establishment.name}
+              {currentEstablishment.name}
             </p>
         }
         {

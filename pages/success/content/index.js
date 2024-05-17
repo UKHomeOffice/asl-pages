@@ -211,7 +211,7 @@ The relevant people have been emailed.`
       title: 'Licence amended'
     },
     whatNext: {
-      body: `This request has been approved.`,
+      body: '',
       internal: 'The relevant people have been emailed.',
       external: ''
     },
