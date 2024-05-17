@@ -72,7 +72,7 @@ const ConfirmHba = ({ establishment, licenceHolder, hba, task }) => {
             </>
             : <p>
               <strong>
-                <Snippet>fields.applicant.label</Snippet>
+                <Snippet>fields.pplHolder.label</Snippet>
               </strong>
               <br />
               {task.data.profile.name}
