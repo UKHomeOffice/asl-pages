@@ -34,21 +34,21 @@ const UploadHba = ({ hba, task }) => {
           }
         </p>
         {
-          uploadType === 'transfer' ?
-            <p>
+          uploadType === 'transfer'
+            ? <p>
               <strong>
                 <Snippet>transferIntroBody.upload.label</Snippet>
               </strong>
             </p>
             : hba && (
-          <p>
-            <strong>
-              <Snippet>fields.hba.label</Snippet>
-            </strong>
-            <br />
-            <a href={`/attachment/${hba.hbaToken}`} download={`${hba.hbaFilename}`}>{hba.hbaFilename}</a>{' '}
-          </p>
-        )}
+              <p>
+                <strong>
+                  <Snippet>fields.hba.label</Snippet>
+                </strong>
+                <br />
+                <a href={`/attachment/${hba.hbaToken}`} download={`${hba.hbaFilename}`}>{hba.hbaFilename}</a>{' '}
+              </p>
+            )}
       </Form>
     </WidthContainer>
   );
