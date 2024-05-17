@@ -17,7 +17,7 @@ const ConfirmHba = ({ establishment, licenceHolder, hba, task }) => {
     action = 'update';
   }
   const proposedEstablishment = task?.data?.meta?.establishment?.to ?? '';
-  const currentEstablishment = task?.data?.meta?.establishment?.from ?? '';
+  const currentEstablishment = task?.data?.meta?.establishment?.from ??  establishment.name;
 
   return (
     <WidthContainer>
@@ -28,7 +28,7 @@ const ConfirmHba = ({ establishment, licenceHolder, hba, task }) => {
           subtitle={<Snippet>{`tasks.${task.data.model}.${action}`}</Snippet>}
         />
         {
-          uploadType === 'transfer'
+          uploadType === 'transfer' && proposedEstablishment
             ? <>
               <p>
                 <strong>
@@ -54,7 +54,7 @@ const ConfirmHba = ({ establishment, licenceHolder, hba, task }) => {
             </p>
         }
         {
-          uploadType === 'amendment'
+          uploadType === 'amendment'  && proposedApplicant
             ? <>
               <p>
                 <strong>
