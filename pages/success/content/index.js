@@ -217,7 +217,7 @@ The relevant people have been emailed.`
     },
     taskLink: {
       before: '',
-      linkText: 'View the history of this request.'
+      linkText: 'View history of application'
     }
   },
   'pil-transfer': {
@@ -225,13 +225,13 @@ The relevant people have been emailed.`
       title: 'Transfer approved'
     },
     whatNext: {
-      body: `This request has been approved.`,
+      body: '',
       internal: 'The relevant people have been emailed.',
       external: ''
     },
     taskLink: {
       before: '',
-      linkText: 'View the history of this request.'
+      linkText: 'View history of application'
     }
   }
 };
