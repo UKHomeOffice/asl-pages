@@ -5,7 +5,7 @@ import {
   Header,
   Form,
   WidthContainer,
-  ErrorSummary
+  ErrorSummary, Link
 } from '@ukhomeoffice/asl-components';
 import {
   getActionAdjustedWording,
@@ -23,7 +23,14 @@ const UploadHba = ({ hba, task }) => {
   return (
     <WidthContainer>
       <ErrorSummary />
-      <Form>
+      <Form
+        cancelLink={
+          <Link
+            page="task.read"
+            taskId={task.id}
+            label={<Snippet>actions.cancel</Snippet>}
+          />
+        }>
         <Header
           title={<Snippet>title</Snippet>}
           subtitle={<Snippet>{`tasks.${task.data.model}.${action}`}</Snippet>}
