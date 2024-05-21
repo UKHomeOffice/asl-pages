@@ -122,8 +122,8 @@ module.exports = {
       body: 'The relevant people have been emailed.'
     },
     taskLink: {
-      before: 'You can ',
-      linkText: 'view the history of this request.'
+      before: '',
+      linkText: 'View history of application'
     }
   },
   'revoked': {
