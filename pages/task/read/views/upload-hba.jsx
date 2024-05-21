@@ -7,16 +7,11 @@ import {
   WidthContainer,
   ErrorSummary, Link
 } from '@ukhomeoffice/asl-components';
-import {
-  getActionAdjustedWording,
-  getTypeAdjustedWording,
-  isAmendment
-} from './adjusted-wording';
+import { isAmendment } from './adjusted-wording';
+import { getFromContentTemplate } from '../../../../lib/utils';
 
-const UploadHba = ({ hba, task }) => {
+const UploadHba = ({ hba, task, content }) => {
   let action = task.data.action;
-  const uploadAction = getActionAdjustedWording(action, task.type);
-  const uploadType = getTypeAdjustedWording(action, task.type);
   if (isAmendment(action, task.type)) {
     action = 'update';
   }
@@ -30,15 +25,33 @@ const UploadHba = ({ hba, task }) => {
             taskId={task.id}
             label={<Snippet>actions.cancel</Snippet>}
           />
-        }>
+        }
+        formatters={{
+          upload: {
+            renderContext: {
+              actionContent: getFromContentTemplate(
+                content,
+                [`fields.upload.actionContent.${action}`, 'fields.upload.actionContent.default'],
+                {action}
+              )
+            }
+          }
+        }}
+      >
         <Header
           title={<Snippet>title</Snippet>}
           subtitle={<Snippet>{`tasks.${task.data.model}.${action}`}</Snippet>}
         />
         <p>
-          { uploadType === 'transfer' ? <Snippet>transferIntro</Snippet>
-            : <Snippet action={uploadAction} type={uploadType}>intro</Snippet>
-          }
+          <Snippet actionContent={
+            getFromContentTemplate(
+              content,
+              [`intro.actionContent.${action}`, 'intro.actionContent.default'],
+              {action}
+            )
+          }>
+            intro.template
+          </Snippet>
         </p>
         {hba && (
           <p>
@@ -54,11 +67,12 @@ const UploadHba = ({ hba, task }) => {
   );
 };
 
-const mapStateToProps = ({ static: { task, values, url, hba } }) => ({
+const mapStateToProps = ({ static: { task, values, url, hba, content } }) => ({
   task,
   values,
   url,
-  hba
+  hba,
+  content
 });
 
 export default connect(mapStateToProps)(UploadHba);
