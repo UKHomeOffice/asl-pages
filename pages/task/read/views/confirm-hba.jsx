@@ -82,7 +82,7 @@ const ConfirmHba = ({ establishment, licenceHolder: proposedLicenceHolder, hba, 
             </>
             : <p>
               <strong>
-                <Snippet>fields.pplHolder.label</Snippet>
+                <Snippet>{`fields.${action === 'grant' ? 'applicant' : 'pplHolder'}.label`}</Snippet>
               </strong>
               <br />
               {currentLicenceHolder.name}
