@@ -41,6 +41,7 @@ module.exports = merge({}, baseContent, {
     }
   },
   warning: {
+    application: 'Once confirmed, this HBA file in ASPeL (not SharePoint) will be the single point of reference for this application, for future assessment and audit purposes.',
     transfer: 'Once confirmed, this HBA file in ASPeL (not SharePoint) will be the single point of reference for this transfer request, for future assessment and audit purposes.',
     amendment: 'Once confirmed, this HBA file in ASPeL (not SharePoint) will be the single point of reference for this amendment, for future assessment and audit purposes.'
   },
