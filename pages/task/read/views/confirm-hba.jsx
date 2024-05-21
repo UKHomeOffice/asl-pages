@@ -10,7 +10,7 @@ import {
 import { Warning } from '../../../common/components/warning';
 import { getTypeAdjustedWording, isAmendment } from './adjusted-wording';
 
-const ConfirmHba = ({ establishment, licenceHolder, hba, task }) => {
+const ConfirmHba = ({ establishment, licenceHolder: proposedLicenceHolder, hba, task }) => {
   let action = task.data.action;
   const uploadType = getTypeAdjustedWording(action, task.type);
   if (isAmendment(action, task.type)) {
@@ -18,6 +18,8 @@ const ConfirmHba = ({ establishment, licenceHolder, hba, task }) => {
   }
   const proposedEstablishment = task?.data?.meta?.establishment?.to || null;
   const currentEstablishment = task?.data?.meta?.establishment?.from || null;
+
+  const currentLicenceHolder = task.data.profile;
 
   return (
     <WidthContainer>
@@ -61,21 +63,21 @@ const ConfirmHba = ({ establishment, licenceHolder, hba, task }) => {
             </p>
         }
         {
-          (uploadType === 'amendment' && licenceHolder.name)
+          (uploadType === 'amendment' && proposedLicenceHolder && proposedLicenceHolder.id !== currentLicenceHolder.id)
             ? <>
               <p>
                 <strong>
                   <Snippet>fields.currentPPLHolder.label</Snippet>
                 </strong>
                 <br />
-                {task.data.profile.name}
+                {currentLicenceHolder.name}
               </p>
               <p>
                 <strong>
                   <Snippet>fields.proposedPPLHolder.label</Snippet>
                 </strong>
                 <br />
-                {licenceHolder.name}
+                {proposedLicenceHolder.name}
               </p>
             </>
             : <p>
@@ -83,7 +85,7 @@ const ConfirmHba = ({ establishment, licenceHolder, hba, task }) => {
                 <Snippet>fields.pplHolder.label</Snippet>
               </strong>
               <br />
-              {task.data.profile.name}
+              {currentLicenceHolder.name}
             </p>
 
         }
