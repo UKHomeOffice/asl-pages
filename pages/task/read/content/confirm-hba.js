@@ -35,7 +35,11 @@ module.exports = merge({}, baseContent, {
     confirmHba: {
       label: 'What do you want to do?',
       options: {
-        yes: 'Confirm and continue to amend licence',
+        yes: {
+          application: 'Confirm and continue to grant licence',
+          transfer: 'Confirm and continue to approve transfer',
+          amendment: 'Confirm and continue to amend licence'
+        },
         no: 'Discard selected file and choose another'
       }
     }
