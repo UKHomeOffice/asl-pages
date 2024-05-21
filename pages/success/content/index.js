@@ -135,8 +135,8 @@ module.exports = {
       internal: 'The relevant people have been emailed.'
     },
     taskLink: {
-      before: 'You can ',
-      linkText: 'view the history of this request.'
+      before: '',
+      linkText: 'View history of application'
     }
   },
   'refused': {
@@ -147,8 +147,8 @@ module.exports = {
       body: `The applicant and establishment admins have been emailed.`
     },
     taskLink: {
-      before: 'You can ',
-      linkText: 'view the history of this request.'
+      before: '',
+      linkText: 'View history of application'
     }
   },
   'suspended': {
