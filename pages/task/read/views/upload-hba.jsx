@@ -7,11 +7,15 @@ import {
   WidthContainer,
   ErrorSummary, Link
 } from '@ukhomeoffice/asl-components';
-import { isAmendment } from './adjusted-wording';
+import {
+  getTypeAdjustedWording,
+  isAmendment
+} from './adjusted-wording';
 import { getFromContentTemplate } from '../../../../lib/utils';
 
 const UploadHba = ({ hba, task, content }) => {
   let action = task.data.action;
+  const uploadType = getTypeAdjustedWording(action, task.type);
   if (isAmendment(action, task.type)) {
     action = 'update';
   }
@@ -43,13 +47,17 @@ const UploadHba = ({ hba, task, content }) => {
           subtitle={<Snippet>{`tasks.${task.data.model}.${action}`}</Snippet>}
         />
         <p>
-          <Snippet actionContent={
-            getFromContentTemplate(
-              content,
-              [`intro.actionContent.${action}`, 'intro.actionContent.default'],
-              {action}
-            )
-          }>
+          <Snippet
+            actionContent={
+              getFromContentTemplate(
+                content,
+                [`intro.actionContent.${action}`, 'intro.actionContent.default'],
+                {action}
+              )
+
+            }
+            type={uploadType}
+          >
             intro.template
           </Snippet>
         </p>
