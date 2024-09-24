@@ -304,7 +304,17 @@ const getPreviousProtocols = (firstVersion, previousVersion, grantedVersion) => 
   const previous = get(previousVersion, 'data.protocols', []).filter(Boolean).filter(p => !p.deleted).map(p => p.id);
   const granted = get(grantedVersion, 'data.protocols', []).filter(Boolean).map(p => p.id);
   const showDeleted = uniq([ ...previous, ...granted ]);
-  let allSteps = get(previousVersion, 'data.protocols', []).filter(Boolean).filter(p => !p.deleted).map(p => p.steps);
+  function extractActiveSteps(version) {
+    return get(version, 'data.protocols', [])
+      .filter(Boolean)
+      .filter(p => !p.deleted)
+      .map(p => p.steps)
+      .map((element) => element && Array.isArray(element) ? element.filter(s => !s.deleted) : element);
+  }
+  
+  const steps = extractActiveSteps(previousVersion);
+  const firstSteps = extractActiveSteps(firstVersion);
+  const grantedSteps = extractActiveSteps(grantedVersion);
   const steps = allSteps.map((element) => element && Array.isArray(element) ? element.filter(s => !s.deleted) : element);
   allSteps = get(firstVersion, 'data.protocols', []).filter(Boolean).filter(p => !p.deleted).map(p => p.steps);
   const firstSteps = allSteps.map((element) => element && Array.isArray(element) ? element.filter(s => !s.deleted) : element);
