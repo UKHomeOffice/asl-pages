@@ -8,7 +8,7 @@ module.exports = merge({}, baseContent, {
     title: {
       required: 'Enter a course title'
     },
-    typeOfCourse: {
+    coursePurpose: {
       required: 'Please select higher education or training'
     },
     startDate: {
