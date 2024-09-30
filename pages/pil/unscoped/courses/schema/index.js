@@ -2,7 +2,7 @@ module.exports = {
   projectTitle: {
     accessor: 'project.title'
   },
-  typeOfCourse: {
+  coursePurpose: {
     inputType: 'radioGroup',
     options: [{
       value: 'higherEducation',

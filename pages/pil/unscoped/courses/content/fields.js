@@ -3,8 +3,8 @@ module.exports = {
     label: 'Course title',
     hint: 'For your records asfdsag'
   },
-  typeOfCourse: {
-    name: 'typeOfCourse',
+  coursePurpose: {
+    name: 'coursePurpose',
     label: 'Is it a higher education or training course?'
   },
   startDate: {
