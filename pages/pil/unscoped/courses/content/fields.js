@@ -1,11 +1,11 @@
 module.exports = {
   title: {
     label: 'Course title',
-    hint: 'For your records asfdsag'
+    hint: 'For your records'
   },
   coursePurpose: {
     name: 'coursePurpose',
-    label: 'Is it a higher education or training course?'
+    label: 'Course purpose'
   },
   startDate: {
     label: 'Course start date',
