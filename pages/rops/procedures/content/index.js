@@ -16,6 +16,10 @@ module.exports = merge({}, { fields, guidance }, {
     add: 'Add procedures'
   },
   fields: {
+    endangered: {
+      'no-ga': 'GAA were not used',
+      'ga-not-harmful': 'GAA without a harmful phenotype were used'
+    },
     ga: {
       options: {
         'no-ga': 'GAA were not used',
