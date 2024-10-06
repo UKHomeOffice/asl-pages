@@ -5,11 +5,11 @@ module.exports = {
   coursePurpose: {
     inputType: 'radioGroup',
     options: [{
-      value: 'Higher education',
+      value: 'higher-education',
       label: 'Higher education',
       hint: 'For example a degree in pharmacology or physiology'
     }, {
-      value: 'Training',
+      value: 'training',
       label: 'Training',
       hint: 'For example to learn a new surgical procedure'
     }],
