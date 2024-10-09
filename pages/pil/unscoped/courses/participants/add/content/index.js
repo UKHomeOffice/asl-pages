@@ -1,5 +1,8 @@
 module.exports = {
-  title: 'Apply for category E licence',
+  title: 'Enter participant details',
+  // hint: 'You are applying for a PIL-E on behalf of this participant. A PIL-E is a personal licence for higher education and training courses.',
+  //TODO: Below not working
+  description: 'You are applying for a PIL-E on behalf of this participant. A PIL-E is a personal licence for higher education and training courses.',
   fields: {
     firstName: {
       label: 'First name'
@@ -14,9 +17,19 @@ module.exports = {
       label: 'Date of birth',
       hint: 'For example, 12 11 1980'
     },
-    trainingNeed: {
-      label: 'Training need',
-      hint: 'Include details about the participant\'s organisation, job title, specialism and grade (for example, trainee doctor or registrar). Explain how their career will benefit from training.'
+    organisation: {
+      label: 'Organisation'
+    },
+    qualificationLevelAndSubject: {
+      label: 'Qualification level and subject',
+      hint: 'For example BSc Pharmacology'
+    },
+    applicantLearning: {
+      label: 'How will the applicant use this learning in future scientific work using living animals',
+      hint: 'Explain how they intent to use it to design, conduct or analyse research.'
+    },
+    otherRoles: {
+      label: 'Other riles (optional)'
     }
   },
   errors: {
