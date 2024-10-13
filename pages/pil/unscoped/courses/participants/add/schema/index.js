@@ -45,7 +45,22 @@ module.exports = {
       'required'
     ]
   },
-  otherRoles: {
+  jobTitle: {
+    inputType: 'inputText',
+    validate: [
+      'required'
+    ]
+  },
+  fieldOfExpertise: {
+    inputType: 'inputText',
+    validate: [
+      'required'
+    ]
+  },
+  applicantTrainingUse: {
+    inputType: 'textarea'
+  },
+  otherNotes: {
     inputType: 'textarea'
   }
 };

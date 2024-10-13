@@ -26,8 +26,19 @@ module.exports = {
       label: 'How will the applicant use this learning in future scientific work using living animals',
       hint: 'Explain how they intent to use it to design, conduct or analyse research.'
     },
-    otherRoles: {
-      label: 'Other riles (optional)'
+    jobTitle: {
+      label: 'Job title, career stage or qualification',
+      hint: 'For example trainee doctor, consultant or registrar'
+    },
+    fieldOfExpertise: {
+      label: 'Field of expertise',
+      hint: 'For example head and neck surgeon'
+    },
+    applicantTrainingUse: {
+      label: 'How will the applicant use this training in their work'
+    },
+    otherNotes: {
+      label: 'Other notes (optional)'
     }
   },
   errors: {
