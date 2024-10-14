@@ -33,6 +33,18 @@ const getSchema = rop => {
       label: 'Animal species',
       toCSVString: formatSpecies
     },
+    endangered: {
+      show: true,
+      sortable: false,
+      label: 'Endangered',
+      toCSVString: formatSpecies
+    },
+    endangeredDetails: {
+      show: true,
+      sortable: false,
+      label: 'Endangered details',
+      toCSVString: formatSpecies
+    },
     reuse: {
       show: true,
       sortable: false,
