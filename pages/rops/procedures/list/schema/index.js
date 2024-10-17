@@ -33,18 +33,6 @@ const getSchema = rop => {
       label: 'Animal species',
       toCSVString: formatSpecies
     },
-    endangered: {
-      show: true,
-      sortable: false,
-      label: 'Endangered',
-      toCSVString: formatSpecies
-    },
-    endangeredDetails: {
-      show: true,
-      sortable: false,
-      label: 'Endangered details',
-      toCSVString: formatSpecies
-    },
     reuse: {
       show: true,
       sortable: false,
@@ -56,6 +44,17 @@ const getSchema = rop => {
       sortable: false,
       label: 'Place of birth',
       toCSVString: radioOption('placesOfBirth')
+    },
+    endangered: {
+      show: true,
+      sortable: false,
+      label: 'Endangered species',
+      toCSVString: yn
+    },
+    endangeredDetails: {
+      show: true,
+      sortable: false,
+      label: 'Details of endangered species'
     },
     nhpsOrigin: {
       show: true,
@@ -156,6 +155,7 @@ const getSchema = rop => {
     schema[key].title = schema[key].label;
   });
 
+  console.log('inside schema.index.js');
   return schema;
 };
 
