@@ -39,13 +39,13 @@ module.exports = {
       'required'
     ]
   },
-  applicantLearning: {
+  applicantLearningUse: {
     inputType: 'textarea',
     validate: [
       'required'
     ]
   },
-  jobTitle: {
+  jobTitleOrQualification: {
     inputType: 'inputText',
     validate: [
       'required'
@@ -57,7 +57,7 @@ module.exports = {
       'required'
     ]
   },
-  applicantTrainingUse: {
+  applicantTrainingUseAtWork: {
     inputType: 'textarea'
   },
   otherNotes: {

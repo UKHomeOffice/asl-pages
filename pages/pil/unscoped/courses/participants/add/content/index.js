@@ -22,11 +22,11 @@ module.exports = {
       label: 'Qualification level and subject',
       hint: 'For example BSc Pharmacology'
     },
-    applicantLearning: {
+    applicantLearningUse: {
       label: 'How will the applicant use this learning in future scientific work using living animals',
       hint: 'Explain how they intent to use it to design, conduct or analyse research.'
     },
-    jobTitle: {
+    jobTitleOrQualification: {
       label: 'Job title, career stage or qualification',
       hint: 'For example trainee doctor, consultant or registrar'
     },
@@ -34,7 +34,7 @@ module.exports = {
       label: 'Field of expertise',
       hint: 'For example head and neck surgeon'
     },
-    applicantTrainingUse: {
+    applicantTrainingUseAtWork: {
       label: 'How will the applicant use this training in their work'
     },
     otherNotes: {

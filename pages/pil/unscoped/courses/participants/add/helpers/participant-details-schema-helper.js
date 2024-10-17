@@ -2,9 +2,9 @@ const { omit } = require('lodash');
 
 function participantDetailsSchemaHelper (schema, trainingCourse) {
   if (trainingCourse.coursePurpose === 'higher-education') {
-    return omit(schema, ['jobTitle', 'fieldOfExpertise', 'applicantTrainingUse']);
+    return omit(schema, ['jobTitleOrQualification', 'fieldOfExpertise', 'applicantTrainingUseAtWork']);
   } else if (trainingCourse.coursePurpose === 'training') {
-    return omit(schema, ['qualificationLevelAndSubject', 'applicantLearning']);
+    return omit(schema, ['qualificationLevelAndSubject', 'applicantLearningUse']);
   } else {
     throw new Error(`Invalid course purpose: ${trainingCourse.coursePurpose}`);
   }
