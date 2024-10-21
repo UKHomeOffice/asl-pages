@@ -28,34 +28,19 @@ module.exports = {
     ]
   },
   organisation: {
-    inputType: 'inputText',
-    validate: [
-      'required'
-    ]
+    inputType: 'inputText'
   },
   qualificationLevelAndSubject: {
-    inputType: 'inputText',
-    validate: [
-      'required'
-    ]
+    inputType: 'inputText'
   },
   applicantLearningUse: {
-    inputType: 'textarea',
-    validate: [
-      'required'
-    ]
+    inputType: 'textarea'
   },
   jobTitleOrQualification: {
-    inputType: 'inputText',
-    validate: [
-      'required'
-    ]
+    inputType: 'inputText'
   },
   fieldOfExpertise: {
-    inputType: 'inputText',
-    validate: [
-      'required'
-    ]
+    inputType: 'inputText'
   },
   applicantTrainingUseAtWork: {
     inputType: 'textarea'
