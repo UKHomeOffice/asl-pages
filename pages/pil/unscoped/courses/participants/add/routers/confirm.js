@@ -13,7 +13,7 @@ module.exports = () => {
     const params = {
       method: 'POST',
       json: {
-        data: pick(values, 'firstName', 'lastName', 'email', 'dob', 'trainingNeed')
+        data: values
       }
     };
 

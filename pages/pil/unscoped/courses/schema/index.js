@@ -2,6 +2,19 @@ module.exports = {
   projectTitle: {
     accessor: 'project.title'
   },
+  coursePurpose: {
+    inputType: 'radioGroup',
+    options: [{
+      value: 'higher-education',
+      label: 'Higher education',
+      hint: 'For example a degree in pharmacology or physiology'
+    }, {
+      value: 'training',
+      label: 'Training',
+      hint: 'For example to learn a new surgical procedure'
+    }],
+    validate: ['required']
+  },
   title: {
     inputType: 'inputText',
     show: true,
