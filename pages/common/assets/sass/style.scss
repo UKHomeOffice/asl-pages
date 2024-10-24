@@ -40,7 +40,7 @@ $hint-colour: #696F73;
 }
 
 .task-decision {
-  border-bottom: 1px solid govuk-colour('grey-2');
+  border-bottom: 1px solid govuk-colour('mid-grey');
   margin-bottom: $govuk-gutter;
   .action {
     float: right;
@@ -216,7 +216,7 @@ form.procedures {
       margin-bottom: $govuk-gutter-half;
 
       &:not(:last-child) {
-        border-bottom: 1px solid govuk-colour('grey-2');
+        border-bottom: 1px solid govuk-colour('mid-grey');
       }
     }
   }
@@ -458,7 +458,7 @@ p.holc {
   dl.model-summary.section-data {
     margin-left: $govuk-gutter-half;
     padding-left: $govuk-gutter-half;
-    border-left: 6px solid govuk-colour('grey-2');
+    border-left: 6px solid govuk-colour('mid-grey');
   }
 }
 
@@ -466,7 +466,7 @@ p.holc {
   margin-top: 2 * $govuk-gutter;
 
   section {
-    border-top: 1px solid govuk-colour('grey-2');
+    border-top: 1px solid govuk-colour('mid-grey');
     padding: $govuk-gutter 0;
   }
 }
@@ -477,7 +477,7 @@ details {
     padding-top: $govuk-gutter;
 
     &.border {
-      border-top: 2px solid govuk-colour('grey-1');
+      border-top: 2px solid govuk-colour('dark-grey');
     }
   }
 
@@ -493,7 +493,7 @@ details {
 
 .establishment-apply {
   section {
-    border-bottom: 1px solid govuk-colour('grey-1');
+    border-bottom: 1px solid govuk-colour('dark-grey');
     padding: $govuk-gutter 0;
     overflow: auto;
   }
@@ -732,7 +732,7 @@ ul.no-margin {
 }
 
 .retrospective-placeholder {
-  background-color: govuk-colour('grey-2');
+  background-color: govuk-colour('mid-grey');
   padding: $govuk-gutter $govuk-gutter;
   padding-bottom: $govuk-gutter-half;
   margin-bottom: $govuk-gutter;
@@ -741,7 +741,7 @@ ul.no-margin {
 nav.bottom-nav {
   a {
     display: block;
-    border-top: 1px solid govuk-colour('grey-2');
+    border-top: 1px solid govuk-colour('mid-grey');
     padding: $govuk-gutter-half;
     padding-left: $govuk-gutter;
 
@@ -759,7 +759,7 @@ nav.bottom-nav {
 
 .project-landing-page {
   .subsection:not(:first-child) {
-    border-top: 1px solid govuk-colour('grey-2');
+    border-top: 1px solid govuk-colour('mid-grey');
     padding-top: $govuk-gutter;
   }
 
@@ -790,13 +790,13 @@ nav.bottom-nav {
 
   ::-webkit-scrollbar {
     -webkit-appearance: none;
-    background-color: govuk-colour('grey-3');
+    background-color: govuk-colour('light-grey');
     width: 1px; /* hides white square at end of scrollbar */
   }
 
   ::-webkit-scrollbar-thumb {
     background-clip: padding-box;
-    background-color: govuk-colour('grey-1');
+    background-color: govuk-colour('light-grey');
     border-color: transparent;
     border-radius: 9px 8px 8px 9px;
     border-width: 3px 3px 3px 4px; /* Workaround because margins aren't supported */
