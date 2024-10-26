@@ -75,14 +75,19 @@ function EstablishmentLink({ establishment }) {
   );
 }
 
-function OrgAndQualificationDetails({ course }) {
+function OrgAndQualificationDetails({ trainingTask }) {
   return (
-    <Fragment>
-      <dt>Organisation</dt>
-      <dd>
-        {course.organisation}
-      </dd>
-    </Fragment>
+    <>
+      <Fragment>
+        <dt>Organisation</dt>
+        <dd>{ trainingTask.organisation }</dd>
+      </Fragment>
+
+      <Fragment>
+        <dt>Qualification level and subject</dt>
+        <dd>{ trainingTask.jobTitleOrQualification }</dd>
+      </Fragment>
+    </>
   );
 }
 
@@ -139,11 +144,11 @@ function ProjectDetails({ task }) {
 
 function PilDetails({ task }) {
   const profile = useSelector(state => state.static.profile) || get(task, 'data.modelData.profile');
-  const course = useSelector(state => state.static.course) || get(task, 'data.modelData.trainingCourse');
   const pil = profile.pil;
   const establishment = (pil && pil.establishment) ? pil.establishment : get(task, 'data.establishment');
   const isApplication = task.type === 'application';
   const profileType = isApplication ? 'applicant' : 'licenceHolder';
+  const trainingTask = get(task, 'data.data');
 
   return (
     <dl className="inline-wide">
@@ -154,7 +159,7 @@ function PilDetails({ task }) {
           <Link page="pil.read" establishmentId={establishment.id} profileId={profile.id} label={profile.pilLicenceNumber} />
         </LicenceNumber>
       }
-      <OrgAndQualificationDetails course={course} />
+      <OrgAndQualificationDetails trainingTask={trainingTask} />
       <EstablishmentLink establishment={establishment} />
     </dl>
   );
