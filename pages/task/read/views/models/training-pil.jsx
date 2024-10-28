@@ -52,7 +52,7 @@ export default function TrainingPil({ task }) {
       action === 'grant' && (
         <StickyNavAnchor id="trainingNeed" key="trainingNeed">
           <h2><Snippet>sticky-nav.trainingNeed</Snippet></h2>
-          <p className="gutter">{ data.applicantTrainingUseAtWork }</p>
+          <p className="gutter">{ data.applicantTrainingUseAtWork || data.applicantLearningUse }</p>
 
           <h2><Snippet>sticky-nav.otherNotes</Snippet></h2>
           <p className="gutter">{ data.otherNotes }</p>

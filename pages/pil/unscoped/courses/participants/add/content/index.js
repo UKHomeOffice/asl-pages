@@ -23,7 +23,7 @@ module.exports = {
       hint: 'For example BSc Pharmacology'
     },
     applicantLearningUse: {
-      label: 'How will the applicant use this learning in future scientific work using living animals',
+      label: 'How will the applicant use this learning in future scientific work using living animals?',
       hint: 'Explain how they intent to use it to design, conduct or analyse research.'
     },
     jobTitleOrQualification: {
@@ -35,7 +35,7 @@ module.exports = {
       hint: 'For example head and neck surgeon'
     },
     applicantTrainingUseAtWork: {
-      label: 'How will the applicant use this training in their work'
+      label: 'How will the applicant use this training in their work?'
     },
     otherNotes: {
       label: 'Other notes (optional)'
