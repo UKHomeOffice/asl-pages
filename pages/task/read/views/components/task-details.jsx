@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import get from 'lodash/get';
 import { differenceInYears } from 'date-fns';
 import { Snippet, Link } from '@ukhomeoffice/asl-components';
+import * as participantDetails from '../../../../../pages/pil/unscoped/courses/participants/add/content/index';
 
 function ProjectTitle({ project, establishment }) {
   return (
@@ -82,23 +83,23 @@ function OrgAndQualificationDetails({ trainingTask, trainingCourse }) {
   return (
     <>
       <Fragment>
-        <dt>Organisation</dt>
+        <dt>{ participantDetails.fields.organisation.label }</dt>
         <dd>{ trainingTask.organisation }</dd>
       </Fragment>
 
       { higherEducation &&
         <Fragment>
-          <dt>Qualification level and subject</dt>
+          <dt>{ participantDetails.fields.qualificationLevelAndSubject.label }</dt>
           <dd>{ trainingTask.qualificationLevelAndSubject }</dd>
         </Fragment>
       }
 
       { training &&
         <Fragment>
-          <dt>Job title, career stage or qualification</dt>
+          <dt>{ participantDetails.fields.jobTitleOrQualification.label }</dt>
           <dd>{ trainingTask.jobTitleOrQualification }</dd>
 
-          <dt>Field of expertise</dt>
+          <dt>{ participantDetails.fields.fieldOfExpertise.label }</dt>
           <dd>{ trainingTask.fieldOfExpertise }</dd>
         </Fragment>
       }
