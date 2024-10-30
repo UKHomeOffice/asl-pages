@@ -51,7 +51,7 @@ module.exports = () => {
     });
 
     //Ensuring endangered details are cleared, when user select no
-    if (values.endangered === false) {
+    if (!values.endangered) {
       values.endangeredDetails = null;
     }
 
