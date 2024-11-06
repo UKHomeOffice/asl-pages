@@ -24,6 +24,7 @@ module.exports = {
     },
     applicantLearningUse: {
       label: 'How will the applicant use this learning in future scientific work using living animals?',
+      checkAnswerLabel: 'Higher education or training outcomes',
       hint: 'Explain how they intent to use it to design, conduct or analyse research.'
     },
     jobTitleOrQualification: {
@@ -35,7 +36,8 @@ module.exports = {
       hint: 'For example head and neck surgeon'
     },
     applicantTrainingUseAtWork: {
-      label: 'How will the applicant use this training in their work?'
+      label: 'How will the applicant use this training in their work?',
+      checkAnswerLabel: 'Higher education or training outcomes'
     },
     otherNotes: {
       label: 'Other notes (optional)'
