@@ -1,5 +1,5 @@
-import participantDetailsSchemaHelper from '../../../../../pages/pil/unscoped/courses/participants/add/helpers/participant-details-schema-helper';
-import { omit } from 'lodash';
+const { omit } = require('lodash');
+const participantDetailsSchemaHelper = require('./participant-details-schema-helper');
 
 describe('participantDetailsSchemaHelper', () => {
   const schema = {
@@ -11,15 +11,15 @@ describe('participantDetailsSchemaHelper', () => {
   };
 
   it('should omit jobTitle, fieldOfExpertise, and applicantTrainingUse for higher-education course purpose', () => {
-    const trainingCourse = { coursePurpose: 'higher-education' };
+    const trainingCourse = { coursePurpose: 'Higher education' };
     const result = participantDetailsSchemaHelper(schema, trainingCourse);
-    expect(result).toEqual(omit(schema, ['jobTitle', 'fieldOfExpertise', 'applicantTrainingUse']));
+    expect(result).toEqual(omit(schema, ['jobTitleOrQualification', 'fieldOfExpertise', 'applicantTrainingUseAtWork']));
   });
 
   it('should omit qualificationLevelAndSubject and applicantLearning for training course purpose', () => {
-    const trainingCourse = { coursePurpose: 'training' };
+    const trainingCourse = { coursePurpose: 'Training' };
     const result = participantDetailsSchemaHelper(schema, trainingCourse);
-    expect(result).toEqual(omit(schema, ['qualificationLevelAndSubject', 'applicantLearning']));
+    expect(result).toEqual(omit(schema, ['qualificationLevelAndSubject', 'applicantLearningUse']));
   });
 
   it('should throw an error for invalid course purpose', () => {
