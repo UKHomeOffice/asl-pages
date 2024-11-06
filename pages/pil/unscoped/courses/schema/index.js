@@ -1,3 +1,5 @@
+const { trainingCoursePurpose } = require('@ukhomeoffice/asl-constants');
+
 module.exports = {
   projectTitle: {
     accessor: 'project.title'
@@ -5,11 +7,11 @@ module.exports = {
   coursePurpose: {
     inputType: 'radioGroup',
     options: [{
-      value: 'higher-education',
+      value: trainingCoursePurpose.higherEducation,
       label: 'Higher education',
       hint: 'For example a degree in pharmacology or physiology'
     }, {
-      value: 'training',
+      value: trainingCoursePurpose.training,
       label: 'Training',
       hint: 'For example to learn a new surgical procedure'
     }],
