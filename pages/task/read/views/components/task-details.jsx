@@ -82,10 +82,12 @@ function OrgAndQualificationDetails({ trainingTask, trainingCourse }) {
 
   return (
     <>
-      <Fragment>
-        <dt>{ participantDetails.fields.organisation.label }</dt>
-        <dd>{ trainingTask.organisation }</dd>
-      </Fragment>
+      { trainingTask.organisation &&
+        <Fragment>
+          <dt>{ participantDetails.fields.organisation.label }</dt>
+          <dd>{ trainingTask.organisation }</dd>
+        </Fragment>
+      }
 
       { higherEducation &&
         <Fragment>
