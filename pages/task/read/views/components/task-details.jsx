@@ -4,6 +4,7 @@ import get from 'lodash/get';
 import { differenceInYears } from 'date-fns';
 import { Snippet, Link } from '@ukhomeoffice/asl-components';
 import * as participantDetails from '../../../../../pages/pil/unscoped/courses/participants/add/content/index';
+const { trainingCoursePurpose } = require('@ukhomeoffice/asl-constants');
 
 function ProjectTitle({ project, establishment }) {
   return (
@@ -77,8 +78,8 @@ function EstablishmentLink({ establishment }) {
 }
 
 function OrgAndQualificationDetails({ trainingTask, trainingCourse }) {
-  const higherEducation = trainingCourse.coursePurpose === 'higher-education';
-  const training = trainingCourse.coursePurpose === 'training';
+  const higherEducation = trainingCourse.coursePurpose === trainingCoursePurpose.higherEducation;
+  const training = trainingCourse.coursePurpose === trainingCoursePurpose.training;
 
   return (
     <>

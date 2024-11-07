@@ -10,7 +10,7 @@ describe('participantDetailsSchemaHelper', () => {
     applicantLearning: 'Advanced Programming'
   };
 
-  it('should omit jobTitle, fieldOfExpertise, and applicantTrainingUse for higher-education course purpose', () => {
+  it('should omit jobTitle, fieldOfExpertise, and applicantTrainingUse for higherEducation course purpose', () => {
     const trainingCourse = { coursePurpose: 'Higher education' };
     const result = participantDetailsSchemaHelper(schema, trainingCourse);
     expect(result).toEqual(omit(schema, ['jobTitleOrQualification', 'fieldOfExpertise', 'applicantTrainingUseAtWork']));
