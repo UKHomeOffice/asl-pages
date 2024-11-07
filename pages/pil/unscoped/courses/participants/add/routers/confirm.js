@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { get, pick } = require('lodash');
+const { get } = require('lodash');
 const { form } = require('../../../../../../common/routers');
 
 module.exports = () => {
