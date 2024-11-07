@@ -1,5 +1,6 @@
 const { omit } = require('lodash');
-const participantDetailsSchemaHelper = require('./participant-details-schema-helper');
+const { describe, it, expect } = require('@jest/globals');
+const participantDetailsSchemaHelper = require('../../../../../pages/pil/unscoped/courses/participants/add/helpers/participant-details-schema-helper');
 
 describe('participantDetailsSchemaHelper', () => {
   const schema = {
