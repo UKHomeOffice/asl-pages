@@ -178,8 +178,7 @@ function PilDetails({ task }) {
           <Link page="pil.read" establishmentId={establishment.id} profileId={profile.id} label={profile.pilLicenceNumber} />
         </LicenceNumber>
       }
-      <OrgAndQualificationDetails trainingTask={trainingTask} trainingCourse={trainingCourse}/>
-      <EstablishmentLink establishment={establishment} />
+      {trainingCourse ? <OrgAndQualificationDetails trainingTask={trainingTask} trainingCourse={trainingCourse}/> : null }      <EstablishmentLink establishment={establishment} />
     </dl>
   );
 }
