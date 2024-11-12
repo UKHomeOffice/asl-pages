@@ -60,6 +60,20 @@ const tableFormatters = {
   }
 };
 
+// This check can be removed once all training courses have coursePurpose set
+const checkCoursePurposeBeforeApplyForLicence = (model, canUpdate) => {
+  if (model.coursePurpose) {
+    return canUpdate && <Link page="pils.courses.participants.add" className="govuk-button button-secondary" label={<Snippet>buttons.apply</Snippet>} />;
+  } else {
+    return (
+      <>
+        <Warning><Snippet>coursePurposeRequiredWarning</Snippet></Warning>
+        <Link page="pils.courses.update" className="govuk-button button-secondary" label={<Snippet>buttons.edit</Snippet>} />
+      </>
+    );
+  }
+};
+
 export default function Page() {
   const model = useSelector(state => state.model);
   const allowedActions = useSelector(state => state.static.allowedActions);
@@ -104,9 +118,7 @@ export default function Page() {
       <hr />
       <h3><Snippet>participants.title</Snippet></h3>
       <p><Snippet>participants.subtitle</Snippet></p>
-      {
-        canUpdate && <Link page="pils.courses.participants.add" className="govuk-button button-secondary" label={<Snippet>buttons.apply</Snippet>} />
-      }
+      {checkCoursePurposeBeforeApplyForLicence(model, canUpdate)}
       <Datatable formatters={tableFormatters} />
     </Fragment>
   );
