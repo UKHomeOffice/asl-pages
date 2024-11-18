@@ -34,7 +34,10 @@ module.exports = {
     inputType: 'inputText'
   },
   applicantLearningUse: {
-    inputType: 'textarea'
+    inputType: 'textAreaWithWordCount',
+    validate: [
+      { lessThanOrEqualToMaxWordCount: 3 }
+    ]
   },
   jobTitleOrQualification: {
     inputType: 'inputText'
@@ -43,7 +46,10 @@ module.exports = {
     inputType: 'inputText'
   },
   applicantTrainingUseAtWork: {
-    inputType: 'textarea'
+    inputType: 'textAreaWithWordCount',
+    validate: [
+      { lessThanOrEqualToMaxWordCount: 3 }
+    ]
   },
   otherNotes: {
     inputType: 'textarea'
