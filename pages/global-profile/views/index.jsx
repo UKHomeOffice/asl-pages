@@ -195,7 +195,7 @@ export default function Index({ dedupe, AsruRolesComponent, children }) {
       }
 
       {
-      hasEstablishments && <Fragment>
+        hasEstablishments && <Fragment>
           <h2>Establishments</h2>
           <PanelList panels={sortBy(model.establishments, 'name').map((establishment) => {
             const title = <h3>
