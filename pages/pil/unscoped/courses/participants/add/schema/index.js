@@ -36,7 +36,7 @@ module.exports = {
   applicantLearningUse: {
     inputType: 'textAreaWithWordCount',
     validate: [
-      { lessThanOrEqualToMaxWordCount: 3 }
+      { lessThanOrEqualToMaxWordCount: 250 }
     ]
   },
   jobTitleOrQualification: {
@@ -48,7 +48,7 @@ module.exports = {
   applicantTrainingUseAtWork: {
     inputType: 'textAreaWithWordCount',
     validate: [
-      { lessThanOrEqualToMaxWordCount: 3 }
+      { lessThanOrEqualToMaxWordCount: 250 }
     ]
   },
   otherNotes: {
