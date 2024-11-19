@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
 import { Header, Snippet, Link, TrainingSummary } from '@ukhomeoffice/asl-components';
+import { instruction } from '../content';
 
 export default function Training() {
   const { profile, referrer, basePage } = useSelector(state => state.static, shallowEqual);
@@ -12,11 +13,14 @@ export default function Training() {
         title={<Snippet>title</Snippet>}
         subtitle={`${profile.firstName} ${profile.lastName}`}
       />
+      <p>{instruction[0]}</p>
+      <p>{instruction[1]}</p>
       <h2><Snippet>modules.title</Snippet></h2>
       <p className="govuk-hint"><Snippet>modules.hint</Snippet></p>
       <TrainingSummary certificates={profile.certificates} actions={true} basePage={basePage} />
       <p>
-        <Link page={`${basePage}.type`} className="govuk-button" certificateId="create" label={<Snippet>modules.add</Snippet>}/>
+        <Link page={`${basePage}.type`} className="govuk-button" certificateId="create"
+              label={<Snippet>modules.add</Snippet>} />
       </p>
       {
         (referrer || !!draftProjects.length) && (
@@ -43,7 +47,8 @@ export default function Training() {
                   <h3><Snippet>active-projects</Snippet></h3>
                   {
                     activeProjects.map(project => (
-                      <p key={project.id}><Link page="project.read" projectId={project.id} label={project.title || 'Untitled project'} /></p>
+                      <p key={project.id}><Link page="project.read" projectId={project.id}
+                                                label={project.title || 'Untitled project'} /></p>
                     ))
                   }
                 </div>
@@ -55,7 +60,8 @@ export default function Training() {
                   <h3><Snippet>draft-projects</Snippet></h3>
                   {
                     draftProjects.map(project => (
-                      <p key={project.id}><Link page="project.read" projectId={project.id} label={project.title || 'Untitled project'} /></p>
+                      <p key={project.id}><Link page="project.read" projectId={project.id}
+                                                label={project.title || 'Untitled project'} /></p>
                     ))
                   }
                 </div>

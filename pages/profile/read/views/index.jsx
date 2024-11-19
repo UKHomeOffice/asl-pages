@@ -7,6 +7,7 @@ import RelatedTasks from '../../../task/list/views/related-tasks';
 import { dateFormat } from '../../../../constants';
 import EnforcementFlags from '../../../enforcement/components/enforcement-flags';
 import EstablishmentHeader from '../../../common/components/establishment-header';
+import { instruction } from '../content';
 
 const Index = ({
   allowedActions,
@@ -78,9 +79,11 @@ const Index = ({
         allowedActions.includes('training.read') && (
           <section className="profile-section">
             <h3><Snippet>training</Snippet></h3>
-            <TrainingSummary certificates={certificates} />
+            <p>{instruction[0]}</p>
+            <p>{instruction[1]}</p>
+            <TrainingSummary certificates={certificates}/>
             {
-              allowedActions.includes('training.update') && <Link page="training.dashboard" label="Manage training" />
+              allowedActions.includes('training.update') && <Link page="training.dashboard" label="Manage training"/>
             }
           </section>
         )

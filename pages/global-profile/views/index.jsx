@@ -17,6 +17,7 @@ import { dateFormat } from '../../../constants';
 import Profile from '../../profile/read/views/profile';
 import RelatedTasks from '../../task/list/views/related-tasks';
 import AsruRoles from '../components/asru-roles';
+import {instruction} from '../../profile/read/content';
 
 const selector = ({
   model,
@@ -182,7 +183,9 @@ export default function Index({ dedupe, AsruRolesComponent, children }) {
         !model.asruUser && (
           <Fragment>
             <h2><Snippet>pil.training.title</Snippet></h2>
-            <TrainingSummary certificates={model.certificates} />
+            <p>{instruction[0]}</p>
+            <p>{instruction[1]}</p>
+            <TrainingSummary certificates={model.certificates}/>
           </Fragment>
         )
       }
@@ -192,7 +195,7 @@ export default function Index({ dedupe, AsruRolesComponent, children }) {
       }
 
       {
-        hasEstablishments && <Fragment>
+      hasEstablishments && <Fragment>
           <h2>Establishments</h2>
           <PanelList panels={sortBy(model.establishments, 'name').map((establishment) => {
             const title = <h3>
