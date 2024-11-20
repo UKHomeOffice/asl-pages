@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
 import { Header, Snippet, Link, TrainingSummary } from '@ukhomeoffice/asl-components';
-import { instruction } from '../content';
 
 export default function Training() {
   const { profile, referrer, basePage } = useSelector(state => state.static, shallowEqual);
@@ -13,8 +12,7 @@ export default function Training() {
         title={<Snippet>title</Snippet>}
         subtitle={`${profile.firstName} ${profile.lastName}`}
       />
-      <p>{instruction[0]}</p>
-      <p>{instruction[1]}</p>
+      <Snippet>instruction</Snippet>
       <h2><Snippet>modules.title</Snippet></h2>
       <p className="govuk-hint"><Snippet>modules.hint</Snippet></p>
       <TrainingSummary certificates={profile.certificates} actions={true} basePage={basePage} />

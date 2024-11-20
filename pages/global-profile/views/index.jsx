@@ -17,7 +17,6 @@ import { dateFormat } from '../../../constants';
 import Profile from '../../profile/read/views/profile';
 import RelatedTasks from '../../task/list/views/related-tasks';
 import AsruRoles from '../components/asru-roles';
-import {instruction} from '../../profile/read/content';
 
 const selector = ({
   model,
@@ -183,8 +182,7 @@ export default function Index({ dedupe, AsruRolesComponent, children }) {
         !model.asruUser && (
           <Fragment>
             <h2><Snippet>pil.training.title</Snippet></h2>
-            <p>{instruction[0]}</p>
-            <p>{instruction[1]}</p>
+            <Snippet>instruction</Snippet>
             <TrainingSummary certificates={model.certificates}/>
           </Fragment>
         )
