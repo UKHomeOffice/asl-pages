@@ -7,7 +7,6 @@ import RelatedTasks from '../../../task/list/views/related-tasks';
 import { dateFormat } from '../../../../constants';
 import EnforcementFlags from '../../../enforcement/components/enforcement-flags';
 import EstablishmentHeader from '../../../common/components/establishment-header';
-import { instruction } from '../content';
 
 const Index = ({
   allowedActions,

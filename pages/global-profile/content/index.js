@@ -9,7 +9,7 @@ module.exports = merge({}, pilContent, profileContent, tasklistContent, {
   },
   pil: {
     training: {
-      title: 'Training',
+      title: 'Training'
     }
   },
   'manage-training': 'Manage training',
