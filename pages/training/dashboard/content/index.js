@@ -1,5 +1,5 @@
 const training = require('../../../training/content');
-const {merge} = require("lodash");
+const {merge} = require('lodash');
 
 module.exports = merge({}, training, {
   title: 'Training record',
