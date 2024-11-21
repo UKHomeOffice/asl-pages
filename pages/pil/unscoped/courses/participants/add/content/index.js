@@ -62,7 +62,7 @@ module.exports = {
       required: 'This is a required field.'
     },
     applicantTrainingUseAtWork: {
-      lessThanOrEqualToMaxWordCount: 'Enter at most 250 words for how the applicant will use this training in their work.'
+      lessThanOrEqualToMaxWordCount: 'Enter at most 100 words for how the applicant will use this training in their work.'
     },
     applicantLearningUse: {
       lessThanOrEqualToMaxWordCount: 'Enter at most 250 words for how the applicant will use this learning in future scientific work.'

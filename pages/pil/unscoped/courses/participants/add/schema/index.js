@@ -1,3 +1,6 @@
+const MAX_WORD_COUNT_250 = 250;
+const MAX_WORD_COUNT_100 = 100;
+
 module.exports = {
   firstName: {
     inputType: 'inputText',
@@ -35,8 +38,9 @@ module.exports = {
   },
   applicantLearningUse: {
     inputType: 'textAreaWithWordCount',
+    maxWordCount: MAX_WORD_COUNT_250,
     validate: [
-      { lessThanOrEqualToMaxWordCount: 250 }
+      { lessThanOrEqualToMaxWordCount: MAX_WORD_COUNT_250 }
     ]
   },
   jobTitleOrQualification: {
@@ -47,8 +51,9 @@ module.exports = {
   },
   applicantTrainingUseAtWork: {
     inputType: 'textAreaWithWordCount',
+    maxWordCount: MAX_WORD_COUNT_100,
     validate: [
-      { lessThanOrEqualToMaxWordCount: 250 }
+      { lessThanOrEqualToMaxWordCount: MAX_WORD_COUNT_100 }
     ]
   },
   otherNotes: {
