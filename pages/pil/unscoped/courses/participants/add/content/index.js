@@ -25,7 +25,7 @@ module.exports = {
     },
     applicantLearningUse: {
       label:
-        'How will the applicant use this learning in future scientific work using living animals?',
+        'How will the participant use this learning in future scientific work using living animals?',
       checkAnswerLabel: 'Higher education or training outcomes',
       hint: 'Explain how they intend to use it to design, conduct or analyse research.'
     },
@@ -38,7 +38,7 @@ module.exports = {
       hint: 'For example head and neck surgeon'
     },
     applicantTrainingUseAtWork: {
-      label: 'How will the applicant use this training in their work?',
+      label: 'How will the participant use this training in their work?',
       checkAnswerLabel: 'Higher education or training outcomes'
     },
     otherNotes: {
@@ -64,28 +64,27 @@ module.exports = {
       required: 'This is a required field.'
     },
     organisation: {
-      required: 'Enter the organisation of the participant.'
+      required: 'Enter their organisation.'
     },
     qualificationLevelAndSubject: {
-      required: 'Enter the qualification level and subject of the participant.'
+      required: 'Enter their qualification level and subject.'
     },
     applicantTrainingUseAtWork: {
       lessThanOrEqualToMaxWordCount:
         'How the applicant will use this training must be 100 characters or less',
-      required: 'Enter how the applicant will use this training in their work.'
+      required: 'Tell us how they will use this training in their work.'
     },
     applicantLearningUse: {
       lessThanOrEqualToMaxWordCount:
         'How the applicant will use this learning must be 250 characters or less',
       required:
-        'Enter how the applicant will use this learning in future scientific work using living animals.'
+        'Tell us how they will use this learning in future scientific work using living animals.'
     },
     jobTitleOrQualification: {
-      required:
-        'Enter the job title, career stage or qualification of the participant.'
+      required: 'Enter their job title, career stage or qualification.'
     },
     fieldOfExpertise: {
-      required: 'Enter the field of expertise of the participant.'
+      required: 'Enter their field of expertise.'
     }
   },
   buttons: {
