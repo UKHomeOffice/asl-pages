@@ -63,13 +63,29 @@ module.exports = {
     trainingNeed: {
       required: 'This is a required field.'
     },
+    organisation: {
+      required: 'Enter the organisation of the participant.'
+    },
+    qualificationLevelAndSubject: {
+      required: 'Enter the qualification level and subject of the participant.'
+    },
     applicantTrainingUseAtWork: {
       lessThanOrEqualToMaxWordCount:
-        'How the applicant will use this training must be 100 characters or less'
+        'How the applicant will use this training must be 100 characters or less',
+      required: 'Enter how the applicant will use this training in their work.'
     },
     applicantLearningUse: {
       lessThanOrEqualToMaxWordCount:
-        'How the applicant will use this learning must be 250 characters or less'
+        'How the applicant will use this learning must be 250 characters or less',
+      required:
+        'Enter how the applicant will use this learning in future scientific work using living animals.'
+    },
+    jobTitleOrQualification: {
+      required:
+        'Enter the job title, career stage or qualification of the participant.'
+    },
+    fieldOfExpertise: {
+      required: 'Enter the field of expertise of the participant.'
     }
   },
   buttons: {
