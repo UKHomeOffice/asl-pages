@@ -76,7 +76,7 @@ module.exports = {
     },
     applicantLearningUse: {
       lessThanOrEqualToMaxWordCount:
-        'How the applicant will use this learning must be 250 characters or less',
+        'How the participant will use this learning must be 250 characters or less',
       required:
         'Tell us how they will use this learning in future scientific work using living animals.'
     },
