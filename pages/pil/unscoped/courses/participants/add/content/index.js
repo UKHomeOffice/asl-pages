@@ -71,7 +71,7 @@ module.exports = {
     },
     applicantTrainingUseAtWork: {
       lessThanOrEqualToMaxWordCount:
-        'How the applicant will use this training must be 100 characters or less',
+        'How the participant will use this training must be 100 characters or less',
       required: 'Tell us how they will use this training in their work.'
     },
     applicantLearningUse: {
