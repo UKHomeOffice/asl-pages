@@ -47,42 +47,42 @@ module.exports = {
   },
   errors: {
     firstName: {
-      required: 'Enter the first name of the participant.'
+      required: 'Enter the first name of the participant'
     },
     lastName: {
-      required: 'Enter the last name of the participant.'
+      required: 'Enter the last name of the participant'
     },
     email: {
-      required: 'Enter the email address of the participant.',
-      customValidate: 'Enter a valid email address.'
+      required: 'Enter the email address of the participant',
+      customValidate: 'Enter a valid email address'
     },
     dob: {
-      required: 'Enter the date of birth of the participant.',
-      dateIsBefore: 'Date of birth must be in the past.'
+      required: 'Enter the date of birth of the participant',
+      dateIsBefore: 'Date of birth must be in the past'
     },
     trainingNeed: {
-      required: 'This is a required field.'
+      required: 'This is a required field'
     },
     organisation: {
-      required: `Enter the participant's organisation.`
+      required: `Enter the participant's organisation`
     },
     qualificationLevelAndSubject: {
-      required: `Enter the participant's qualification level and subject.`
+      required: `Enter the participant's qualification level and subject`
     },
     applicantTrainingUseAtWork: {
       lessThanOrEqualToMaxWordCount:
         'How the participant will use this training must be 100 words or less',
       required:
-        'Tell us how the participant will use this training in their work.'
+        'Tell us how the participant will use this training in their work'
     },
     applicantLearningUse: {
       lessThanOrEqualToMaxWordCount:
         'How the participant will use this learning must be 250 words or less',
       required:
-        'Tell us how the participant will use this learning in future scientific work using living animals.'
+        'Tell us how the participant will use this learning in future scientific work using living animals'
     },
     jobTitleOrQualification: {
-      required: `Enter the participant's job title, career stage or qualification.`
+      required: `Enter the participant's job title, career stage or qualification`
     },
     fieldOfExpertise: {
       required: `Enter the participant's field of expertise`
