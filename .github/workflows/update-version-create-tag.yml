@@ -1,0 +1,78 @@
+name: Update Version and Create Tag Based on Commit Messages
+
+on:
+  push:
+    branches: [test]
+
+jobs:
+  update-version-and-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Determine Next Version
+        id: determine-next-version
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const core = require('@actions/core');
+            const { exec } = require('child_process');
+
+            // Regex to match commit messages for major, minor, and patch versions
+            const majorRegex = /major/;
+            const minorRegex = /feat/;
+            const patchRegex = /fix/;
+
+            // Get the last commit
+            exec('git log -1 --pretty=format:"%s"', (error, stdout, stderr) => {
+              if (error) {
+                core.setFailed(`Error getting commit messages: ${error.message}`);
+                return;
+              }
+
+              const commits = stdout.trim().split('\n');
+              let nextVersion = 'patch'; // Default to patch version
+
+              commits.forEach(commit => {
+                if (majorRegex.test(commit)) {
+                  nextVersion = 'major';
+                  return;
+                } else if (minorRegex.test(commit)) {
+                  nextVersion = 'minor';
+                  return;
+                }
+              });
+
+              exec(`npm version ${nextVersion}`, (error, stdout, stderr) => {
+                if (error) {
+                  core.setFailed(`Error determining next version: ${error.message}`);
+                  return;
+                }
+                core.setOutput('next-version', stdout.trim().split('\n')[0]);
+              });
+            });
+
+      - name: Commit Changes
+        run: git commit -am "Bump version to ${{ steps.determine-next-version.outputs.next-version }}"
+
+      - name: Push Changes
+        run: git push origin main
+
+      - name: Create Tag
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const core = require('@actions/core');
+            const { exec } = require('child_process');
+
+            const nextVersion = core.getInput('next-version');
+
+            exec(`git tag v${nextVersion}`, (error, stdout, stderr) => {
+              if (error) {
+                core.setFailed(`Error creating tag: ${error.message}`);
+                return;
+              }
+            });
+
+      - name: Push Tag
+        run: git push origin --tags
