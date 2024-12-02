@@ -68,7 +68,9 @@ const checkCoursePurposeBeforeApplyForLicence = (model, canUpdate, noOfParticipa
     if (noOfParticipants > 0) {
       return (
         <>
-          <Warning><Snippet>coursePurposeRequiredWarning</Snippet></Warning>
+          <Warning>
+            <Snippet>coursePurposeRequiredWarningForExistingParticipants</Snippet>
+          </Warning>
         </>
       );
     }
