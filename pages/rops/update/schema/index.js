@@ -21,10 +21,7 @@ module.exports = req => {
 
   const disableProcRadio = fieldName => {
     const field = req.rop.procedures.map(p => p[fieldName]);
-    if (field.includes(true)) {
-      return true;
-    }
-    return false;
+    return field.includes(true);
   };
 
   function getOtherField(_fieldName) {
@@ -151,7 +148,7 @@ module.exports = req => {
         {
           value: false,
           disabled: disableProcRadio('endangered'),
-          warning: content.fields.disabledWarning
+          ...(disableProcRadio('endangered') && {warning: content.fields.disabledWarning})
         },
         {
           value: true,
