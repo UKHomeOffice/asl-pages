@@ -317,6 +317,7 @@ export default function Profile({ profile, establishment = {}, allowedActions = 
           <p>
             <Link
               target='_blank'
+              rel="noreferrer noopener"
               url='https://www.gov.uk'
               path='/guidance/research-and-testing-using-animals#add-a-named-person-role'
               label={<Snippet>responsibilities.guidanceLink</Snippet>}
