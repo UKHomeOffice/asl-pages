@@ -1,11 +1,23 @@
-import React, { Fragment } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+import { useSelector, shallowEqual } from 'react-redux';
+import { Snippet, Header, FormLayout } from '@ukhomeoffice/asl-components';
 
 const Page = () => {
+
+  const { profile } = useSelector(state => state.static, shallowEqual);
+
   return (
-    <h1>This is a test</h1>
+    <FormLayout cancelLink="profile.read">
+
+      {profile.firstName} {profile.lastName}
+      <Header
+        title={<Snippet>title</Snippet>}
+      />
+
+      <p className="margin-bottom">{<Snippet>beforeYouNominateIntro</Snippet>}</p>
+
+    </FormLayout>
   );
 };
 
-const mapStateToProps = ({ static: { addRoleTasks, schema, profile } }) => ({ addRoleTasks, schema, profile });
-export default connect(mapStateToProps)(Page);
+export default Page;

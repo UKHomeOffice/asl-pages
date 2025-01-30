@@ -1,6 +1,6 @@
 const { page } = require('@asl/service/ui');
 const { form } = require('../../../common/routers');
-const { create } = require('../../routes');
+const { buildModel } = require('../../../../lib/utils');
 const schema = require('./schema');
 
 module.exports = settings => {
@@ -9,9 +9,17 @@ module.exports = settings => {
     ...settings
   });
 
+  app.use((req, res, next) => {
+    req.model = {
+      id: `${req.profile.id}-npm`,
+      ...buildModel(schema)
+    };
+    next();
+  });
+
   app.use(form({
-    schema,
-    process: (req, res, next) => {
+    configure(req, res, next) {
+      req.form.schema = schema(req.profile);
       next();
     },
     saveValues: (req, res, next) => {
@@ -21,7 +29,12 @@ module.exports = settings => {
   }));
 
   app.post('/', (req, res, next) => {
-    res.redirect(create);
+    const { type } = req.form.values;
+    if (type) {
+      return res.redirect(req.buildRoute('role.create'));
+    } else {
+      return res.redirect(req.buildRoute('profile.read'));
+    }
   });
 
   return app;
