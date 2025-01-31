@@ -1,5 +1,6 @@
 module.exports = {
   title: 'Before you nominate someone for a role',
+  supportingGuidanceTitle: 'Supporting guidance on GOV.UK',
   subtitle: 'Before you nominate someone for a role you must ensure:',
   beforeYouNominateIntro: `\
 ### Before you nominate someone for a role you must ensure:
