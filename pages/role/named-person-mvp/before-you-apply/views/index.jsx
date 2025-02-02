@@ -12,7 +12,7 @@ const Page = () => {
         <Form cancelLink="profile.read">
           <span className="govuk-caption-l">{profile.firstName} {profile.lastName}</span>
           <Header title={<Snippet>title</Snippet>}/>
-          <p className="margin-bottom">{<Snippet>beforeYouNominateIntro</Snippet>}</p>
+          <p className="govuk-body">{<Snippet>beforeYouNominateIntro</Snippet>}</p>
         </Form>
       </div>
 
@@ -25,6 +25,7 @@ const Page = () => {
             <a className="govuk-link" href="https://www.gov.uk/guidance/research-and-testing-using-animals#add-a-named-person-role">Adding named person roles</a>
           </p>
 
+          {/* Links not working correctly */}
           <p className="govuk-body">
             <a className="govuk-link" href="https://www.gov.uk/government/publications/conflict-of-interest-declaration-form-aspa-1986">Make a conflict of interest declaration</a>
           </p>
