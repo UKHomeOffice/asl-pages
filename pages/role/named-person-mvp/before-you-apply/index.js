@@ -2,6 +2,7 @@ const { page } = require('@asl/service/ui');
 const { form } = require('../../../common/routers');
 const { buildModel } = require('../../../../lib/utils');
 const schema = require('./schema');
+const { set } = require('lodash');
 
 module.exports = settings => {
   const app = page({
@@ -24,6 +25,10 @@ module.exports = settings => {
     },
     saveValues: (req, res, next) => {
       req.session.form[req.model.id].values = req.form.values;
+      next();
+    },
+    locals: (req, res, next) => {
+      set(res.locals, 'static.trainingDashboardUrl', req.buildRoute('training.dashboard'));
       next();
     }
   }));

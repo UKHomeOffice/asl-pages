@@ -12,7 +12,7 @@ module.exports = {
     * the NTCO has checked their mandatory training certificates
     * the NTCO has checked any certificates showing equivalent training to support exemption requests, and emailed them to ASRU Licensing
 * you have added them as an ASPeL user
-* they have updated their training and exemptions in their [training record in ASPeL]({{ trainingRecordUrl }})
+* they have updated their training and exemptions in their [training record in ASPeL]({{trainingDashboardUrl}})
 * __the PEL holder supports the nomination and is confident that the nominee:__
     * has the recommended skills and experience
     * has no significant conflict of interest, and their declaration form is held on record at the establishment`,

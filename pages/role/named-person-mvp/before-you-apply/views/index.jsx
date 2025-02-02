@@ -4,7 +4,7 @@ import { Snippet, Header, Form } from '@ukhomeoffice/asl-components';
 
 const Page = () => {
 
-  const { profile } = useSelector(state => state.static, shallowEqual);
+  const { profile, trainingDashboardUrl } = useSelector(state => state.static, shallowEqual);
 
   return (
     <div className="govuk-grid-row">
@@ -12,7 +12,7 @@ const Page = () => {
         <Form cancelLink="profile.read">
           <span className="govuk-caption-l">{profile.firstName} {profile.lastName}</span>
           <Header title={<Snippet>title</Snippet>}/>
-          <p className="govuk-body">{<Snippet>beforeYouNominateIntro</Snippet>}</p>
+          { trainingDashboardUrl && <p className="govuk-body">{<Snippet>beforeYouNominateIntro</Snippet>}</p> }
         </Form>
       </div>
 
