@@ -10,17 +10,33 @@ const Page = () => {
     <div className="govuk-grid-row">
       <div className="govuk-grid-column-two-thirds">
         <Form cancelLink="profile.read">
-          {profile.firstName} {profile.lastName}
+          <span className="govuk-caption-l">{profile.firstName} {profile.lastName}</span>
           <Header title={<Snippet>title</Snippet>}/>
           <p className="margin-bottom">{<Snippet>beforeYouNominateIntro</Snippet>}</p>
         </Form>
       </div>
 
       <div className="govuk-grid-column-one-third">
-        <div className="govuk-!-padding-bottom-6"></div>
-        <aside className="govuk-prototype-kit-common-templates-related-items" role="complementary">
-          <h2><Snippet>supportingGuidanceTitle</Snippet></h2>
-        </aside>
+        <div className="x-govuk-related-navigation">
+
+          <p><h2 className="govuk-heading-m"><Snippet>supportingGuidanceTitle</Snippet></h2></p>
+
+          <p className="govuk-body">
+            <a className="govuk-link" href="https://www.gov.uk/guidance/research-and-testing-using-animals#add-a-named-person-role">Adding named person roles</a>
+          </p>
+
+          <p className="govuk-body">
+            <a className="govuk-link" href="https://www.gov.uk/government/publications/conflict-of-interest-declaration-form-aspa-1986">Make a conflict of interest declaration</a>
+          </p>
+
+          <p className="govuk-body">
+            <a className="govuk-link" href="https://www.gov.uk/government/publications/training-and-development-under-the-animals-scientific-procedures-act">Guidance on training and continuous professional development (CPD) under ASPA</a>
+          </p>
+
+          <p className="govuk-body">
+            <a className="govuk-link" href="https://www.gov.uk/government/publications/the-operation-of-the-animals-scientific-procedures-act-1986">Guidance on the operation of the Animals (Scientific Procedures) Act 1986</a>
+          </p>
+        </div>
       </div>
     </div>
 
