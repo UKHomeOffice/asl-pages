@@ -6,8 +6,9 @@ import { useFeatureFlag } from '@asl/service/ui/feature-flag';
 
 function RolesAtEstablishment({ establishment, estRoles, rcvsNumber, allowedActions, profile }) {
   const FEATURE_FLAG_NAMED_PERSON_MVP = 'feature-named-person-mvp';
-  const namedPersonFeatureFlag = useFeatureFlag(FEATURE_FLAG_NAMED_PERSON_MVP) || false;
-  const addRoleLink = namedPersonFeatureFlag ? 'role.create' : 'role.namedPersonMvp.beforeYouApply';
+  //TODO: Remove below condition and use flag when flag is enabled before merge
+  const namedPersonFeatureFlag = true ?? useFeatureFlag(FEATURE_FLAG_NAMED_PERSON_MVP);
+  const addRoleLink = namedPersonFeatureFlag ? 'role.namedPersonMvp.beforeYouApply' : 'role.create';
 
   return (
     <section className="profile-section">
