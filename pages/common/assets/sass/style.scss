@@ -30,7 +30,9 @@ $govuk-colours: (
   "grey-4": #f8f8f8,
 );
 
-@import 'govuk-frontend/dist/govuk/all';
+$govuk-brand-colour: #8f23b3;
+
+@import 'govuk-frontend/dist/govuk/base';
 @import '@x-govuk/govuk-prototype-components/x-govuk/components/related-navigation/related-navigation';
 
 $hint-colour: #696F73;
