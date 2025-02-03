@@ -37,6 +37,14 @@ $govuk-brand-colour: #8f23b3;
 
 $hint-colour: #696F73;
 
+html {
+  font-size: 100%;
+}
+
+body {
+  font-size: 100%;
+}
+
 .govuk-hint {
   color: $hint-colour;
 }
