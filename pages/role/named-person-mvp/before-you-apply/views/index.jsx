@@ -20,36 +20,6 @@ const Page = () => {
 
         <div className="govuk-grid-column-one-third">
           <div className="x-govuk-related-navigation">
-
-            <h2 className="govuk-heading-m"><Snippet>supportingGuidanceTitle</Snippet></h2>
-
-            <p className="govuk-body">
-              <a className="govuk-link" href="https://www.gov.uk/guidance/research-and-testing-using-animals#add-a-named-person-role">
-                Adding named person roles
-              </a>
-            </p>
-
-            {/* Links not working correctly */}
-            <p className="govuk-body">
-              <a className="govuk-link" href="https://www.gov.uk/government/publications/conflict-of-interest-declaration-form-aspa-1986">
-                Make a conflict of interest declaration
-              </a>
-            </p>
-
-            <p className="govuk-body">
-              <a className="govuk-link" href="https://www.gov.uk/government/publications/training-and-development-under-the-animals-scientific-procedures-act">
-                Guidance on training and continuous professional development (CPD) under ASPA
-              </a>
-            </p>
-
-            <p className="govuk-body">
-              <a className="govuk-link" href="https://www.gov.uk/government/publications/the-operation-of-the-animals-scientific-procedures-act-1986">
-                Guidance on the operation of the Animals (Scientific Procedures) Act 1986
-              </a>
-            </p>
-          </div>
-
-          <div className="x-govuk-related-navigation">
             <nav className="x-govuk-related-navigation__nav-section" role="navigation" aria-labelledby="related-navigation-related-content">
               <h2 className="x-govuk-related-navigation__main-heading" id="related-navigation-related-content"><Snippet>supportingGuidanceTitle</Snippet></h2>
 
