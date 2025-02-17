@@ -1,14 +1,16 @@
 const { merge } = require('lodash');
 const baseContent = require('../../content');
+const training = require('../../../training/content');
 
-module.exports = merge({}, baseContent, {
+module.exports = merge({}, baseContent, training, {
   profile: 'Profile',
   responsibilities: {
     title: 'Roles at this establishment',
     noRoles: 'None',
     roleApply: 'Add role',
     roleRemove: 'Remove role',
-    rcvsNumber: 'RCVS membership number: {{rcvsNumber}}'
+    rcvsNumber: 'RCVS membership number: {{rcvsNumber}}',
+    guidanceLink: 'Read guidance on adding named person roles (on GOV.UK - opens in new tab)'
   },
   training: 'Training record',
   projects: {

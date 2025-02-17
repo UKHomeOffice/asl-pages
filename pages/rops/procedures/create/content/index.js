@@ -29,6 +29,13 @@ module.exports = merge({}, baseContent, {
     nhpsGeneration: {
       label: 'NHP generation'
     },
+    endangered: {
+      label: 'Is this an endangered species?',
+      options: {
+        true: 'Yes',
+        false: 'No'
+      }
+    },
     ga: {
       label: 'Genetically altered (GA) animals',
       hint: 'Select GA status of animals used',
