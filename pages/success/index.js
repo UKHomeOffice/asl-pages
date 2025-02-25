@@ -164,7 +164,9 @@ module.exports = () => {
     res.locals.static.establishment = req.establishment || get(req.task, 'data.establishment');
 
     // Update the project ID for transfer projects to ensure correct success page links
-    if (req.task?.status === 'resolved' && req.task?.type === 'transfer' && req.task?.data?.model === 'project') {
+    if (req.task?.status === 'resolved' &&
+      req.task?.type === 'transfer' &&
+      req.task?.data?.model === 'project') {
       res.locals.static.projectId = res.locals.static.transferredProject?.id;
     } else if (req.task?.data?.model === 'project') {
       res.locals.static.projectId = req.project?.id;
