@@ -6,8 +6,14 @@ const excludedRoles = {
   'non-profit': ['nprc']
 };
 
-module.exports = (roles, establishment) => {
+module.exports = (roles, establishment, hasNPFeatureFlag) => {
   const excludeRoles = (establishment.corporateStatus && excludedRoles[establishment.corporateStatus]) || [];
+
+  // Remove PELH role if named person feature flag is enabled
+  if (hasNPFeatureFlag) {
+    excludeRoles.push('pelh');
+  }
+
   roles = Object.keys(namedRoles)
     .filter(r => !roles.includes(r))
     .filter(r => !excludeRoles.includes(r));
@@ -23,7 +29,7 @@ module.exports = (roles, establishment) => {
     };
   });
 
-  return {
+  const schema = {
     type: {
       inputType: 'radioGroup',
       validate: [
@@ -34,9 +40,11 @@ module.exports = (roles, establishment) => {
       ],
       options,
       nullValue: []
-    },
-    comment: {
-      inputType: 'textarea'
     }
+  };
+
+  return {
+    ...schema,
+    ...(!hasNPFeatureFlag ? { comment: { inputType: 'textarea' } } : {})
   };
 };
