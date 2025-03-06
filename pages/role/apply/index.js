@@ -77,8 +77,11 @@ module.exports = settings => {
       const pelOrNprcTasks = res.locals.static.pelhOrNprcTasks;
       const rolesRequested = addRoleTasks.map(task => task.type).concat(pelOrNprcTasks.length > 0 ? PELH_OR_NPRC_ROLES : []);
 
+      const FEATURE_FLAG_NAMED_PERSON_MVP = 'feature-named-person-mvp';
+      const hasNPFeatureFlag = req.user?.keycloakRoles?.includes(FEATURE_FLAG_NAMED_PERSON_MVP);
+
       req.form.schema = {
-        ...getSchema(rolesHeld.concat(rolesRequested), req.establishment),
+        ...getSchema(rolesHeld.concat(rolesRequested), req.establishment, hasNPFeatureFlag),
         rcvsNumber: {}
       };
 
