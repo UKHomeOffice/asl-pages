@@ -1,7 +1,7 @@
 {
   "name": "@asl/pages",
   "version": "31.9.0",
-  "description": "",
+  "description": "ASPeL APP Pages and subsequent data logic.",
   "main": "index.js",
   "style": "pages/common/assets/sass/style.scss",
   "scripts": {
