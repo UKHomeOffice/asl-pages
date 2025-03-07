@@ -9,6 +9,7 @@ module.exports = {
   },
   create: {
     path: '/create',
-    router: create
+    router: create,
+    breadcrumb: false
   }
 };
