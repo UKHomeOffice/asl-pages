@@ -37,6 +37,7 @@ module.exports = settings => {
     const { type } = req.form.values;
     if (type) {
       //TODO: below route should be updated when we remove named person feature flag
+      //https://collaboration.homeoffice.gov.uk/jira/browse/ASL-4716
       return res.redirect(req.buildRoute('role.namedPersonMvp.create'));
     } else {
       return res.redirect(req.buildRoute('training.dashboard'));

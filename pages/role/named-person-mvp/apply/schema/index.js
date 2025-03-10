@@ -1,4 +1,4 @@
-const namedRoles = require('../../helpers/named-roles');
+const namedRoles = require('../../content/named-roles');
 const hintText = require('../../../content/hint-text');
 
 const excludedRoles = {
