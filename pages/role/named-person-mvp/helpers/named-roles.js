@@ -1,5 +1,3 @@
-//TODO: Remove this file once named person mvp flag is removed
-
 const dictionary = require('@ukhomeoffice/asl-dictionary');
 
 const roles = [
@@ -8,7 +6,6 @@ const roles = [
   'ntco',
   'nvs',
   'sqp',
-  'pelh',
   'nprc',
   'holc'
 ];

@@ -36,7 +36,8 @@ module.exports = settings => {
   app.post('/', (req, res, next) => {
     const { type } = req.form.values;
     if (type) {
-      return res.redirect(req.buildRoute('role.create'));
+      //TODO: below route should be updated when we remove named person feature flag
+      return res.redirect(req.buildRoute('role.namedPersonMvp.create'));
     } else {
       return res.redirect(req.buildRoute('training.dashboard'));
     }
