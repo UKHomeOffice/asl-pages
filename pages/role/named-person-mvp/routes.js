@@ -1,5 +1,6 @@
 const beforeYouApply = require('./before-you-apply');
 const create = require('./apply');
+const nacwo = require('./nacwo');
 
 module.exports = {
   beforeYouApply: {
@@ -10,6 +11,11 @@ module.exports = {
   create: {
     path: '/create',
     router: create,
+    breadcrumb: false
+  },
+  nacwo: {
+    path: '/nacwo',
+    router: nacwo,
     breadcrumb: false
   }
 };
