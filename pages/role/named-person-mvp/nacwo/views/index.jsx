@@ -14,7 +14,7 @@ const Page = () => {
         <div className="govuk-grid-column-two-thirds">
           <Form cancelLink="profile.read">
             <Header title={<Snippet>title</Snippet>}/>
-            <p className="govuk-body">{<Snippet>nacwoMandatoryTrainingDesc</Snippet>}</p>
+            <Snippet>nacwoMandatoryTrainingDesc</Snippet>
           </Form>
         </div>
       </div>

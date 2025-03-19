@@ -7,16 +7,14 @@ module.exports = (profile) => {
       options: [
         {
           label: 'Yes',
-          value: 'yes'
-        }
-      ],
-      validate: ['required']
-    },
-    other: {
-      label: '',
-      hint: `Or`,
-      inputType: 'checkboxGroup',
-      options: [
+          value: 'yes',
+          behaviour: 'exclusive'
+        },
+        {
+          id: 'divider',
+          divider: 'Or select each that applies:',
+          className: 'govuk-checkboxes__divider govuk-checkboxes__divider-wide'
+        },
         {
           label: 'They have requested an exemption from one or more modules',
           value: 'exemption'
@@ -26,7 +24,10 @@ module.exports = (profile) => {
           value: 'delay'
         }
       ],
-      validate: ['required']
+      validate: [
+        'required',
+        'exclusive'
+      ]
     }
   };
 };
