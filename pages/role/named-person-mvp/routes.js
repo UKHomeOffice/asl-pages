@@ -1,6 +1,6 @@
 const beforeYouApply = require('./before-you-apply');
 const create = require('./apply');
-const nacwo = require('./nacwo');
+const mandatroyTraining = require('./mandatory-training');
 
 module.exports = {
   beforeYouApply: {
@@ -14,8 +14,8 @@ module.exports = {
     breadcrumb: false
   },
   nacwo: {
-    path: '/nacwo',
-    router: nacwo,
+    path: '/mandatroy-training',
+    router: mandatroyTraining,
     breadcrumb: false
   }
 };
