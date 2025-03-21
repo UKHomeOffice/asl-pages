@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
 import { Snippet, Header, Form } from '@ukhomeoffice/asl-components';
+import MandatoryTrainingRequirements from '../../components/mandatory-training-requirements';
 
 const Page = () => {
 
@@ -15,6 +16,7 @@ const Page = () => {
           <Form cancelLink="profile.read">
             <Header title={<Snippet>title</Snippet>}/>
             <Snippet>nacwoMandatoryTrainingDesc</Snippet>
+            <MandatoryTrainingRequirements />
           </Form>
         </div>
       </div>
