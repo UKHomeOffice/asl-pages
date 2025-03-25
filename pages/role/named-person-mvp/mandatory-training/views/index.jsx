@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
-import { Snippet, Header, Form, TrainingSummary, Details, Inset } from '@ukhomeoffice/asl-components';
+import { Snippet, Header, Form, TrainingSummary, Details, Inset, SupportingLinks } from '@ukhomeoffice/asl-components';
 import MandatoryTrainingRequirements from '../../components/mandatory-training-requirements';
 import content from '../content/index';
 
@@ -28,8 +28,21 @@ const Page = () => {
           </Details>
         </Form>
       </div>
+
+      <SupportingLinks sectionTitle={<Snippet>supportingGuidanceTitle</Snippet>} links={mandatoryTrainingSupportingLinks} />
     </div>
   );
 };
 
 export default Page;
+
+const mandatoryTrainingSupportingLinks = [
+  {
+    href: 'https://www.gov.uk/guidance/nominate-someone-for-a-named-animal-care-and-welfare-officer-role',
+    label: 'Adding a NACWO role'
+  },
+  {
+    href: 'https://www.gov.uk/government/publications/training-and-development-under-the-animals-scientific-procedures-act',
+    label: 'Guidance on training and continuous professional development (CPD) under ASPA'
+  }
+];
