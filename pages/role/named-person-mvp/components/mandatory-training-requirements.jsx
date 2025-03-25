@@ -3,12 +3,25 @@ import content from './content';
 
 export default function MandatoryTrainingRequirements({ role }) {
   const renderModules = (modules) => {
-    return Object.entries(modules).map(([module, moduleDetails]) => (
-      <tr key={module}>
-        <td>{module}</td>
-        <td>{moduleDetails.content}</td>
-      </tr>
-    ));
+    return Object.entries(modules).map(([module, moduleDetails]) => {
+
+      return (
+        <tr key={module} className="govuk-table__row">
+          <td className="govuk-table__cell">
+            {module}
+            {moduleDetails.tag && (
+              <>
+                <br />
+                <div style={{ backgroundColor: '#fff7bf', color: '#594d00', fontSize: '14px', textAlign: 'center' }}>
+                  {moduleDetails.tag}
+                </div>
+              </>
+            )}
+          </td>
+          <td className="govuk-table__cell">{moduleDetails.content.map(el => (<>{el}<br /></>))}</td>
+        </tr>
+      );
+    });
   };
 
   return (
