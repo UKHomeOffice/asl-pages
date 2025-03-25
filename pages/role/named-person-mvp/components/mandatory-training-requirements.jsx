@@ -2,6 +2,25 @@ import React, { Fragment } from 'react';
 import content from './content';
 
 export default function MandatoryTrainingRequirements({ role }) {
+
+  const renderModuleContent = (content) => {
+    return content.map((el, index) => (
+      <Fragment key={index}>
+        {el}
+        <br />
+      </Fragment>
+    ));
+  };
+
+  const renderModuleTag = (tag) => (
+    <>
+      <br />
+      <div style={{ backgroundColor: '#fff7bf', color: '#594d00', fontSize: '14px', textAlign: 'center' }}>
+        {tag}
+      </div>
+    </>
+  );
+
   const renderModules = (modules) => {
     return Object.entries(modules).map(([module, moduleDetails]) => {
 
@@ -9,16 +28,9 @@ export default function MandatoryTrainingRequirements({ role }) {
         <tr key={module} className="govuk-table__row">
           <td className="govuk-table__cell">
             {module}
-            {moduleDetails.tag && (
-              <>
-                <br />
-                <div style={{ backgroundColor: '#fff7bf', color: '#594d00', fontSize: '14px', textAlign: 'center' }}>
-                  {moduleDetails.tag}
-                </div>
-              </>
-            )}
+            {moduleDetails.tag && renderModuleTag(moduleDetails.tag)}
           </td>
-          <td className="govuk-table__cell">{moduleDetails.content.map(el => (<>{el}<br /></>))}</td>
+          <td className="govuk-table__cell">{renderModuleContent(moduleDetails.content)}</td>
         </tr>
       );
     });
