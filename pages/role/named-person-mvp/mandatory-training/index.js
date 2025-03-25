@@ -31,8 +31,8 @@ module.exports = settings => {
   // eslint-disable-next-line no-warning-comments
   //TODO: redirects is not part of current ticket
   app.post('/', (req, res, next) => {
-    const { mandatory } = req.form.values;
-    if (mandatory) {
+    const { values } = req.form;
+    if (values) {
       return res.redirect(req.buildRoute('role.namedPersonMvp.create'));
     } else {
       return res.redirect(req.buildRoute('training.dashboard'));

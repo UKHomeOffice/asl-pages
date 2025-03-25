@@ -13,7 +13,7 @@ module.exports = {
     router: create,
     breadcrumb: false
   },
-  mandatroyTraining: {
+  mandatoryTraining: {
     path: '/mandatroy-training',
     router: mandatroyTraining,
     breadcrumb: false

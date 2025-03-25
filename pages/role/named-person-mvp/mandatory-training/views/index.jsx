@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
-import { Snippet, Header, Form, TrainingSummary, Details, Inset, SupportingLinks } from '@ukhomeoffice/asl-components';
+import { Snippet, Header, Form, TrainingSummary, Details, Inset, SupportingLinks, Link } from '@ukhomeoffice/asl-components';
 import MandatoryTrainingRequirements from '../../components/mandatory-training-requirements';
 import content from '../content/index';
 
@@ -24,7 +24,10 @@ const Page = () => {
           </Details>
 
           <Details summary={<Snippet>checkTrainingRecord</Snippet>} className="margin-bottom">
-            <Inset><TrainingSummary certificates={profile.certificates} /></Inset>
+            <Inset>
+              <TrainingSummary certificates={profile.certificates} />
+              <Link page="training.dashboard" label="Manage training"/>
+            </Inset>
           </Details>
         </Form>
       </div>
