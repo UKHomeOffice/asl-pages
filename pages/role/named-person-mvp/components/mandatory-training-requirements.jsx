@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import content from './content';
 
-export default function MandatoryTrainingRequirements({ role }) {
+export default function MandatoryTrainingRequirements() {
 
   const renderModuleContent = (content) => {
     return content.map((el, index) => (
