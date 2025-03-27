@@ -100,7 +100,7 @@ module.exports = settings => {
   }));
 
   app.post('/', (req, res, next) => {
-    return res.redirect(req.buildRoute('role.create', { suffix: 'confirm' }));
+    return res.redirect(req.buildRoute('role.namedPersonMvp.mandatoryTraining'));
   });
 
   app.use('/confirm', populateNamedPeople, confirm({
