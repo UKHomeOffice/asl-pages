@@ -35,7 +35,7 @@
     "@ukhomeoffice/frontend-toolkit": "^3.0.0",
     "@ukhomeoffice/react-components": "^1.4.2",
     "@x-govuk/govuk-prototype-components": "^3.0.9",
-    "axios": "^1.7.4",
+    "axios": "^1.8.4",
     "body-parser": "^1.18.3",
     "classnames": "^2.2.5",
     "csrf": "^3.0.6",
