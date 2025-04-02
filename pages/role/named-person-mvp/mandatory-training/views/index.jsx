@@ -5,14 +5,15 @@ import MandatoryTrainingRequirements from '../../components/mandatory-training-r
 import content from '../content/index';
 
 const Page = () => {
-  const { profile } = useSelector(state => state.static, shallowEqual);
+  const { profile, role } = useSelector(state => state.static, shallowEqual);
+  const roleType = role.type;
 
   return (
     <div className="govuk-grid-row">
       <div className="govuk-grid-column-two-thirds">
         <span className="govuk-caption-l">{profile.firstName} {profile.lastName}</span>
         <Form cancelLink="profile.read">
-          <Header title={<Snippet>title</Snippet>}/>
+          <Header title={`${roleType.toUpperCase()} ${content.title}`}/>
           <p className="govuk-body">{content.nacwoMandatoryTrainingDesc}</p>
           <ul className="govuk-list govuk-list--bullet govuk-list--spaced">
             <li>{content.trianingUnless1}</li>

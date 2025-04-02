@@ -11,7 +11,7 @@ module.exports = settings => {
 
   app.use((req, res, next) => {
     req.model = {
-      id: `${req.profile.id}-npm`,
+      id: `${req.profile.id}-new-role-named-person`,
       ...buildModel(schema)
     };
     next();
@@ -20,6 +20,16 @@ module.exports = settings => {
   app.use(form({
     configure(req, res, next) {
       req.form.schema = schema(req.profile);
+      next();
+    },
+    locals: (req, res, next) => {
+      Object.assign(res.locals, { model: req.model });
+      Object.assign(res.locals.static, {
+        profile: req.profile,
+        role: {
+          ...req.session.form[req.model.id].values
+        }
+      });
       next();
     },
     saveValues: (req, res, next) => {

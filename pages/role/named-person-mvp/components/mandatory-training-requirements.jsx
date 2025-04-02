@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import content from './content';
 
-export default function MandatoryTrainingRequirements() {
+export default function MandatoryTrainingRequirements({ role }) {
 
   const renderModuleContent = (content) => {
     return content.map((el, index) => (
@@ -37,7 +37,7 @@ export default function MandatoryTrainingRequirements() {
   };
 
   return (
-    <div className="govuk-box" style={{ border: '2px solid #000', borderColor: '#b1b4b6', padding: '15px', backgroundColor: '#fff' }}>
+    <div className="govuk-box embedded-content">
       <Fragment>
         <h2>{content.nacwo.title}</h2>
         <table className="govuk-table">
